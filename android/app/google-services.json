@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "494073732889",
-    "firebase_url": "https://health-plus-48ce0.firebaseio.com",
-    "project_id": "health-plus-48ce0",
-    "storage_bucket": "health-plus-48ce0.appspot.com"
+    "project_number": "619208527284",
+    "firebase_url": "https://health-6f3ef.firebaseio.com",
+    "project_id": "health-6f3ef",
+    "storage_bucket": "health-6f3ef.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:494073732889:android:7e4093b74cf10c2a922f88",
+        "mobilesdk_app_id": "1:619208527284:android:91bea4b611fa87c587f6e1",
         "android_client_info": {
           "package_name": "health.wad.com.health_plus"
         }
       },
       "oauth_client": [
         {
-          "client_id": "494073732889-538lj9fdm9sjmnka44ac2ccapamv583s.apps.googleusercontent.com",
+          "client_id": "619208527284-fncn084d5iv9c906nau20atouiughtgu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "health.wad.com.health_plus",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "494073732889-gi7urqfdngc5sgt5i5rd8tv2pqjpd434.apps.googleusercontent.com",
+          "client_id": "619208527284-pnj55a4qcppmhe1r5et607sei0ljs26f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAHMNU2tbyR1Iq9lTtRJzXRgH3h6H-PXoQ"
+          "current_key": "AIzaSyDXRAT8SZOx1ITRNlbK8hbjHrTRqGp2g6M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "494073732889-gi7urqfdngc5sgt5i5rd8tv2pqjpd434.apps.googleusercontent.com",
+              "client_id": "619208527284-pnj55a4qcppmhe1r5et607sei0ljs26f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
