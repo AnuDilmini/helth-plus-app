@@ -32,8 +32,7 @@ class ProfileLayout extends State<Profile> {
     return MaterialApp(
         home: Scaffold(
           resizeToAvoidBottomPadding: false,
-          body:  SingleChildScrollView(
-            child:Stack(
+          body: Stack(
               children: <Widget>[
                 Container(
                   height: Constant.screenHeight* 812,
@@ -54,7 +53,7 @@ class ProfileLayout extends State<Profile> {
                       ),
                       Container(
                         width: Constant.screenWidth * 414,
-                        height: Constant.screenHeight * 812 - ((Constant.screenHeight) * 250),
+                        height: Constant.screenHeight * 812 - ((Constant.screenHeight) * 322),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: new BorderRadius.only(
@@ -84,7 +83,7 @@ class ProfileLayout extends State<Profile> {
                     child:Center(
                       child: Text("Anushika Dilmini",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontFamily: "Montserrat-Regular",
                         fontSize: 20.0
 
@@ -308,7 +307,7 @@ class ProfileLayout extends State<Profile> {
               ],
             ),
           ),
-        )
+
     );
   }
 

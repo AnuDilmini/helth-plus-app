@@ -75,6 +75,9 @@ flutter:
     - family: Montserrat-Regular
       fonts:
         - asset: assets/fonts/Montserrat-Regular.otf
+    - family: Montserrat-Bold
+      fonts:
+        - asset: assets/fonts/Montserrat-Bold.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

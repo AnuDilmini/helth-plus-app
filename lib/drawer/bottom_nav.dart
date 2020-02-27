@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:health_plus/ui/dashboard.dart';
+import 'package:health_plus/ui/health_tips.dart';
+import 'package:health_plus/ui/profile.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 import 'package:sphere_bottom_navigation_bar/sphere_bottom_navigation_bar.dart';
@@ -20,13 +23,13 @@ class NavigatioLayout extends State<BottomNavigation> {
 
 
   static const IconThemeData selectedIconTheme = IconThemeData(size: 24, color: Colors.purple, );
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
       fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    // Home(),
-//    Home(),
-//    VendorsClass(),
+    Dashboard(),
+    HealthTips(),
+    Profile(),
 //    PromotionInnerClass(),
 //    PromotionClass(),
 //    FeedbackClass(),
@@ -63,107 +66,34 @@ class NavigatioLayout extends State<BottomNavigation> {
           )
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 100,
-              child: Container(
-                color: Palette.darkishPurple,
-                child: _widgetOptions.elementAt(_selectedIndex),
-              ),
-            ),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  decoration: new BoxDecoration(
-                    gradient: new LinearGradient(
-                      colors: [
-                        Palette.lightGreen,
-                        Palette.lightBlue
-                      ],
-                    ),
-                    // border color
-                  ),
-                )
-            ),
-          ],
-        ),
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
 
-      bottomNavigationBar: SphereBottomNavigationBar(
-        defaultSelectedItem: 2,
-
-//        sheetRadius: BorderRadius.only(
-//            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        onItemPressed: (index){
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        navigationItems: [
-          BuildNavigationItem(
-            tooltip: '',
-            itemColor: Colors.white,
-            icon: Icon(Icons.home, color: Colors.black,),
-            selectedItemColor: Palette.darkishPurple,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home'),
           ),
-          BuildNavigationItem(
-            tooltip: '',
-            itemColor:  Colors.white,
-            icon:  Icon(Icons.shopping_cart,  color: Colors.black,),
-            selectedItemColor: Palette.darkishPurple,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            title: Text('Health Tips'),
           ),
-          BuildNavigationItem(
-            tooltip: '',
-            itemColor:  Colors.white,
-            icon: Icon(Icons.map, color: Colors.black,),
-            selectedItemColor: Palette.darkishPurple,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            title: Text('Me'),
           ),
-          BuildNavigationItem(
-              tooltip: '',
-              itemColor: Colors.white,
-              icon:  Icon(Icons.warning, color: Colors.black,),
-              selectedItemColor: Palette.darkishPurple),
-          BuildNavigationItem(
-              tooltip: 'fda',
-              itemColor:  Colors.white,
-              icon: Icon(Icons.layers, color: Colors.black,),
-              selectedItemColor: Palette.darkishPurple),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.school),
+//            title: Text('School'),
+//          ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green,
+        onTap: _onItemTapped,
       ),
-//      bottomNavigationBar: BottomNavigationBar(
-//        items: const <BottomNavigationBarItem>[
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.home),
-//            title: Text(''),
-//            activeIcon: Icon(Icons.home ,
-//              color: Colors.orange,
-//
-//
-//            )
-//          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.shopping_cart),
-//            title: Text(''),
-//          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.map),
-//            title: Text(''),
-//          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.warning),
-//            title: Text(''),
-//          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.layers, ),
-//            title: Text(''),
-//          ),
-//        ],
-//        currentIndex: _selectedIndex,
-//        unselectedItemColor : Colors.black,
-//        onTap: _onItemTapped,
-//        fixedColor: Palette.darkishPurple,
-//      ),
     );
   }
-}
+  }
