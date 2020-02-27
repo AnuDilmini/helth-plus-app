@@ -79,7 +79,7 @@ class DashboardState extends State<Dashboard> {
                         Container(
                           width: Constant.screenWidth ,
                           height: (Constant.screenHeight/896) * 166.0,
-                          color: Palette.eggplantPurple80,
+                          color: Colors.white,
                           child:Container(
                               height: (Constant.screenHeight/896) * 300,
                               width: (Constant.screenWidth/414) * 248,
@@ -116,7 +116,7 @@ class DashboardState extends State<Dashboard> {
                         Container(
                           width: Constant.screenWidth,
                           height: (Constant.screenHeight - (Constant.screenHeight/896) * 166.0),
-                          color: Palette.white,
+                          color: Palette.greyishBrown,
                         )
                       ],
                     ),
@@ -160,8 +160,8 @@ class DashboardState extends State<Dashboard> {
                               children: <Widget>[
                                 GestureDetector(
                                   onTap: () {
-                                    print("Tapped --> " +
-                                        position.toString());
+//                                    print("Tapped --> " +
+//                                        position.toString());
 //                                    setOtherPageData(position);
                                   },
                                   child: Card(
@@ -172,33 +172,11 @@ class DashboardState extends State<Dashboard> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius
                                           .circular(12.0),
-                                      child: Image.asset(
-                                        imgList[position],
-                                        width: (Constant.screenWidth  * 64) /
-                                            375,
-                                        height: (Constant.screenHeight * 64) /
-                                            375,
-                                        fit: BoxFit.fill,
+                                      child:  Image.network(imgList[position], fit: BoxFit.cover,
+                                        width: Constant.screenWidth,
                                       ),
                                     ),
                                     elevation: 0,
-                                  ),
-                                ),
-                                Container(
-                                  alignment: Alignment.topCenter,
-                                  padding: EdgeInsets.only(
-                                      top:(Constant.screenWidth * 0.7) / 375),
-                                  child: Text(
-                                    imgList[position],
-                                    style: TextStyle(
-                                      fontSize: 11.0,
-                                      fontFamily: 'HK Grotesk',
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                    overflow: TextOverflow.clip,
-                                    maxLines: 2,
-                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ],
@@ -248,97 +226,7 @@ class DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    left: (Constant.screenWidth/ 414) * 29,
-                    right: (Constant.screenWidth/ 414) * 29,
-                    top: (Constant.screenHeight/896) * 560,
-                    height: (Constant.screenHeight/896) * 89,
-                    child:
-                    Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: new Border.all(color: Palette.darkishPurple,
-                              width: 1.0
-                          ),
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              flex: 2,
-                              child:Container(
-                                decoration: BoxDecoration(color: Colors.white,
-                                  border: Border(
-                                    right: BorderSide(width: 1.0, color: Palette.darkishPurple,),
-                                  ),
-                                ),
-                                child: Image.asset("assets/images/parking.png",
-                                  height: (Constant.screenHeight/896)  * 89,
-                                  width: (Constant.screenWidth/414) * 73,
-                                  alignment:Alignment.center ,
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                                flex:5,
-                                child:  Text("    Available Parking Slots",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontFamily: "Montserrat-Light",
-                                      color: Palette.darkGrey
-                                  ),
-                                )
-                            )
-                          ],
-                        )
-                    ),
-                  ),
-                  Positioned(
-                      left: (Constant.screenWidth/ 414) * 29,
-                      right: (Constant.screenWidth/ 414) * 29,
-                      top: (Constant.screenHeight/896) * 670,
-                      height: (Constant.screenHeight/896) * 89,
-                      child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: new Border.all(color: Palette.darkishPurple,
-                                width: 1.0
-                            ),
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  decoration: BoxDecoration(color: Colors.white,
-                                    border: Border(
-                                      right: BorderSide(width: 1.0, color: Palette.darkishPurple,),
-                                    ),
-                                  ),
-                                  child: Image.asset("assets/images/shops.png",
-                                    height: (Constant.screenHeight/896)  * 89,
-                                    width:( Constant.screenWidth/414 ) * 73,
-                                    alignment:Alignment.center ,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                  flex:5,
-                                  child: Text("    Shops Open",
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontFamily: "Montserrat-Light",
-                                          color: Palette.darkGrey
-                                      )
-                                  )
-                              ),
-                            ],
-                          )
-                      )
-                  )
+
                 ],
               ),
             ],
