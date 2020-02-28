@@ -6,25 +6,25 @@ import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
-class Goals extends StatefulWidget {
+class AddGoals extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return GoalsLayout();
+    return AddGoalsLayout();
   }
 }
 
-class GoalsLayout extends State<Goals> {
+class AddGoalsLayout extends State<AddGoals> {
 
   MediaQueryData queryData;
   final List<String> goalsList = [
-   "Avoid junk food",
+    "Avoid junk food",
     "Walk 10k steps",
     "No sugar day",
     "30mins of yoga",
     "Avoid fizzy drinks",
     "30mins of yoga",
     "Avoid fizzy drinks",
-    ];
+  ];
 
 
   final List<String> imgList = [
@@ -57,33 +57,16 @@ class GoalsLayout extends State<Goals> {
                 Container(
                   height: Constant.screenHeight* 812,
                   width: Constant.screenWidth * 414,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xFFFF8330),
-                          Color(0xFFFC663C),
-                          Color(0xFFFF3F1A),],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      )),
-                  child:Column(
-                    children: <Widget>[
-                      Container(
-                        height: Constant.screenHeight *100,
-                        width: Constant.screenWidth * 414,
-                      ),
-                      Container(
-                        width: Constant.screenWidth * 414,
-                        height: Constant.screenHeight * 812 - (Constant.screenHeight * 100),
-                        padding: EdgeInsets.only(top: Constant.screenWidth* 80, left:  Constant.screenWidth * 15 ),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: new BorderRadius.only(
-                                topLeft: const Radius.circular(15.0),
-                                topRight: const Radius.circular(15.0))),
-                        child: _horizontalButtonView(),
-                      ),
-                    ],
-                  ),
+                  color: Colors.white,
+                ),
+                Positioned(
+                  top: (Constant.screenHeight ) * 60,
+                  width: Constant.screenWidth * 414,
+                  child:Container(
+                    width: Constant.screenWidth * 414,
+                    height: Constant.screenHeight * 3,
+                    color: Palette.grayColor,
+                  )
                 ),
                 Positioned(
                   top: (Constant.screenHeight ) * 60,
@@ -102,15 +85,15 @@ class GoalsLayout extends State<Goals> {
                   left: Constant.screenWidth * 20,
                   width: Constant.screenWidth * 50,
                   child: Center(
-                    child: Icon(Icons.arrow_back,
-                    color: Colors.white,)
+                      child: Icon(Icons.arrow_back,
+                        color: Colors.black,)
                   ),
                 ),
                 Positioned(
                   top: (Constant.screenHeight ) * 130,
                   left: Constant.screenWidth * 15,
                   width: Constant.screenWidth * 414,
-                  child: Text("Pick a goal for",
+                  child: Text("Add a ",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 16.0,
@@ -121,7 +104,7 @@ class GoalsLayout extends State<Goals> {
                   top: (Constant.screenHeight ) * 150,
                   left: Constant.screenWidth * 15,
                   width: Constant.screenWidth * 414,
-                  child: Text("Today",
+                  child: Text("Goal",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 22.0,
@@ -131,13 +114,6 @@ class GoalsLayout extends State<Goals> {
 
               ],
             ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              // Add your onPressed code here!
-            },
-            child: Icon(Icons.add),
-            backgroundColor: Color(0xFFFF8330),
           ),
         )
     );
@@ -169,10 +145,10 @@ class GoalsLayout extends State<Goals> {
                                   "${imgList[index]}")
                           )
                       )),
-                   new Container(
-                      margin: EdgeInsetsDirectional.only(start: Constant.screenWidth *30),
-                      child: Center(
-                        child: Text("${goalsList[index]}"),
+                  new Container(
+                    margin: EdgeInsetsDirectional.only(start: Constant.screenWidth *30),
+                    child: Center(
+                      child: Text("${goalsList[index]}"),
 
                     ),
                   ),
