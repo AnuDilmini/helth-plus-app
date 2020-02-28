@@ -6,6 +6,8 @@ import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
+import 'goal_achieved.dart';
+
 class Goals extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -154,30 +156,37 @@ class GoalsLayout extends State<Goals> {
         scrollDirection: Axis.vertical,
         itemCount: goalsList.length,
         itemBuilder: (BuildContext context, int index) {
-          return  new Container(
-              height: (Constant.screenHeight) *80,
-              child: Row(
-                children: <Widget>[
-                  new Container(
-                      width: (Constant.screenHeight ) * 60,
-                      height: (Constant.screenHeight ) * 60,
-                      decoration: new BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: new DecorationImage(
-                              fit: BoxFit.fill,
-                              image: new NetworkImage(
-                                  "${imgList[index]}")
-                          )
-                      )),
-                   new Container(
+          return  GestureDetector(
+            child:new Container(
+                height: (Constant.screenHeight) *80,
+                child: Row(
+                  children: <Widget>[
+                    new Container(
+                        width: (Constant.screenHeight ) * 60,
+                        height: (Constant.screenHeight ) * 60,
+                        decoration: new BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: new DecorationImage(
+                                fit: BoxFit.fill,
+                                image: new NetworkImage(
+                                    "${imgList[index]}")
+                            )
+                        )),
+                    new Container(
                       margin: EdgeInsetsDirectional.only(start: Constant.screenWidth *30),
                       child: Center(
                         child: Text("${goalsList[index]}"),
 
+                      ),
                     ),
-                  ),
-                ],
-              )
+                  ],
+                )
+            ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => GoalAchieved()
+              ));
+            },
           );
         });
   }

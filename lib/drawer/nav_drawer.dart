@@ -12,8 +12,13 @@ class NavDrawer extends StatefulWidget {
 class _NavDrawerState extends State<NavDrawer> {
 
   String version = "";
+  MediaQueryData queryData;
+
   @override
   Widget build(BuildContext context) {
+    queryData = MediaQuery.of(context);
+    Constant.screenWidth = queryData.size.width;
+    Constant.screenHeight = queryData.size.height;
     return Drawer(
         child:Stack(
           children: <Widget>[

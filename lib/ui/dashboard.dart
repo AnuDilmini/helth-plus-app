@@ -4,6 +4,7 @@ import 'package:health_plus/drawer/nav_drawer.dart';
 import 'package:health_plus/utils/Palette.dart';
 
 import '../utils/constant.dart';
+import 'goals.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -160,9 +161,9 @@ class DashboardState extends State<Dashboard> {
                               children: <Widget>[
                                 GestureDetector(
                                   onTap: () {
-//                                    print("Tapped --> " +
-//                                        position.toString());
-//                                    setOtherPageData(position);
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => Goals()
+                                    ));
                                   },
                                   child: Card(
                                     shape: RoundedRectangleBorder(

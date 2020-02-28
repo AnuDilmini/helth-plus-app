@@ -28,7 +28,7 @@ class NavigatioLayout extends State<BottomNavigation> {
   static const TextStyle optionStyle = TextStyle(
       fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    GoalAchieved(),
+    Dashboard(),
     HealthTips(),
     Profile(),
 //    PromotionInnerClass(),
@@ -61,7 +61,7 @@ class NavigatioLayout extends State<BottomNavigation> {
             ),
             child:Drawer(
               child: Container(
-                child:  NavDrawer(),
+                child: NavDrawer(),
               ),
             ),
           )
