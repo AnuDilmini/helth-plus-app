@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/ui/create_post.dart';
-import 'package:health_plus/ui/create_post_old.dart';
 import 'package:health_plus/ui/goal_achieved.dart';
 import 'package:health_plus/ui/goals.dart';
 import 'package:health_plus/ui/health_tips.dart';
