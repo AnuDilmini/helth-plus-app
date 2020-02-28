@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_plus/ui/dashboard.dart';
+import 'package:health_plus/ui/goal_achieved.dart';
 import 'package:health_plus/ui/health_tips.dart';
 import 'package:health_plus/ui/profile.dart';
 import 'package:health_plus/utils/Palette.dart';
@@ -27,7 +28,7 @@ class NavigatioLayout extends State<BottomNavigation> {
   static const TextStyle optionStyle = TextStyle(
       fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    Dashboard(),
+    GoalAchieved(),
     HealthTips(),
     Profile(),
 //    PromotionInnerClass(),
