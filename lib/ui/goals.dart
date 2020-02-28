@@ -110,7 +110,7 @@ class GoalsLayout extends State<Goals> {
                 ),
                 Positioned(
                   top: (Constant.screenHeight ) * 130,
-                  left: Constant.screenWidth * 15,
+                  left: Constant.screenWidth * 20,
                   width: Constant.screenWidth * 414,
                   child: Text("Pick a goal for",
                     style: TextStyle(
@@ -121,7 +121,7 @@ class GoalsLayout extends State<Goals> {
                 ),
                 Positioned(
                   top: (Constant.screenHeight ) * 150,
-                  left: Constant.screenWidth * 15,
+                  left: Constant.screenWidth * 20,
                   width: Constant.screenWidth * 414,
                   child: Text("Today",
                     style: TextStyle(
