@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1055575370982-lsf6hj3ga77cuiss7tg1bmujen00fegg.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://optimal-benefit-269210.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1055575370982</string>
+    <string name="google_api_key" translatable="false">AIzaSyDMH8dJyCHpLJAA2lWtAw7lWMj2iWp5eY8</string>
+    <string name="google_app_id" translatable="false">1:1055575370982:android:f5b2456810a8c486195f27</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDMH8dJyCHpLJAA2lWtAw7lWMj2iWp5eY8</string>
+    <string name="google_storage_bucket" translatable="false">optimal-benefit-269210.appspot.com</string>
+    <string name="project_id" translatable="false">optimal-benefit-269210</string>
+</resources>
