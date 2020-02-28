@@ -121,29 +121,29 @@ class DashboardState extends State<Dashboard> {
                       ],
                     ),
                   ),
-                  Positioned(
-                    top: (Constant.screenHeight /896) * 60,
-                    left: (Constant.screenWidth / 414) * 250,
-                    right:(Constant.screenWidth / 414) * 21,
-                    height: (Constant.screenHeight /896) * 40,
-                    child:  GestureDetector(
-                      child: Container(
-                        child: Image.asset("assets/images/navigator_white.png",
-                          height: (Constant.screenHeight/896)  * 40,
-                          width: Constant.screenWidth/15,
-                          alignment:Alignment.centerRight ,
-                          fit: BoxFit.contain,
-                        ),),
-                      onTap: (){
-                        _scaffoldKey.currentState.openDrawer();
-                        print("click");
-                      },
-                      onLongPress: (){
-                        _scaffoldKey.currentState.openDrawer();
-                        print("click ** ");
-                      },
-                    ),
-                  ),
+//                  Positioned(
+//                    top: (Constant.screenHeight /896) * 60,
+//                    left: (Constant.screenWidth / 414) * 250,
+//                    right:(Constant.screenWidth / 414) * 21,
+//                    height: (Constant.screenHeight /896) * 40,
+//                    child:  GestureDetector(
+//                      child: Container(
+//                        child: Image.asset("assets/images/navigator_white.png",
+//                          height: (Constant.screenHeight/896)  * 40,
+//                          width: Constant.screenWidth/15,
+//                          alignment:Alignment.centerRight ,
+//                          fit: BoxFit.contain,
+//                        ),),
+//                      onTap: (){
+//                        _scaffoldKey.currentState.openDrawer();
+//                        print("click");
+//                      },
+//                      onLongPress: (){
+//                        _scaffoldKey.currentState.openDrawer();
+//                        print("click ** ");
+//                      },
+//                    ),
+//                  ),
                   Positioned(
                     top: (Constant.screenHeight/896) * 287,
                     height: (Constant.screenHeight/896) * 200,

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:health_plus/ui/goals.dart';
 import 'package:health_plus/ui/health_tips.dart';
 import 'package:health_plus/ui/profile.dart';
 import 'package:health_plus/utils/profile_example.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BottomNavigation(),
+      home: Goals(),
 //      MyAppPage(title: 'Phone Authentication'),
     );
   }
