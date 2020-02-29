@@ -7,6 +7,7 @@ import 'package:health_plus/ui/goal_achieved.dart';
 import 'package:health_plus/ui/goals.dart';
 import 'package:health_plus/ui/health_tips.dart';
 import 'package:health_plus/ui/profile.dart';
+import 'package:health_plus/ui/profile_edit.dart';
 import 'package:health_plus/utils/profile_example.dart';
 
 import 'drawer/bottom_nav.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CreatePost(),
+      home: ProfileEdit(),
 //      MyAppPage(title: 'Phone Authentication'),
     );
   }

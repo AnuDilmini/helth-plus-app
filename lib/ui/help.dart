@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,14 +7,14 @@ import 'package:health_plus/utils/constant.dart';
 
 import 'goal_achieved.dart';
 
-class Goals extends StatefulWidget {
+class Help extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return GoalsLayout();
+    return HelpLayout();
   }
 }
 
-class GoalsLayout extends State<Goals> {
+class HelpLayout extends State<Help> {
 
   MediaQueryData queryData;
   final List<String> goalsList = [
