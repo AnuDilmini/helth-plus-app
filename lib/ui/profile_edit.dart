@@ -63,8 +63,8 @@ class ProfileEditLayout extends State<ProfileEdit> {
               top: (Constant.screenHeight ) * 140,
               left: (Constant.screenWidth ) * 20,
               child: Container(
-                  width: (Constant.screenHeight ) * 60,
-                  height: (Constant.screenHeight ) * 60,
+                  width: (Constant.screenHeight ) * 100,
+                  height: (Constant.screenHeight ) * 100,
                   decoration: new BoxDecoration(
                       color: Palette.orangeColor,
                       shape: BoxShape.circle,
@@ -77,8 +77,8 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   )),
             ),
             Positioned(
-              top: (Constant.screenHeight ) * 160,
-              left: (Constant.screenWidth ) * 100,
+              top: (Constant.screenHeight ) * 170,
+              left: (Constant.screenWidth ) * 150,
               child: Container(
                   width: (Constant.screenHeight ) * 200,
                   height: (Constant.screenHeight ) * 60,
@@ -90,10 +90,18 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   ),),
               ),
             ),
+            Positioned(
+              top: (Constant.screenHeight ) * 220,
+              left: (Constant.screenWidth ) * 80,
+              child: Container(
+                width: (Constant.screenHeight ) * 10,
+                height: (Constant.screenHeight ) * 100,
+                color: Palette.orangeColor,
+              ),
+            ),
           ],
         ),
       ),
-
     );
   }
 
