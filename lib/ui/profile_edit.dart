@@ -84,17 +84,17 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   height: (Constant.screenHeight ) * 60,
                   child: Text("Anushika Dilmini",
                   style: TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 20.0,
                     fontFamily: "Montserrat-Bold",
                     color: Palette.orangeColor
                   ),),
               ),
             ),
             Positioned(
-              top: (Constant.screenHeight ) * 220,
-              left: (Constant.screenWidth ) * 80,
+              top: (Constant.screenHeight ) * 240,
+              left: (Constant.screenWidth ) * 65,
               child: Container(
-                width: (Constant.screenHeight ) * 10,
+                width: (Constant.screenHeight ) * 4,
                 height: (Constant.screenHeight ) * 100,
                 color: Palette.orangeColor,
               ),
