@@ -32,7 +32,7 @@ class _NavDrawerState extends State<NavDrawer> {
                     margin: EdgeInsets.only(top: (Constant.screenHeight/896) * 221, left: (Constant.screenWidth/414) * 86),
                     height:(Constant.screenHeight/896) *675,
                     width: Constant.screenWidth,
-                    color: Palette.darkishPurple,
+                    color: Palette.orangeColor,
                   ),
                 ],
               ),

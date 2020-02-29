@@ -52,8 +52,8 @@ class DashboardState extends State<Dashboard> {
       home: Scaffold(
         key: _scaffoldKey,
         resizeToAvoidBottomInset: false,
-        endDrawer:  SizedBox(
-            width: Constant.screenWidth,
+        drawer:  SizedBox(
+            width: (Constant.screenWidth/ 414) * 350,
             height: Constant.screenHeight,
             child: Theme(
               data: Theme.of(context).copyWith(
