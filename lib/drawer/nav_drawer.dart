@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_plus/utils/Palette.dart';
@@ -25,7 +24,7 @@ class _NavDrawerState extends State<NavDrawer> {
             Container(
               width: Constant.screenWidth,
               height: Constant.screenHeight,
-              color:Palette.eggplantPurple80,
+              color:Palette.orangeColor,
               child: Column(
                 children: <Widget>[
                   Container(
@@ -431,18 +430,18 @@ class _NavDrawerState extends State<NavDrawer> {
                   },
                 )
             ),
-            Positioned(
-                top: (Constant.screenHeight /896) * 859,
-                left: (Constant.screenWidth/414) * 143,
-                width: Constant.screenWidth,
-                child:Text("V ${version}",
-                  style: TextStyle(
-                      fontSize: 17.0,
-                      fontFamily: "Montserrat-Light",
-                      color: Palette.eggplant
-                  ),
-                )
-            ),
+//            Positioned(
+//                top: (Constant.screenHeight /896) * 859,
+//                left: (Constant.screenWidth/414) * 143,
+//                width: Constant.screenWidth,
+//                child:Text("V ${version}",
+//                  style: TextStyle(
+//                      fontSize: 17.0,
+//                      fontFamily: "Montserrat-Light",
+//                      color: Palette.eggplant
+//                  ),
+//                )
+//            ),
           ],
         )
     );

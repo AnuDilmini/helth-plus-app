@@ -52,7 +52,7 @@ class NavigatioLayout extends State<BottomNavigation> {
     Constant.screenHeight = queryData.size.height;
 
     return Scaffold(
-      endDrawer:  SizedBox(
+     drawer:  SizedBox(
           width: Constant.screenWidth,
           height: Constant.screenHeight,
           child: Theme(
@@ -70,7 +70,6 @@ class NavigatioLayout extends State<BottomNavigation> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
           unselectedItemColor: Colors.grey,
