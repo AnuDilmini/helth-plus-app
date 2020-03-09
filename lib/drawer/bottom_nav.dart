@@ -54,12 +54,9 @@ class NavigatioLayout extends State<BottomNavigation> {
     Constant.scaffoldKey = new GlobalKey<ScaffoldState>();
 
     return Scaffold(
-//        appBar: new AppBar(
-//          leading: new IconButton(icon: new Icon(Icons.settings),
-//              onPressed: () => _scaffoldKey.currentState.openDrawer()),
-//        ),
       drawer: SizedBox(
           width: (Constant.screenWidth/5) * 4,
+
           height: Constant.screenHeight,
           child: Theme(
             data: Theme.of(context).copyWith(
