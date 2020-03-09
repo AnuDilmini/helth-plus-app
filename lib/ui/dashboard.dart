@@ -52,21 +52,21 @@ class DashboardState extends State<Dashboard> {
       home: Scaffold(
         key: _scaffoldKey,
         resizeToAvoidBottomInset: false,
-        drawer:  SizedBox(
-            width: (Constant.screenWidth/ 414) * 350,
-            height: Constant.screenHeight,
-            child: Theme(
-              data: Theme.of(context).copyWith(
-                // Set the transparency here
-                canvasColor: Color.fromRGBO(255, 255, 255, 0.1), //or any other color you want. e.g Colors.blue.withOpacity(0.5)
+        drawer: SizedBox(
+          width: (Constant.screenWidth/5) * 4,
+          height: Constant.screenHeight,
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              // Set the transparency here
+              canvasColor: Color.fromRGBO(255, 255, 255, 0.1), //or any other color you want. e.g Colors.blue.withOpacity(0.5)
+            ),
+            child:Drawer(
+              child: Container(
+                child: NavDrawer(),
               ),
-              child:Drawer(
-                child: Container(
-                  child:  NavDrawer(),
-                ),
-              ),
-            )
-        ),
+            ),
+          )
+      ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -227,7 +227,46 @@ class DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
-
+                  Positioned(
+                    left: (Constant.screenWidth/ 414) * 19,
+                    top: (Constant.screenHeight/896) * 75,
+                    height: (Constant.screenHeight/896) * 35,
+                    child: GestureDetector(
+                      child: Icon(Icons.menu,
+                      color: Palette.orangeColor,
+                    ),
+                    onTap: (){
+                      _scaffoldKey.currentState.openDrawer();
+                    },
+                    )
+                  ),
+                  Positioned(
+                      left: (Constant.screenWidth/ 414) * 60,
+                      top: (Constant.screenHeight/896) * 75,
+                      height: (Constant.screenHeight/896) * 35,
+                      child: Center(
+                        child: Text("LifePlus",
+                          style: TextStyle(
+                              fontSize: 20.0,
+                              fontFamily: "Montserrat-Light",
+                              color: Colors.green
+                          ),)
+                      )
+                  ),
+                  Positioned(
+                      right: (Constant.screenWidth/ 414) * 19,
+                      left: (Constant.screenWidth/ 414) * 350,
+                      top: (Constant.screenHeight/896) * 75,
+                      height: (Constant.screenHeight/896) * 35,
+                      child: GestureDetector(
+                        child: Icon(Icons.email,
+                          color: Colors.grey,
+                        ),
+                        onTap: (){
+//                          onTap_scaffoldKey.currentState.openDrawer();
+                        },
+                      )
+                  ),
                 ],
               ),
             ],

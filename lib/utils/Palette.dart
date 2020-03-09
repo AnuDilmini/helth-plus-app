@@ -25,6 +25,7 @@ class Palette {
   static Color eggplant60 = Color.fromRGBO(56, 10, 51, 0.6);
   static Color eggplant = Color.fromRGBO(47, 6, 43, 1);
   static Color orangeColor = Color(0xFFFC663C);
+  static Color orangeLight =  Color(0xFFFF8333 );
 
 
 }

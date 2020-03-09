@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:health_plus/ui/dashboard.dart';
+import 'package:health_plus/ui/profile_edit.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
@@ -25,208 +27,40 @@ class _NavDrawerState extends State<NavDrawer> {
             Container(
               width: Constant.screenWidth,
               height: Constant.screenHeight,
-              color:Palette.eggplantPurple80,
+              color: Colors.white,
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: (Constant.screenHeight/896) * 221, left: (Constant.screenWidth/414) * 86),
-                    height:(Constant.screenHeight/896) *675,
+                    height:(Constant.screenHeight/896) *200,
                     width: Constant.screenWidth,
-                    color: Palette.orangeColor,
+                    color: Palette.orangeLight,
                   ),
                 ],
               ),
-
-//
-
-
-//                  Padding(
-//                      padding: EdgeInsets.only(top: (Constant.screenHeight/896) * 22, left:(Constant.screenWidth/414) *86),
-//                      child:Container(
-//                          width:(Constant.screenWidth/414) * 327,
-//                          height: (Constant.screenHeight/896) * 681,
-//                          color: Palette.darkishPurple,
-//                          child: Column(
-//                            children: <Widget>[
-//                              Padding(
-//                                  padding: EdgeInsets.all(0.0),
-//                                  child: Container(
-//                                    height: (Constant.screenHeight /896) *6,
-//                                    width: Constant.screenWidth,
-//                                    decoration: new BoxDecoration(
-//                                      gradient: new LinearGradient(
-//                                        colors: [
-//                                          Palette.lightGreen,
-//                                          Palette.lightBlue
-//                                        ],
-//                                      ),
-//                                      // border color
-//                                    ),
-//                                  )
-//                              ),
-//                              Padding(
-//                                  padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 35, left:(Constant.screenWidth/414) * 70),
-//                                  child: Container(
-//                                      width: Constant.screenWidth,
-//                                      child: Text("Loyalty Programme",
-//                                        textAlign: TextAlign.left,
-//                                        style: TextStyle(
-//                                            fontFamily: "Montserrat-Light",
-//                                            fontSize: 17.0,
-//                                            color: Colors.white
-//                                        ),)
-//                                  )
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 30, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                    width: Constant.screenWidth,
-//                                    child: Text("Deals and Offers",
-//                                      style: TextStyle(
-//                                          fontFamily: "Montserrat-Light",
-//                                          fontSize: 17.0,
-//                                          color: Colors.white
-//                                      ),)
-//                                ),
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 30, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                    width: Constant.screenWidth,
-//                                    child: Text("Shops",
-//                                      style: TextStyle(
-//                                          fontFamily: "Montserrat-Light",
-//                                          fontSize: 17.0,
-//                                          color: Colors.white
-//                                      ),)
-//                                ),
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 30, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                    width: Constant.screenWidth,
-//                                    child: Text("Cinema",
-//                                      style: TextStyle(
-//                                          fontFamily: "Montserrat-Light",
-//                                          fontSize: 17.0,
-//                                          color: Colors.white
-//                                      ),)
-//                                ),
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 30, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                  width: Constant.screenWidth,
-//                                  child: Text("Dining and Entertainment",
-//                                    style: TextStyle(
-//                                        fontFamily: "Montserrat-Light",
-//                                        fontSize: 17.0,
-//                                        color: Colors.white
-//                                    ),),
-//                                ),
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 30, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                  width: Constant.screenWidth,
-//                                  child: Text("Restaurants",
-//                                    style: TextStyle(
-//                                        fontFamily: "Montserrat-Light",
-//                                        fontSize: 17.0,
-//                                        color: Colors.white
-//                                    ),),
-//                                ),
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 30, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                    width: Constant.screenWidth,
-//                                    child:  Text("Parking",
-//                                      style: TextStyle(
-//                                          fontFamily: "Montserrat-Light",
-//                                          fontSize: 17.0,
-//                                          color: Colors.white
-//                                      ),)
-//                                ),
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 30, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                    width: Constant.screenWidth,
-//                                    child:  Text("Settings",
-//                                      style: TextStyle(
-//                                          fontFamily: "Montserrat-Light",
-//                                          fontSize: 17.0,
-//                                          color: Colors.white
-//                                      ),)
-//                                ),
-//                              ),
-//                              Padding(
-//                                  padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 20),
-//                                  child: GestureDetector(
-//                                    child: Container(
-//                                        height: (Constant.screenHeight/896) * 84,
-//                                        color: Palette.plum,
-//                                        child: Row(
-//                                          children: <Widget>[
-//                                            Expanded(
-//                                              flex: 2,
-//                                              child: Icon(Icons.exit_to_app,
-//                                                color: Colors.white,
-////                                       height: (Constant.screenHeight/896)  * 40,
-////                                       width: Constant.screenWidth/15,
-////                                       alignment:Alignment.centerRight ,
-////                                       fit: BoxFit.contain,
-//                                              ),
-//                                            ),
-//                                            Expanded(
-//                                                flex: 2,
-//                                                child: Text("Log Out",
-//                                                  style: TextStyle(
-//                                                      fontFamily: "Montserrat-Light",
-//                                                      fontSize: 17.0,
-//                                                      color: Colors.white
-//                                                  ),)
-//                                            )
-//                                          ],
-//                                        )
-//                                    ),
-//                                  )
-//                              ),
-//                              Padding(
-//                                padding: EdgeInsets.only(top: (Constant.screenHeight/681) * 15, left:(Constant.screenWidth/414) * 70),
-//                                child: Container(
-//                                    width: Constant.screenWidth,
-//                                    child:  Text("V $version",
-//                                      style: TextStyle(
-//                                          fontFamily: "Montserrat-Light",
-//                                          fontSize: 17.0,
-//                                          color: Colors.black
-//                                      ),)
-//                                ),
-//                              ),
-//                            ],
-//                          )
-//                      )
-//                  )
-
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 72,
-                left: (Constant.screenWidth/414) * 143,
-                right: (Constant.screenWidth/414) * 225,
-                height: (Constant.screenHeight /896) * 54,
-                child:Container(
-                    child:new Container(
-                        child: Image.asset("assets/images/profile.png",
-                        )  )
-                )
+                top: (Constant.screenHeight /896) * 60,
+                left: (Constant.screenWidth/414) * 40,
+                width:(Constant.screenWidth/414) * 70,
+                height: (Constant.screenHeight /896) * 70,
+                child:new Container(
+                    width: (Constant.screenHeight /896) * 54,
+                    height:(Constant.screenHeight /896) * 54,
+                    decoration: new BoxDecoration(
+                      color: Colors.white,
+                        shape: BoxShape.circle,
+//                        image: new DecorationImage(
+//                            fit: BoxFit.fill,
+//                            image: new NetworkImage(
+//                                "${imgList[index]}")
+//                        )
+                    )),
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 139,
-                left: (Constant.screenWidth/414) * 143,
+                top: (Constant.screenHeight /896) * 145,
+                left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
-                child: Text("Hello, John Doe",
+                child: Text("Hello, Anushika",
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "Montserrat-Regular",
@@ -234,167 +68,144 @@ class _NavDrawerState extends State<NavDrawer> {
                   ),)
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 170,
-                left: (Constant.screenWidth/414) * 143,
-                width: Constant.screenWidth,
-                child: Text("Go to Profile",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "Montserrat-Light",
-                      fontSize: 13.0
-                  ),)
-            ),
-            Positioned(
-              top: (Constant.screenHeight /896) * 215,
-              left: (Constant.screenWidth/414) * 86,
-              height: (Constant.screenHeight /896) * 6,
-              width: Constant.screenWidth,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Palette.sickGreen, Palette.azure],
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
                 top: (Constant.screenHeight /896) * 255,
-                left: (Constant.screenWidth/414) * 143,
+                left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
-                  child: Text("Loyalty Programme",
+                  child: Text("Home",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Palette.orangeLight,
                         fontFamily: "Montserrat-Light",
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    print("Anu");
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dashboard()));
+
                   },
                 )
             ),
             Positioned(
                 top: (Constant.screenHeight /896) * 310,
-                left: (Constant.screenWidth/414) * 143,
+                left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
-                  child: Text("Deals and Offers",
+                  child: Text("Profile",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Palette.orangeLight,
                         fontFamily: "Montserrat-Light",
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    print("Deals and Offers");
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileEdit()));
+
                   },
                 )
             ),
             Positioned(
                 top: (Constant.screenHeight /896) * 365,
-                left: (Constant.screenWidth/414) * 143,
+                left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
-                  child: Text("Shops ",
+                  child: Text("Helps",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Palette.orangeLight,
                         fontFamily: "Montserrat-Light",
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    print("Shops");
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileEdit()));
+
                   },
                 )
             ),
             Positioned(
                 top: (Constant.screenHeight /896) * 417,
-                left: (Constant.screenWidth/414) * 143,
+                left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
-                  child: Text("Cinema ",
+                  child: Text("About Us ",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Palette.orangeLight,
                         fontFamily: "Montserrat-Light",
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    print("Cinema");
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileEdit()));
+
                   },
                 )
             ),
+//            Positioned(
+//                top: (Constant.screenHeight /896) * 469,
+//                left: (Constant.screenWidth/414) * 40,
+//                width: Constant.screenWidth,
+//                child: GestureDetector(
+//                  child: Text("Dining and Entertainment",
+//                    style: TextStyle(
+//                        color: Colors.white,
+//                        fontFamily: "Montserrat-Light",
+//                        fontSize: 17.0
+//                    ),),
+//                  onTap: (){
+//                    print("Dining and Entertainment");
+//                  },
+//                )
+//            ),
+//            Positioned(
+//                top: (Constant.screenHeight /896) * 520,
+//                left: (Constant.screenWidth/414) * 40,
+//                width: Constant.screenWidth,
+//                child: GestureDetector(
+//                  child: Text("Restaurants",
+//                    style: TextStyle(
+//                        color: Colors.white,
+//                        fontFamily: "Montserrat-Light",
+//                        fontSize: 17.0
+//                    ),),
+//                  onTap: (){
+//                    print("Restaurants");
+//                  },
+//                )
+//            ),
+//            Positioned(
+//                top: (Constant.screenHeight /896) * 572,
+//                left: (Constant.screenWidth/414) * 40,
+//                width: Constant.screenWidth,
+//                child: GestureDetector(
+//                  child:Text("Parking",
+//                    style: TextStyle(
+//                        color: Colors.white,
+//                        fontFamily: "Montserrat-Light",
+//                        fontSize: 17.0
+//                    ),) ,
+//                  onTap: (){
+//                    print("Parking");
+//                  },
+//                )
+//            ),
+//            Positioned(
+//                top: (Constant.screenHeight /896) * 623,
+//                left: (Constant.screenWidth/414) * 40,
+//                width: Constant.screenWidth,
+//                child: GestureDetector(
+//                  child: Text("Settings",
+//                    style: TextStyle(
+//                        color: Colors.white,
+//                        fontFamily: "Montserrat-Light",
+//                        fontSize: 17.0
+//                    ),),
+//                  onTap: (){
+//                    print("Settings");
+//                  },
+//                )
+//            ),
             Positioned(
-                top: (Constant.screenHeight /896) * 469,
-                left: (Constant.screenWidth/414) * 143,
-                width: Constant.screenWidth,
-                child: GestureDetector(
-                  child: Text("Dining and Entertainment",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "Montserrat-Light",
-                        fontSize: 17.0
-                    ),),
-                  onTap: (){
-                    print("Dining and Entertainment");
-                  },
-                )
-            ),
-            Positioned(
-                top: (Constant.screenHeight /896) * 520,
-                left: (Constant.screenWidth/414) * 143,
-                width: Constant.screenWidth,
-                child: GestureDetector(
-                  child: Text("Restaurants",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "Montserrat-Light",
-                        fontSize: 17.0
-                    ),),
-                  onTap: (){
-                    print("Restaurants");
-                  },
-                )
-            ),
-            Positioned(
-                top: (Constant.screenHeight /896) * 572,
-                left: (Constant.screenWidth/414) * 143,
-                width: Constant.screenWidth,
-                child: GestureDetector(
-                  child:Text("Parking",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "Montserrat-Light",
-                        fontSize: 17.0
-                    ),) ,
-                  onTap: (){
-                    print("Parking");
-                  },
-                )
-            ),
-            Positioned(
-                top: (Constant.screenHeight /896) * 623,
-                left: (Constant.screenWidth/414) * 143,
-                width: Constant.screenWidth,
-                child: GestureDetector(
-                  child: Text("Settings",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "Montserrat-Light",
-                        fontSize: 17.0
-                    ),),
-                  onTap: (){
-                    print("Settings");
-                  },
-                )
-            ),
-            Positioned(
-                top: (Constant.screenHeight /896) * 761,
-                left: (Constant.screenWidth/414) * 86,
+                top: (Constant.screenHeight /896) *814,
                 width: Constant.screenWidth,
                 child: GestureDetector(
                   child: Container(
-                    height: (Constant.screenHeight /896) * 84,
-                    color: Palette.plum,
+                    height: (Constant.screenHeight /896) * 90,
+                    color: Palette.orangeLight,
                   ),
                   onTap: (){
                     print("logout");
@@ -402,8 +213,8 @@ class _NavDrawerState extends State<NavDrawer> {
                 )
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 792,
-                left: (Constant.screenWidth/414) * 146,
+                top: (Constant.screenHeight /896) * 840,
+                left: (Constant.screenWidth/414) * 40,
                 right: (Constant.screenWidth/414) * 245,
                 child: GestureDetector(
                   child: Icon(Icons.exit_to_app,
@@ -414,8 +225,8 @@ class _NavDrawerState extends State<NavDrawer> {
                 )
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 792,
-                left: (Constant.screenWidth/414) * 187,
+                top: (Constant.screenHeight /896) * 845,
+                left: (Constant.screenWidth/414) * 87,
                 right: (Constant.screenWidth/414) * 125,
                 child: GestureDetector(
                   child: Text("Log Out",
@@ -429,18 +240,6 @@ class _NavDrawerState extends State<NavDrawer> {
                   onTap: (){
                     print("Log Out message");
                   },
-                )
-            ),
-            Positioned(
-                top: (Constant.screenHeight /896) * 859,
-                left: (Constant.screenWidth/414) * 143,
-                width: Constant.screenWidth,
-                child:Text("V ${version}",
-                  style: TextStyle(
-                      fontSize: 17.0,
-                      fontFamily: "Montserrat-Light",
-                      color: Palette.eggplant
-                  ),
                 )
             ),
           ],

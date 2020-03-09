@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Constant {
@@ -14,5 +15,7 @@ class Constant {
 
 
   static double textScalar = 0.70;
+  static GlobalKey<ScaffoldState> scaffoldKey;
+
 
 }

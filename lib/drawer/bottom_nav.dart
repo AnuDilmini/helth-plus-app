@@ -51,9 +51,15 @@ class NavigatioLayout extends State<BottomNavigation> {
     Constant.screenWidth = queryData.size.width;
     Constant.screenHeight = queryData.size.height;
 
+    Constant.scaffoldKey = new GlobalKey<ScaffoldState>();
+
     return Scaffold(
-      endDrawer:  SizedBox(
-          width: Constant.screenWidth,
+//        appBar: new AppBar(
+//          leading: new IconButton(icon: new Icon(Icons.settings),
+//              onPressed: () => _scaffoldKey.currentState.openDrawer()),
+//        ),
+      drawer: SizedBox(
+          width: (Constant.screenWidth/5) * 4,
           height: Constant.screenHeight,
           child: Theme(
             data: Theme.of(context).copyWith(
@@ -70,7 +76,6 @@ class NavigatioLayout extends State<BottomNavigation> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
           unselectedItemColor: Colors.grey,
