@@ -13,6 +13,10 @@ import 'nav_drawer.dart';
 
 class BottomNavigation extends StatefulWidget {
 
+  BottomNavigation(int selectedIndex) {
+    NavigatioLayout.selectedIndex = selectedIndex;
+  }
+
   @override
   State<StatefulWidget> createState() {
     return NavigatioLayout();
@@ -25,7 +29,7 @@ class NavigatioLayout extends State<BottomNavigation> {
 
 
   static const IconThemeData selectedIconTheme = IconThemeData(size: 24, color: Colors.purple, );
-  int _selectedIndex = 0;
+  static int selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
       fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
@@ -40,7 +44,7 @@ class NavigatioLayout extends State<BottomNavigation> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -71,10 +75,10 @@ class NavigatioLayout extends State<BottomNavigation> {
           )
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions.elementAt(selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
           unselectedItemColor: Colors.grey,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -94,7 +98,7 @@ class NavigatioLayout extends State<BottomNavigation> {
 //            title: Text('School'),
 //          ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: selectedIndex,
         selectedItemColor: Colors.green,
         onTap: _onItemTapped,
       ),

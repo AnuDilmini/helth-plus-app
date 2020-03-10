@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,6 +6,7 @@ import 'package:health_plus/drawer/nav_drawer.dart';
 import 'package:health_plus/utils/Palette.dart';
 
 import '../utils/constant.dart';
+import 'create_post.dart';
 import 'goals.dart';
 
 class Dashboard extends StatefulWidget {
@@ -75,7 +77,7 @@ class DashboardState extends State<Dashboard> {
                 children: <Widget>[
                   Container(
                     width: Constant.screenWidth ,
-                    height: Constant.screenHeight,
+                    height: Constant.screenHeight * 1.5,
                     child: Column(
                       children: <Widget>[
                         Container(
@@ -85,35 +87,18 @@ class DashboardState extends State<Dashboard> {
                         ),
                         Container(
                           width: Constant.screenWidth,
-                          height: (Constant.screenHeight - (Constant.screenHeight/896) * 120.0),
+                          height: (Constant.screenHeight - (Constant.screenHeight/896) * 350.0),
                           color: Palette.grayColor,
+                        ),
+                        Container(
+                          width: Constant.screenWidth,
+                          height: (Constant.screenHeight )*0.7 ,
+                          color: Palette.lightBlue,
+                          child: _horizontalButtonView()
                         )
                       ],
                     ),
                   ),
-//                  Positioned(
-//                    top: (Constant.screenHeight /896) * 60,
-//                    left: (Constant.screenWidth / 414) * 250,
-//                    right:(Constant.screenWidth / 414) * 21,
-//                    height: (Constant.screenHeight /896) * 40,
-//                    child:  GestureDetector(
-//                      child: Container(
-//                        child: Image.asset("assets/images/navigator_white.png",
-//                          height: (Constant.screenHeight/896)  * 40,
-//                          width: Constant.screenWidth/15,
-//                          alignment:Alignment.centerRight ,
-//                          fit: BoxFit.contain,
-//                        ),),
-//                      onTap: (){
-//                        _scaffoldKey.currentState.openDrawer();
-//                        print("click");
-//                      },
-//                      onLongPress: (){
-//                        _scaffoldKey.currentState.openDrawer();
-//                        print("click ** ");
-//                      },
-//                    ),
-//                  ),
                   Positioned(
                     top: (Constant.screenHeight/812) * 170,
                     height: (Constant.screenHeight/812) * 200,
@@ -261,32 +246,107 @@ class DashboardState extends State<Dashboard> {
                       )
                   ),
                   Positioned(
-                    left: (Constant.screenWidth/ 414) * 10,
-                    right: (Constant.screenWidth/ 414) * 10,
+                    left: (Constant.screenWidth/ 414) * 20,
+                    right: (Constant.screenWidth/ 414) * 20,
                     top: (Constant.screenHeight/896) * 540,
                     height: (Constant.screenHeight/896) * 75,
-                    child: Container(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefix: Image.asset(name),
+                    child:Container(
+                    alignment: Alignment.bottomCenter,
+                    width: ((queryData.size.width / 375) * 335),
+                    height: ((queryData.size.width / 375) * 58),
+                    child: new Theme(data: new ThemeData(
+                      primaryColor: Palette.plum,
+                      primaryColorDark: Palette
+                          .darkishPurple,
+                    ),
+                      child: new  ButtonTheme(
+                        minWidth: ((queryData.size.width / 375) * 335),
+                        height: ((queryData.size.width / 375) * 50),
+                        child:
+                        new OutlineButton(
+                          child: Container(
+                              child:Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: ((queryData.size.width /
+                                            375) * 7),
 
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(25)),
-                                borderSide: BorderSide(color: Colors.grey[300])
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(25)),
-                                borderSide: BorderSide(color: Colors.grey[400])
-                            ),
-                            filled: true,
-                            fillColor: Colors.grey[300],
-                            hintText: "Mobile Number"
+                                        top: ((queryData.size.width /
+                                            375) * 7),
+                                        bottom: ((queryData.size
+                                            .width /
+                                            375) * 7),
+                                        right: ((queryData.size
+                                            .width /
+                                            375) * 6)),
+                                    child: ClipOval(
+                                      child: CachedNetworkImage(
+                                        imageUrl: 'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                                        placeholder: (context,
+                                            url) => new CircularProgressIndicator(),
+                                        errorWidget: (context, url,
+                                            error) =>
+                                        new Icon(Icons.error),
+                                        fit: BoxFit.fill,
+                                        width: ((queryData.size
+                                            .width /
+                                            375) * 35),
+                                        height: ((queryData.size
+                                            .width /
+                                            375) * 35),
+                                      ),
+                                    ),
+                                  ),
+                                  Text( ' What’s on your mind ?                   ',
+                                      style:(TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'HK Grotesk',
+                                        fontWeight: FontWeight.w300,
+                                        color: Palette.darkGrey,
+                                      )
+                                      )
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: ((queryData.size.width /
+                                            375) * 50),
 
+                                        top: ((queryData.size.width /
+                                            375) * 7),
+                                        bottom: ((queryData.size
+                                            .width /
+                                            375) * 7),
+                                        right: ((queryData.size
+                                            .width /
+                                            375) * 6)),
+                                    child: ClipOval(
+                                      child: Icon(Icons.camera_enhance,
+                                        color: Palette.darkGrey,),
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePost()));
+                          },
+                          shape:  RoundedRectangleBorder(
+                            borderRadius: BorderRadius
+                                .circular(25.0),
+                          ),
+                          borderSide: BorderSide(
+                            //Color of the border
+                            color: Palette.darkGrey,
+                            width: 0.5, //width of the border
+                          ),
                         ),
-//                        controller: _phoneController,
                       ),
-                    )
+
+                    ),
                   ),
+                  ),
+
                 ],
               ),
             ],
@@ -294,6 +354,48 @@ class DashboardState extends State<Dashboard> {
         ),
       ),
     );
+  }
+
+  _horizontalButtonView(){
+    return ListView.separated(
+        separatorBuilder: (context, index) => Divider(
+          color: Colors.black,
+        ),
+        padding: EdgeInsets.all(10.0),
+        shrinkWrap: true,
+        primary: true,
+        scrollDirection: Axis.vertical,
+        itemCount:20,
+        itemBuilder: (BuildContext context, int index) {
+          return  GestureDetector(
+            child:new Container(
+                height: (Constant.screenHeight/896) *80,
+                child: Row(
+                  children: <Widget>[
+                    new Container(
+                        width: (Constant.screenHeight /896) * 60,
+                        height: (Constant.screenHeight/ 896 ) * 60,
+                        decoration: new BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: new DecorationImage(
+                                fit: BoxFit.fill,
+                                image: new NetworkImage(
+                                  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                                )
+                            )
+                        )),
+                    new Container(
+                      margin: EdgeInsetsDirectional.only(start: (Constant.screenWidth /414)*30),
+                      child: Center(
+                        child: Text(""),
+
+                      ),
+                    ),
+                  ],
+                )
+            ),
+          );
+        });
   }
 
 }

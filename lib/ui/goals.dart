@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/drawer/bottom_nav.dart';
+import 'package:health_plus/ui/dashboard.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
@@ -88,7 +89,7 @@ class GoalsLayout extends State<Goals> {
                   ),
                 ),
                 Positioned(
-                  top: (Constant.screenHeight ) * 60,
+                  top: (Constant.screenHeight ) * 47,
                   width: Constant.screenWidth * 414,
                   child: Center(
                     child: Text("Goals",
@@ -100,13 +101,21 @@ class GoalsLayout extends State<Goals> {
                   ),
                 ),
                 Positioned(
-                  top: (Constant.screenHeight ) * 55,
+                  top: (Constant.screenHeight ) * 35,
                   left: Constant.screenWidth * 20,
                   width: Constant.screenWidth * 50,
                   child: Center(
-                    child: Icon(Icons.arrow_back,
-                    color: Colors.white,)
-                  ),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dashboard()));
+
+                      },
+                    ),
+                ),
                 ),
                 Positioned(
                   top: (Constant.screenHeight ) * 130,

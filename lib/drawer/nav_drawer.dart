@@ -5,6 +5,8 @@ import 'package:health_plus/ui/profile_edit.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
+import 'bottom_nav.dart';
+
 class NavDrawer extends StatefulWidget {
   @override
   _NavDrawerState createState() => _NavDrawerState();
@@ -78,7 +80,7 @@ class _NavDrawerState extends State<NavDrawer> {
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => BottomNavigation(0)));
 
                   },
                 )

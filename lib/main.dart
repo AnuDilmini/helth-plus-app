@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BottomNavigation(),
+      home: BottomNavigation(0),
 //      MyAppPage(title: 'Phone Authentication'),
     );
   }
