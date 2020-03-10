@@ -215,20 +215,20 @@ class DashboardState extends State<Dashboard> {
                         }),
                       )
                   ),
+//                  Positioned(
+//                    left: (Constant.screenWidth/ 414) * 19,
+//                    top: (Constant.screenHeight/896) * 243,
+//                    height: (Constant.screenHeight/896) * 35,
+//                    child: Text("Promotion",
+//                      style: TextStyle(
+//                          fontFamily: "Montserrat-Light",
+//                          fontSize: 17.0,
+//                          color: Palette.darkGrey
+//                      ),
+//                    ),
+//                  ),
                   Positioned(
-                    left: (Constant.screenWidth/ 414) * 19,
-                    top: (Constant.screenHeight/896) * 243,
-                    height: (Constant.screenHeight/896) * 35,
-                    child: Text("Promotion",
-                      style: TextStyle(
-                          fontFamily: "Montserrat-Light",
-                          fontSize: 17.0,
-                          color: Palette.darkGrey
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: (Constant.screenWidth/ 414) * 19,
+                    left: (Constant.screenWidth/ 414) * 08,
                     top: (Constant.screenHeight/896) * 75,
                     height: (Constant.screenHeight/896) * 35,
                     child: GestureDetector(
@@ -236,7 +236,7 @@ class DashboardState extends State<Dashboard> {
                       color: Palette.orangeColor,
                     ),
                     onTap: (){
-                      _scaffoldKey.currentState.openDrawer();
+//                      _scaffoldKey.currentState.openDrawer();
                     },
                     )
                   ),

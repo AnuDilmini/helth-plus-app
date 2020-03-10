@@ -1,617 +1,221 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_plus/drawer/bottom_nav.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:health_plus/screen_shape/product_clip.dart';
+import 'package:health_plus/ui/health_tips.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
+import 'package:ok_image/ok_image.dart';
 
-class HealthInner extends StatefulWidget {
+class HealthInnerPage extends StatefulWidget {
+
+//  NewsInnerPageWidget(bool isSearch , String isSearchText){
+//    NewsInnerPageBodyWidgetState._isSearch = isSearch;
+//    NewsInnerPageBodyWidgetState._isSearchText = isSearchText;
+//  }
+
   @override
   State<StatefulWidget> createState() {
-    return HealthInnerLayout();
+    // TODO: implement createState
+    return HealthInnerWidget();
   }
 }
 
-class HealthInnerLayout extends State<HealthInner> {
-
+class HealthInnerWidget extends State<HealthInnerPage> {
   MediaQueryData queryData;
+  double screenHeight;
+  double screenWidth;
+  double topBarHeight;
+  int blendPageNumber;
+  String fromDateFormattedString;
+  String toDateFormattedString;
+  Widget contentWidget;
+  static bool _isSearch;
+  static String _isSearchText;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark
-    ));
-
     queryData = MediaQuery.of(context);
     Constant.screenWidth = queryData.size.width / 414;
     Constant.screenHeight = queryData.size.height/812;
+//    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark));
 
-    return MaterialApp(
-        home: Scaffold(
-          resizeToAvoidBottomPadding: false,
-          body:  SingleChildScrollView(
-            child:Stack(
-              children: <Widget>[
-                Container(
-                  height: Constant.screenHeight* 812,
-                  width: Constant.screenWidth * 414,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xFFFF8333),
-                          Color(0xFFFC663C),
-                          Color(0xFFFF3F1A),],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      )),
-                  child:Column(
-                    children: <Widget>[
-                      Container(
-                        height: Constant.screenHeight *100,
-                        width: Constant.screenWidth * 414,
+    contentWidget = Container(
+      child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+        textAlign: TextAlign.justify,
+        style: TextStyle(
+          fontFamily: 'HKGrotesk-Regular',
+          fontSize: 14.0,
+          color: Palette.grayColor,
+        ),
+        overflow: TextOverflow.clip,
+      ),
+    );
 
-                      ),
-                      Container(
-                        width: Constant.screenWidth * 414,
-                        height: Constant.screenHeight * 812 - (Constant.screenHeight * 100),
-//                        padding: EdgeInsetsDirectional.only(top: Constant.screenWidth* 75),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: new BorderRadius.only(
-                                topLeft: const Radius.circular(15.0),
-                                topRight: const Radius.circular(15.0))),
-                        child: _horizontalButtonView(),
-                      ),
-                    ],
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+        Container(
+          width: Constant.screenWidth * 414,
+          height: Constant.screenHeight * 812,
+          color: Palette.orangeLight,
+          child: Column(
+            children: <Widget>[
+            Container(
+              width: Constant.screenWidth * 414,
+              height: Constant.screenHeight * 100,
+              color: Palette.orangeLight,
+
+            ),
+            Container(
+              width: Constant.screenWidth * 414,
+              height: Constant.screenHeight*620,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: new BorderRadius.only(
+                    topLeft: const Radius.circular(8.0),
+                    topRight: const Radius.circular(8.0),
                   ),
                 ),
-                Positioned(
-                  top: (Constant.screenHeight ) * 60,
-                  width: Constant.screenWidth * 414,
-                  child: Center(
-                    child: Text("Health Tips",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17.0,
-                          fontFamily: "Montserrat-Bold"
-                      ),),
-                  ),
-                ),
+                child:Column(
+                  children: <Widget>[
+                    ClipPath(
+                      child: Card(
+                        elevation: 0.0,
+                        borderOnForeground: false,
+                        margin: EdgeInsets.all(0.0),
+                        clipBehavior: Clip.none,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                          child: OKImage(
+                            url:
+                            'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                            loadingWidget: Center(
+                              child: Container(
+                                width: (MediaQuery.of(context)
+                                    .size
+                                    .width *
+                                    0.03),
+                                height:
+                                (MediaQuery.of(context)
+                                    .size
+                                    .width *
+                                    0.03),
+                                child:
+                                CircularProgressIndicator(),
+                              ),
+                            ),
+                            errorWidget: Center(
+                              child: Container(
+                                width: (MediaQuery.of(context)
+                                    .size
+                                    .width *
+                                    0.03),
+                                height:
+                                (MediaQuery.of(context)
+                                    .size
+                                    .width *
+                                    0.03),
+                                child: Icon(Icons.error),
+                              ),
+                            ),
+//                                              width: screenWidth.toDouble(),
+//                                              height: (screenWidth.toDouble()/300) * 220,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      clipper: ProductClipper(),
+                      clipBehavior: Clip.antiAlias,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 20.0),
+                      width: Constant.screenWidth * 414,
+                      height: Constant.screenHeight *300,
+                      child: _horizontalButtonView(),
+                    ),
 
-              ],
+                  ],
+                )
+            ),
+          ]
+        ),
+        ),
+          Positioned(
+            left: Constant.screenWidth* 19,
+            top: Constant.screenHeight *35,
+            child: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => HealthTips()));
+
+              },
             ),
           ),
-        )
+          Positioned(
+            left: Constant.screenWidth*150,
+            top: Constant.screenHeight *50,
+            child:  Center(
+              child: Text(
+                "Health Tip",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: 'HKGrotesk-SemiBold',
+                    color: Colors.white,
+                    fontSize: 17),
+                overflow: TextOverflow.clip,
+                maxLines: 2,
+              ),
+            )
+          ),
+
+
+        ],
+      )
+
     );
   }
 
   _horizontalButtonView(){
     return ListView.builder(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 10.0),
         shrinkWrap: true,
         primary: true,
         scrollDirection: Axis.vertical,
-        itemCount: 5,
+        itemCount: 1,
         itemBuilder: (BuildContext context, int index) {
-          return  new Container(
-              height: (Constant.screenHeight) * 200,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: (Constant.screenHeight) * 140,
-                    width: Constant.screenWidth * 414,
-                    margin: EdgeInsets.only( top: (Constant.screenHeight) * 4),
-                    child: Image.asset("assets/images/health.jpg",
-                      fit: BoxFit.fitWidth,
-                      alignment:Alignment.center ,
-
-                    ),
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(top:Constant.screenWidth * 2, right: Constant.screenWidth* 22),
-                      height: (Constant.screenHeight)  * 50,
-                      width: Constant.screenWidth * 414,
-                      child: Text("Summer health tips",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontFamily: "Montserrat-Regular",
-                            color: Palette.darkGrey,
-                            fontSize: 17
-                        ),
-                      )
-                  ),
-                ],
-              )
+          return new Container(
+            margin: EdgeInsets.only(top: Constant.screenWidth * 2,
+                right: Constant.screenWidth * 22),
+            height: (Constant.screenHeight) * 500,
+            width: Constant.screenWidth * 414,
+            child: Center(
+              child:Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use itIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Where does it come from?Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et MalorumThe Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorumby Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation textAlign: TextAlign.left",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: "Montserrat-Regular",
+                    color: Palette.darkGrey,
+                    fontSize: 14
+                ),
+              ),
+            )
           );
         });
   }
-
 }
 
-
-//import 'package:date_format/date_format.dart';
-//import 'package:english_tea_shop/app_screens/home_ui/news_listview.dart';
-//import 'package:english_tea_shop/main.dart';
-//import 'package:english_tea_shop/model/home.dart';
-//import 'package:english_tea_shop/screen_shapes/product_clipper.dart';
-//import 'package:english_tea_shop/util/Constant.dart';
-//import 'package:english_tea_shop/util/palette.dart';
-//import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
-//import 'package:intl/intl.dart';
-//import 'package:ok_image/ok_image.dart';
-//import 'package:flutter/scheduler.dart';
-//
-//
-//
-//class NewsInnerPageWidget extends StatefulWidget {
-//
-//  NewsInnerPageWidget(bool isSearch , String isSearchText){
-//    NewsInnerPageBodyWidgetState._isSearch = isSearch;
-//    NewsInnerPageBodyWidgetState._isSearchText = isSearchText;
-//  }
-//
-//  @override
-//  State<StatefulWidget> createState() {
-//    // TODO: implement createState
-//    return NewsInnerPageBodyWidgetState();
-//  }
-//}
-//
-//class NewsInnerPageBodyWidgetState extends State<NewsInnerPageWidget> {
-//  MediaQueryData queryData;
-//  int screenHeight;
-//  int screenWidth;
-//  int topBarHeight;
-//  int blendPageNumber;
-//  News news;
-//  String fromDateFormattedString;
-//  String toDateFormattedString;
-//  Widget contentWidget;
-//  static bool _isSearch;
-//  static String _isSearchText;
-//
-//  @override
-//  void initState() {
-//    // TODO: implement initState
-//
-//    super.initState();
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    queryData = MediaQuery.of(context);
-//    screenHeight = queryData.size.height.round();
-//    screenWidth = queryData.size.width.round();
-//    topBarHeight = ((screenWidth * 77) / 375).round();
-////    SystemChrome.setEnabledSystemUIOverlays([]);
-//    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-//        statusBarColor: Colors.transparent,
-//        statusBarIconBrightness: Brightness.dark));
-//
-//    SingletonNewsClass singleton = SingletonNewsClass();
-//    news = singleton.getNews();
-//    var fromDate = (news.fromDate != null)
-//        ? DateFormat("dd MMM yyyy").format(news.fromDate)
-//        : 'not available';
-//    var toDate = (news.toDate != null)
-//        ? DateFormat("dd MMM yyyy").format(news.toDate)
-//        : 'not available';
-//
-//    var contentTextHeight;
-//    print('artcileText length ${news.artcileText.length}');
-////       // print("image ===> ${Constant.ImageBaseURL}${news.image1Url}");
-//
-//
-//    if(news.artcileText.contains("_x000D_")){
-//      print("${news.artcileText}");
-//      print("yes");
-//      news.artcileText = '${news.artcileText.replaceAll('_x000D_',' ')}';
-//    }
-//
-//    if (news.artcileText.length <= 500) {
-//      contentTextHeight = (MediaQuery.of(context).size.height * 0.6);
-//    } else if (news.artcileText.length <= 1000) {
-//      contentTextHeight = (MediaQuery.of(context).size.height * 0.85);
-//    } else if(news.artcileText.length <= 1550){
-//      contentTextHeight = (MediaQuery.of(context).size.height * 1.1);
-//    }else if(news.artcileText.length <= 1600){
-//      contentTextHeight = (MediaQuery.of(context).size.height* 1.35);
-//    }else if(news.artcileText.length <= 2000){
-//      contentTextHeight = (MediaQuery.of(context).size.height* 1.6);
-//    }else if(news.artcileText.length <= 2500){
-//      contentTextHeight = (MediaQuery.of(context).size.height* 2.0);
-//    }else if(news.artcileText.length <= 2800){
-//      contentTextHeight = (MediaQuery.of(context).size.height* 2.1);
-//    }else if(news.artcileText.length <= 3000){
-//      contentTextHeight = (MediaQuery.of(context).size.height* 2.3);
-//    }else{
-//      contentTextHeight = (MediaQuery.of(context).size.height* 2.6);
-//    }
-//
-//    var articleTitleHeight;
-//    if (news.articleName.length <= 48) {
-//      articleTitleHeight = MediaQuery.of(context).size.height * 0.06;
-//    } else {
-//      articleTitleHeight = MediaQuery.of(context).size.height * 0.09;
-//    }
-//
-//    contentWidget = Container(
-//          child: Text(
-//            (news.artcileText != null )
-//                ? '${news.artcileText}'
-//                : ' Description not available',
-//            textAlign: TextAlign.justify,
-//            style: TextStyle(
-//              fontFamily: 'HKGrotesk-Regular',
-//              fontSize: 14.0,
-//              color: Palette.textLightGray_color,
-//            ),
-//            overflow: TextOverflow.clip,
-//          ),
-//        );
-//
-//    return Scaffold(
-//      body: Container(
-//        width: queryData.size.width,
-//        height: queryData.size.height,
-//        decoration: BoxDecoration(
-//            gradient: LinearGradient(
-//          colors: [Palette.light_bg, Palette.drak_bg, Palette.drak_bg],
-//          begin: Alignment.topCenter,
-//          end: Alignment.bottomCenter,
-//        )),
-//        child: SafeArea(
-//          child: Column(
-//            children: <Widget>[
-//              Expanded(
-//                flex: topBarHeight,
-//                child: Container(
-////                  decoration: BoxDecoration(
-////                      gradient: LinearGradient(
-////                        colors: [Palette.light_bg, Palette.drak_bg, Palette.drak_bg],
-////                        begin: Alignment.topCenter,
-////                        end: Alignment.bottomCenter,
-////                      )),
-//                  height: topBarHeight * 0.7,
-//                  child: _buildSearchBar(queryData, context),
-//                ),
-//              ),
-//              Expanded(
-//                flex: (screenHeight - topBarHeight + (topBarHeight * 0.7))
-//                    .toInt(),
-//                child: SingleChildScrollView(
-//                  child: Column(
-//                    children: <Widget>[
-//                      Container(
-//                        height: (MediaQuery.of(context).size.height * 0.55) +
-//                            contentTextHeight +
-//                            articleTitleHeight,
-//                        child: Column(
-//                          mainAxisAlignment: MainAxisAlignment.center,
-//                          children: <Widget>[
-//                            Expanded(
-//                              flex: (MediaQuery.of(context).size.height * 1.4)
-//                                  .toInt(),
-//                              child: Container(
-//                                width: queryData.size.width,
-//                                height: (MediaQuery.of(context).size.height * 1.4)
-//                                    .toDouble(),
-//                                decoration: BoxDecoration(
-//                                  color: Colors.white,
-//                                  borderRadius: new BorderRadius.only(
-//                                    topLeft: const Radius.circular(8.0),
-//                                    topRight: const Radius.circular(8.0),
-//                                  ),
-//                                ),
-//                                child: Column(
-//                                  children: <Widget>[
-//                                    Container(
-//                                      height:
-//                                         (MediaQuery.of(context).size.width/600)*440,
-//                                      width: MediaQuery.of(context).size.width,
-//                                      child: ClipPath(
-//                                        child: Card(
-//                                          elevation: 0.0,
-//                                          borderOnForeground: false,
-//                                          margin: EdgeInsets.all(0.0),
-//                                          clipBehavior: Clip.none,
-//                                          child: ClipRRect(
-//                                            borderRadius: BorderRadius.only(
-//                                              topLeft: Radius.circular(4.0),
-//                                              topRight: Radius.circular(4.0),
-//                                            ),
-//                                            child: OKImage(
-//                                              url:
-//                                                  '${Constant.ImageBaseURL}${news.image1Url}',
-//                                              loadingWidget: Center(
-//                                                child: Container(
-//                                                  width: (MediaQuery.of(context)
-//                                                          .size
-//                                                          .width *
-//                                                      0.03),
-//                                                  height:
-//                                                      (MediaQuery.of(context)
-//                                                              .size
-//                                                              .width *
-//                                                          0.03),
-//                                                 child:
-//                                                      CircularProgressIndicator(),
-//                                                ),
-//                                              ),
-//                                              errorWidget: Center(
-//                                                child: Container(
-//                                                  width: (MediaQuery.of(context)
-//                                                          .size
-//                                                          .width *
-//                                                      0.03),
-//                                                  height:
-//                                                      (MediaQuery.of(context)
-//                                                              .size
-//                                                              .width *
-//                                                          0.03),
-//                                                  child: Icon(Icons.error),
-//                                                ),
-//                                              ),
-////                                              width: screenWidth.toDouble(),
-////                                              height: (screenWidth.toDouble()/300) * 220,
-//                                              fit: BoxFit.fill,
-//                                            ),
-//                                          ),
-//                                        ),
-//                                        clipper: ProductClipper(),
-//                                        clipBehavior: Clip.antiAlias,
-//                                      ),
-//                                    ),
-//                                    Padding(
-//                                      padding: EdgeInsets.only(
-//                                          left: (MediaQuery.of(context)
-//                                                  .size
-//                                                  .width *
-//                                              0.03),
-//                                          right: (MediaQuery.of(context)
-//                                                  .size
-//                                                  .width *
-//                                              0.03)),
-//                                      child: Column(
-//                                        children: <Widget>[
-//                                          Container(
-//                                            height: articleTitleHeight,
-//                                            child: Center(
-//                                              child: Text(
-//                                                (news.articleName != null)
-//                                                    ? "${news.articleName}"
-//                                                    : '',
-//                                                textAlign: TextAlign.center,
-//                                                style: TextStyle(
-//                                                    fontFamily:
-//                                                        'HKGrotesk-SemiBold',
-//                                                    color:
-//                                                        Palette.dimgray_color,
-//                                                    fontSize: 17.0),
-//                                                overflow: TextOverflow.clip,
-//                                                maxLines: 3,
-//                                              ),
-//                                            ),
-//                                          ),
-//                                          Container(
-//                                            child: Column(
-//                                              // mainAxisAlignment: MainAxisAlignment.start,
-//                                              crossAxisAlignment:
-//                                                  CrossAxisAlignment.start,
-//                                              children: <Widget>[
-//                                                Container(
-//                                                  height: contentTextHeight,
-//                                                  width:
-//                                                      ((MediaQuery.of(context)
-//                                                                  .size
-//                                                                  .height *
-//                                                              0.5) *
-//                                                          306 /
-//                                                          110),
-//                                                  padding: EdgeInsets.only(
-//                                                      left: 2.0,
-//                                                      right: 2.0,
-//                                                      top: (MediaQuery.of(
-//                                                                  context)
-//                                                              .size
-//                                                              .width *
-//                                                          0.01)),
-//                                                  child: Container(
-//                                                    child:contentWidget,
-//                                                  ),
-//                                                ),
-//                                              ],
-//                                            ),
-//                                          ),
-//                                        ],
-//                                      ),
-//                                    ),
-//                                  ],
-//                                ),
-//                              ),
-//                            ),
-//                          ],
-//                        ),
-//                      ),
-//                    ],
-//                  ),
-//                ),
-//              )
-//            ],
-//          ),
-//        ),
-//      ),
-//    );
-//  }
-//
-//  _buildSearchBar(MediaQueryData queryData, BuildContext context) {
-////    SystemChrome.setEnabledSystemUIOverlays([]);
-//    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-//        statusBarColor: Colors.transparent,
-//        statusBarIconBrightness: Brightness.dark));
-//
-//    return new Container(
-//      child: new Row(
-//        children: <Widget>[
-//          Expanded(
-//            flex: (queryData.size.width * 0.16).round(),
-//            child: new Column(
-//                mainAxisAlignment: MainAxisAlignment.center,
-//                crossAxisAlignment: CrossAxisAlignment.center,
-//                children: <Widget>[
-//                  IconButton(
-//                    icon: Icon(
-//                      Icons.arrow_back_ios,
-//                      color: Color.fromRGBO(99, 99, 99, 1),
-//                    ),
-//                    onPressed: () {
-//                      SingletonNewsClass singleton = SingletonNewsClass();
-//                      var index = singleton.getIndex();
-//                      print('get index -----------> $index');
-//
-//                      if(_isSearch){
-//
-//                        Navigator.of(context).push(
-//                          MaterialPageRoute(
-//                            builder: (context) =>
-//                                AmazonTea.otherHomePages(2, index,_isSearch, _isSearchText),
-//                          ),
-//                        );
-//                      }else{
-//                        Navigator.of(context).push(
-//                          MaterialPageRoute(
-//                            builder: (context) =>
-//                                AmazonTea.otherHomePages(2, index,_isSearch, null),
-//                          ),
-//                        );
-//                      }
-//
-//                    },
-//                  ),
-//                ]),
-//          ),
-//          Expanded(
-//            flex: (queryData.size.width * 0.67).round(),
-//            child: new Column(
-//                mainAxisAlignment: MainAxisAlignment.center,
-//                crossAxisAlignment: CrossAxisAlignment.center,
-//                children: [
-//                  Text(
-//                    "Highlights",
-//                    textAlign: TextAlign.center,
-//                    style: TextStyle(
-//                        fontFamily: 'HKGrotesk-SemiBold',
-//                        color: Palette.dimgray_color,
-//                        fontSize: ((((queryData.size.height -
-//                                            ((queryData.size.width / 375) *
-//                                                92)) /
-//                                        2) /
-//                                    5) /
-//                                64) *
-//                            17),
-//                    overflow: TextOverflow.clip,
-//                    maxLines: 2,
-//                  ),
-//                ]),
-//          ),
-//          Expanded(
-//            flex: (queryData.size.width * 0.16).round(),
-//            child: new Column(
-//              mainAxisAlignment: MainAxisAlignment.center,
-//              crossAxisAlignment: CrossAxisAlignment.center,
-//              children: <Widget>[
-//                Container(),
-//              ],
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
-//
-//  Widget getBodyWidget(MediaQueryData queryData) {
-//    var width = queryData.size.width;
-//    var height = queryData.size.height;
-//
-//    return Container(
-//      width: width,
-//      height: height,
-//      child: Stack(
-//        fit: StackFit.expand,
-//        children: <Widget>[
-//          Container(
-//            padding: EdgeInsets.only(top: (queryData.size.height * 30) / 100),
-//            decoration: BoxDecoration(
-//              gradient: LinearGradient(
-//                colors: [
-//                  Color.fromRGBO(237, 247, 248, 1),
-//                  Color.fromRGBO(154, 214, 222, 1),
-//                ],
-//                begin: Alignment.topCenter,
-//                end: Alignment.bottomCenter,
-//              ),
-//            ),
-//            child: Container(
-//              decoration: BoxDecoration(
-//                  borderRadius: BorderRadius.circular(8), color: Colors.white),
-//              width: width,
-//              height: height,
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
-//}
-//
-//class BottomWaveClipper extends CustomClipper<Path> {
-//  @override
-//  Path getClip(Size size) {
-//    var path = new Path();
-//    path.lineTo(0.0, size.height - 73);
-//
-////    var firstControlPoint = new Offset((size.width / 375)*2, size.height-75);
-////    var firstEndPoint = new Offset((size.width / 375)*4,size.height - 80);
-////    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-////        firstEndPoint.dx, firstEndPoint.dy);
-//
-//    var firstControlPoint = Offset((size.width / 375) * 4, size.height - 82);
-//    var firstEndPoint = Offset((size.width / 375) * 6, size.height - 80);
-//    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-//        firstEndPoint.dx, firstEndPoint.dy);
-////
-////    var thirdControlPoint =
-////    Offset(size.width - (size.width / 4), size.height+100);
-////    var thirdEndPoint = Offset((size.width/375)*367, size.height - 120);
-////    path.quadraticBezierTo(thirdControlPoint.dx, thirdControlPoint.dy,
-////        thirdEndPoint.dx, thirdEndPoint.dy);
-//
-//    var thirdControlPoint =
-//        Offset(size.width - (size.width / 2), size.height + 50);
-//    var thirdEndPoint = Offset((size.width / 375) * 369, size.height - 80);
-//    path.quadraticBezierTo(thirdControlPoint.dx, thirdControlPoint.dy,
-//        thirdEndPoint.dx, thirdEndPoint.dy);
-//
-//    var fourthControlPoint = Offset((size.width / 375) * 371, size.height - 82);
-//    var fourthEndPoint = Offset((size.width / 375) * 375, size.height - 73);
-//    path.quadraticBezierTo(fourthControlPoint.dx, fourthControlPoint.dy,
-//        fourthEndPoint.dx, fourthEndPoint.dy);
-//
-////    var fifthControlPoint =
-////    Offset((size.width / 375)*373, size.height-75);
-////    var fifthEndPoint = Offset(size.width, size.height - 73);
-////    path.quadraticBezierTo(fifthControlPoint.dx, fifthControlPoint.dy,
-////        fifthEndPoint.dx, fifthEndPoint.dy);
-//
-//    path.lineTo(size.width, size.height - 73);
-//    path.lineTo(size.width, 0.0);
-//    path.close();
-//    return path;
-//  }
-//
-//  @override
-//  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-//}

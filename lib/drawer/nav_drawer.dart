@@ -67,14 +67,14 @@ class _NavDrawerState extends State<NavDrawer> {
                   ),)
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 255,
+                top: (Constant.screenHeight /896) * 260,
                 left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
                   child: Text("Home",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Light",
+                        fontFamily: "Montserrat-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -84,14 +84,14 @@ class _NavDrawerState extends State<NavDrawer> {
                 )
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 310,
+                top: (Constant.screenHeight /896) * 330,
                 left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
                   child: Text("Profile",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Light",
+                        fontFamily: "Montserrat-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -101,14 +101,14 @@ class _NavDrawerState extends State<NavDrawer> {
                 )
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 365,
+                top: (Constant.screenHeight /896) * 400,
                 left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
                   child: Text("Helps",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Light",
+                        fontFamily: "Montserrat-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -118,14 +118,14 @@ class _NavDrawerState extends State<NavDrawer> {
                 )
             ),
             Positioned(
-                top: (Constant.screenHeight /896) * 417,
+                top: (Constant.screenHeight /896) * 470,
                 left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
                 child: GestureDetector(
                   child: Text("About Us ",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Light",
+                        fontFamily: "Montserrat-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -231,7 +231,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   child: Text("Log Out",
                     style: TextStyle(
                         fontSize: 17.0,
-                        fontFamily: "Montserrat-Light",
+                        fontFamily: "Montserrat-Bold",
                         color: Colors.white
 
                     ),

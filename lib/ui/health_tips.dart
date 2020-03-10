@@ -3,8 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/drawer/bottom_nav.dart';
+import 'package:health_plus/ui/dashboard.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
+
+import 'health_inner.dart';
 
 class HealthTips extends StatefulWidget {
   @override
@@ -79,6 +82,20 @@ class HealthTipsLayout extends State<HealthTips> {
                       ),),
                   ),
                 ),
+//                Positioned(
+//                  left: Constant.screenWidth* 19,
+//                  top: Constant.screenHeight *35,
+//                  child: IconButton(
+//                    icon: Icon(
+//                      Icons.arrow_back,
+//                      color: Colors.white,
+//                    ),
+//                    onPressed: () {
+//                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dashboard()));
+//
+//                    },
+//                  ),
+//                ),
 
               ],
             ),
@@ -95,35 +112,43 @@ class HealthTipsLayout extends State<HealthTips> {
         scrollDirection: Axis.vertical,
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
-          return  new Container(
-              height: (Constant.screenHeight) * 200,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: (Constant.screenHeight) * 140,
-                    width: Constant.screenWidth * 414,
-                    margin: EdgeInsets.only( top: (Constant.screenHeight) * 4),
-                    child: Image.asset("assets/images/health.jpg",
-                      fit: BoxFit.fitWidth,
-                      alignment:Alignment.center ,
+          return  GestureDetector(
+            child:new Container(
+                height: (Constant.screenHeight) * 200,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      height: (Constant.screenHeight) * 140,
+                      width: Constant.screenWidth * 414,
+                      margin: EdgeInsets.only( top: (Constant.screenHeight) * 4),
+                      child: Image.asset("assets/images/health.jpg",
+                        fit: BoxFit.fitWidth,
+                        alignment:Alignment.center ,
 
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top:Constant.screenWidth * 2, right: Constant.screenWidth* 22),
-                    height: (Constant.screenHeight)  * 50,
-                    width: Constant.screenWidth * 414,
-                      child: Text("Summer health tips",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontFamily: "Montserrat-Regular",
-                                color: Palette.darkGrey,
-                                fontSize: 17
-                            ),
-                      )
-                  ),
-                ],
+                    Container(
+                        margin: EdgeInsets.only(top:Constant.screenWidth * 2, right: Constant.screenWidth* 22),
+                        height: (Constant.screenHeight)  * 50,
+                        width: Constant.screenWidth * 414,
+                        child: Text("Summer health tips",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontFamily: "Montserrat-Regular",
+                              color: Palette.darkGrey,
+                              fontSize: 17
+                          ),
+                        )
+                    ),
+                  ],
+                )
+            ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => HealthInnerPage()
               )
+              );
+            },
           );
         });
   }
