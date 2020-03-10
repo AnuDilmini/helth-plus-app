@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/drawer/nav_drawer.dart';
@@ -79,45 +80,13 @@ class DashboardState extends State<Dashboard> {
                       children: <Widget>[
                         Container(
                           width: Constant.screenWidth ,
-                          height: (Constant.screenHeight/896) * 166.0,
+                          height: (Constant.screenHeight/896) * 120.0,
                           color: Colors.white,
-                          child:Container(
-                              height: (Constant.screenHeight/896) * 300,
-                              width: (Constant.screenWidth/414) * 248,
-                              child:Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only( top: (Constant.screenHeight/896) * 66 ,left: (Constant.screenWidth / 414) * 21),
-                                    height: (Constant.screenHeight/896) * 150,
-                                    child: Text("Welcome  Back,",
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontSize: 17.0,
-                                          fontFamily: "Montserrat-Light",
-                                          color: Colors.white
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only( top: (Constant.screenHeight/896) * 66 ),
-                                    height: (Constant.screenHeight/896) * 150,
-                                    child: Text(" John Doe",
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontSize: 17.0,
-                                          fontFamily: "Montserrat-Light",
-                                          color: Colors.white
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )
-                          ),
                         ),
                         Container(
                           width: Constant.screenWidth,
-                          height: (Constant.screenHeight - (Constant.screenHeight/896) * 166.0),
-                          color: Palette.greyishBrown,
+                          height: (Constant.screenHeight - (Constant.screenHeight/896) * 120.0),
+                          color: Palette.grayColor,
                         )
                       ],
                     ),
@@ -146,8 +115,8 @@ class DashboardState extends State<Dashboard> {
 //                    ),
 //                  ),
                   Positioned(
-                    top: (Constant.screenHeight/896) * 287,
-                    height: (Constant.screenHeight/896) * 200,
+                    top: (Constant.screenHeight/812) * 170,
+                    height: (Constant.screenHeight/812) * 200,
                     width: Constant.screenWidth,
                     child: ListView.builder(
                         shrinkWrap: true,
@@ -155,8 +124,8 @@ class DashboardState extends State<Dashboard> {
                         itemCount: 5,
                         itemBuilder: (context, position) {
                           return Container(
-                            width: (Constant.screenWidth * 26.4) / 100,
-                            height: (Constant.screenHeight * 14.6) / 100,
+                            width: (Constant.screenWidth /414) * 200,
+                            height: (Constant.screenHeight * 812) / 200,
                             child: Column(
                               children: <Widget>[
                                 GestureDetector(
@@ -187,49 +156,73 @@ class DashboardState extends State<Dashboard> {
                     ),
                   ),
                   Positioned(
-                      left: (Constant.screenWidth/ 414) * 25,
-                      right: (Constant.screenWidth/ 414) * 25,
-                      top: (Constant.screenHeight/896) * 505,
-                      height: (Constant.screenHeight/896) * 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: map<Widget>(imgList, (index, url) {
-                          return _current == index? Container(
-                              width: 8.0,
-                              height: 8.0,
-                              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  color: Palette.lightGreen
-                              )
-                          ):
-                          Container(
-                              width: (Constant.screenWidth/ 414) * 29,
-                              height: 3.0,
-                              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  color: Palette.grayColor
-                              )
-                          );
-                        }),
-                      )
+                    left: (Constant.screenWidth/ 414) * 10,
+                    top: (Constant.screenHeight/896) * 130,
+                    height: (Constant.screenHeight/896) * 35,
+                    child: Text("Today",
+                      style: TextStyle(
+                          fontFamily: "Montserrat-Bold",
+                          fontSize: 16.0,
+                          color: Palette.darkGrey
+                      ),
+                    ),
                   ),
-//                  Positioned(
-//                    left: (Constant.screenWidth/ 414) * 19,
-//                    top: (Constant.screenHeight/896) * 243,
-//                    height: (Constant.screenHeight/896) * 35,
-//                    child: Text("Promotion",
-//                      style: TextStyle(
-//                          fontFamily: "Montserrat-Light",
-//                          fontSize: 17.0,
-//                          color: Palette.darkGrey
-//                      ),
-//                    ),
-//                  ),
+                  Positioned(
+                    top: (Constant.screenHeight/812) * 380,
+                    height: (Constant.screenHeight/812) * 180,
+                    width: Constant.screenWidth,
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 5,
+                        itemBuilder: (context, position) {
+                          return Container(
+                            width: (Constant.screenWidth /414) * 100,
+                            height: (Constant.screenHeight  / 812) * 150,
+                            child: Column(
+                              children: <Widget>[
+                                GestureDetector(
+                                  onTap: () {
+//                                    Navigator.push(context, MaterialPageRoute(
+//                                        builder: (context) => Goals()
+//                                    ));
+                                  },
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius
+                                          .circular(12.0),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius
+                                          .circular(12.0),
+                                      child:  Image.network(imgList[position], fit: BoxFit.cover,
+                                        width: Constant.screenWidth,
+                                      ),
+                                    ),
+                                    elevation: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                    ),
+                  ),
+                  Positioned(
+                    left: (Constant.screenWidth/ 414) * 10,
+                    top: (Constant.screenHeight/896) * 380,
+                    height: (Constant.screenHeight/896) * 35,
+                    child: Text("Quick Links",
+                      style: TextStyle(
+                          fontFamily: "Montserrat-Bold",
+                          fontSize: 14.0,
+                          color: Palette.darkGrey
+                      ),
+                    ),
+                  ),
                   Positioned(
                     left: (Constant.screenWidth/ 414) * 08,
-                    top: (Constant.screenHeight/896) * 75,
+                    top: (Constant.screenHeight/896) * 55,
                     height: (Constant.screenHeight/896) * 35,
                     child: GestureDetector(
                       child: Icon(Icons.menu,
@@ -242,13 +235,13 @@ class DashboardState extends State<Dashboard> {
                   ),
                   Positioned(
                       left: (Constant.screenWidth/ 414) * 60,
-                      top: (Constant.screenHeight/896) * 75,
+                      top: (Constant.screenHeight/896) * 55,
                       height: (Constant.screenHeight/896) * 35,
                       child: Center(
                         child: Text("LifePlus",
                           style: TextStyle(
                               fontSize: 20.0,
-                              fontFamily: "Montserrat-Light",
+                              fontFamily: "Montserrat-Regular",
                               color: Colors.green
                           ),)
                       )
@@ -256,7 +249,7 @@ class DashboardState extends State<Dashboard> {
                   Positioned(
                       right: (Constant.screenWidth/ 414) * 19,
                       left: (Constant.screenWidth/ 414) * 350,
-                      top: (Constant.screenHeight/896) * 75,
+                      top: (Constant.screenHeight/896) * 50,
                       height: (Constant.screenHeight/896) * 35,
                       child: GestureDetector(
                         child: Icon(Icons.email,
@@ -266,6 +259,33 @@ class DashboardState extends State<Dashboard> {
 //                          onTap_scaffoldKey.currentState.openDrawer();
                         },
                       )
+                  ),
+                  Positioned(
+                    left: (Constant.screenWidth/ 414) * 10,
+                    right: (Constant.screenWidth/ 414) * 10,
+                    top: (Constant.screenHeight/896) * 540,
+                    height: (Constant.screenHeight/896) * 75,
+                    child: Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          prefix: Image.asset(name),
+
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(25)),
+                                borderSide: BorderSide(color: Colors.grey[300])
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(25)),
+                                borderSide: BorderSide(color: Colors.grey[400])
+                            ),
+                            filled: true,
+                            fillColor: Colors.grey[300],
+                            hintText: "Mobile Number"
+
+                        ),
+//                        controller: _phoneController,
+                      ),
+                    )
                   ),
                 ],
               ),
