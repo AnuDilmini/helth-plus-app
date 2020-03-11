@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScree extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
 
   final FirebaseUser user;
-  HomeScree({this.user});
+  HomeScreen({this.user});
 
   @override
   Widget build(BuildContext context) {

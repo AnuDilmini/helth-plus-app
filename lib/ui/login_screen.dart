@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:health_plus/utils/constant.dart';
 
 import '../home.dart';
 
@@ -7,6 +8,8 @@ import '../home.dart';
 class LoginScreen extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _codeController = TextEditingController();
+
+  MediaQueryData queryData;
 
   Future<bool> loginUser(String phone, BuildContext context) async{
     FirebaseAuth _auth = FirebaseAuth.instance;
@@ -24,7 +27,7 @@ class LoginScreen extends StatelessWidget {
           print("asdfsgds********************");
           if(user != null){
             Navigator.push(context, MaterialPageRoute(
-                builder: (context) => HomeScree(user: user,)
+                builder: (context) => HomeScreen(user: user,)
             ));
           }else{
             print("Error");
@@ -41,7 +44,9 @@ class LoginScreen extends StatelessWidget {
               barrierDismissible: false,
               builder: (context) {
                 return AlertDialog(
-                  title: Text("Give the code?"),
+                  title: Text("Enter\nVerification code",
+                  style: TextStyle(color: Color(0xFFFF8111),
+                   fontSize: 14),),
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -54,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                     FlatButton(
                       child: Text("Confirm"),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFFFF8111),
                       onPressed: () async{
                         final code = _codeController.text.trim();
                         AuthCredential credential = PhoneAuthProvider.getCredential(verificationId: verificationId, smsCode: code);
@@ -65,11 +70,19 @@ class LoginScreen extends StatelessWidget {
 
                         if(user != null){
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => HomeScree(user: user,)
+                              builder: (context) => HomeScreen(user: user,)
                           ));
                         }else{
                           print("Error");
                         }
+                      },
+                    ),
+                    FlatButton(
+                      child: Text("Back"),
+                      textColor: Colors.white,
+                      color: Color(0xFFFF8111),
+                      onPressed: () async{
+
                       },
                     )
                   ],
@@ -83,51 +96,80 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    queryData = MediaQuery.of(context);
+    Constant.screenWidth = queryData.size.width / 414;
+    Constant.screenHeight = queryData.size.height/812;
     return Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(32),
+            height: Constant.screenHeight * 812,
+            width: Constant.screenWidth * 414,
+
+//            decoration: new BoxDecoration(
+//              gradient: LinearGradient(
+//                begin: Alignment.topLeft,
+//                end: Alignment.bottomRight,
+//                stops: [0.0, 0.4, 0.9],
+//                colors: [
+//                  Color(0xFFFF8111),
+//                  Color(0xFFFC663C),
+//                  Color(0xFFFF3F1A),
+//                ],
+//              ),
+//            ),
+            padding: EdgeInsets.only(left: 32, right: 32,
+            top: Constant.screenHeight * 120 ),
             child: Form(
+              autovalidate: true,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text("Login", style: TextStyle(color: Colors.lightBlue, fontSize: 36, fontWeight: FontWeight.w500),),
 
-                    SizedBox(height: 16,),
+                  children: <Widget>[
+                    Text("Enter\nMobile Number", style: TextStyle(color:  Color(0xFFFF8111), fontSize: 30, fontWeight: FontWeight.w500),),
+
+                    SizedBox(height: Constant.screenHeight * 150),
 
                     TextFormField(
                       decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(8)),
-                              borderSide: BorderSide(color: Colors.grey[200])
+                              borderSide: BorderSide(color:  Color(0xFFFF8111),
+                              width: 1.0)
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(8)),
-                              borderSide: BorderSide(color: Colors.grey[300])
+                              borderSide: BorderSide(color:  Color(0xFFFF8111),
+                              width: 1.0)
                           ),
                           filled: true,
                           fillColor: Colors.grey[100],
-                          hintText: "Mobile Number"
+                          hintText: "+94 Mobile Number",
+
 
                       ),
                       controller: _phoneController,
                     ),
 
-                    SizedBox(height: 16,),
+                    SizedBox(height: Constant.screenHeight * 40,),
                     Container(
                       width: double.infinity,
                       child: FlatButton(
-                        child: Text("LOGIN"),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius
+                          .circular(8.0),
+                        ),
+                        child: Text("LOGIN",
+                          style: TextStyle(color:  Colors.white, fontSize: 18, fontWeight: FontWeight.w500)
+                      ),
                         textColor: Colors.white,
                         padding: EdgeInsets.all(16),
                         onPressed: () {
                           print("test");
                           final phone = _phoneController.text.trim();
                           loginUser(phone, context);
-
                         },
-                        color: Colors.red,
+                        color: Color(0xFFFF8111),
                       ),
                     )
                   ],
