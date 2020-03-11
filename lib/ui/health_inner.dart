@@ -183,8 +183,6 @@ class HealthInnerWidget extends State<HealthInnerPage> {
               ),
             )
           ),
-
-
         ],
       )
 
