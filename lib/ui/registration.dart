@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:health_plus/ui/registration_test.dart';
 
 
 class Registration extends StatefulWidget{
@@ -12,7 +13,7 @@ class Registration extends StatefulWidget{
   Registration({this.user});
 }
 
-class _RegistrationState extends State<Registration>{
+class _RegistrationState extends State<Registration> {
 
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -36,7 +37,7 @@ class _RegistrationState extends State<Registration>{
                   end: Alignment.bottomRight,
                   stops: [0.0, 0.4, 0.9],
                   colors: [
-                    Color(0xFFFF8333 ),
+                    Color(0xFFFF8333),
                     Color(0xFFFC663C),
                     Color(0xFFFF3F1A),
                   ],
@@ -166,7 +167,9 @@ class _RegistrationState extends State<Registration>{
                                     padding: EdgeInsets.only(
                                         top: 8, bottom: 8, left: 10, right: 10),
                                     child: Text(
-                                      _isLoading ? 'Creating...':'Create account',
+                                      _isLoading
+                                          ? 'Creating...'
+                                          : 'Create account',
                                       textDirection: TextDirection.ltr,
                                       style: TextStyle(
                                         color: Colors.white,
@@ -181,7 +184,7 @@ class _RegistrationState extends State<Registration>{
                                   shape: new RoundedRectangleBorder(
                                       borderRadius:
                                       new BorderRadius.circular(20.0)),
-                                  onPressed: _isLoading ? null :  _handleLogin
+                                  onPressed: _isLoading ? null : _handleLogin
                               ),
                             ),
                           ],
@@ -219,4 +222,17 @@ class _RegistrationState extends State<Registration>{
 //    });
   }
 
+
+//  Future<Post> createPost(String url, {Map body}) async {
+//    return http.post(url, body: body).then((http.Response response) {
+//      final int statusCode = response.statusCode;
+//
+//      if (statusCode < 200 || statusCode > 400 || json == null) {
+//        throw new Exception("Error while fetching data");
+//      }
+//      return Post.fromJson(json.decode(response.body));
+//    });
+//
+//
+//}
 }
