@@ -2,15 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_plus/ui/create_post.dart';
-import 'package:health_plus/ui/goal_achieved.dart';
-import 'package:health_plus/ui/goals.dart';
-import 'package:health_plus/ui/health_tips.dart';
-import 'package:health_plus/ui/login_screen.dart';
-import 'package:health_plus/ui/profile.dart';
-import 'package:health_plus/ui/profile_edit.dart';
-import 'package:health_plus/ui/registration.dart';
-import 'package:health_plus/utils/profile_example.dart';
 
 import 'drawer/bottom_nav.dart';
 import 'homePage.dart';
@@ -22,15 +13,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Phone Authentication',
-//      routes: <String, WidgetBuilder>{
-//        '/homepage': (BuildContext context) => MyHome(),
-//        '/loginpage': (BuildContext context) => MyApp(),
-//      },
+      routes: <String, WidgetBuilder>{
+        '/homepage': (BuildContext context) => MyHome(),
+        '/loginpage': (BuildContext context) => MyApp(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyAppPage(),
-//      MyAppPage(title: 'Phone Authentication'),
+      home:
+      MyAppPage(title: 'Phone Authentication'),
     );
   }
 }
