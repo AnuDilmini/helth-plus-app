@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/ui/registration_test.dart';
 
 
@@ -20,6 +21,8 @@ class _RegistrationState extends State<Registration> {
   TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+
+
 
   bool _isLoading = false;
 
@@ -141,6 +144,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                             TextField(
                               style: TextStyle(color: Color(0xFF000000)),
+                              enabled: false,
                               controller: phoneController,
                               cursorColor: Color(0xFF9b9b9b),
                               keyboardType: TextInputType.text,
@@ -149,6 +153,11 @@ class _RegistrationState extends State<Registration> {
                                   Icons.mobile_screen_share,
                                   color: Colors.grey,
                                 ),
+                                labelText: widget.user.phoneNumber,
+                                labelStyle: TextStyle(
+                                    color: Color(0xFF9b9b9b),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
                                 hintText: "Phone",
                                 hintStyle: TextStyle(
                                     color: Color(0xFF9b9b9b),
@@ -184,7 +193,12 @@ class _RegistrationState extends State<Registration> {
                                   shape: new RoundedRectangleBorder(
                                       borderRadius:
                                       new BorderRadius.circular(20.0)),
-                                  onPressed: _isLoading ? null : _handleLogin
+                                  onPressed: (){
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => BottomNavigation(index: 0)
+                                    ));
+                                  }
+//                                  _isLoading ? null : _handleLogin
                               ),
                             ),
                           ],
@@ -205,7 +219,7 @@ class _RegistrationState extends State<Registration> {
 //      _isLoading = true;
 //    });
 //    var data = {
-//      'name' : phoneController.text,
+//      'name' : widget.user.phoneNumber,
 //      'first_name' : firstNameController.text,
 //      'last_name' : lastNameController.text,
 //      'email' : mailController.text,

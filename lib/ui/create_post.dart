@@ -138,7 +138,7 @@ class CreatePostLayout extends State<CreatePost> {
                         child: IconButton(
                           icon: Icon(Icons.arrow_back, color: Colors.white,),
                           onPressed: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dashboard()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => BottomNavigation(index: 0)));
                           },
                         )
                     )

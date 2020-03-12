@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:health_plus/ui/registration.dart';
+import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
 import '../home.dart';
@@ -10,6 +12,8 @@ class LoginScreen extends StatelessWidget {
   final _codeController = TextEditingController();
 
   MediaQueryData queryData;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   Future<bool> loginUser(String phone, BuildContext context) async{
     FirebaseAuth _auth = FirebaseAuth.instance;
@@ -26,8 +30,10 @@ class LoginScreen extends StatelessWidget {
 
           print("asdfsgds********************");
           if(user != null){
+
+            showSnackBar(context, "You are Logged in succesfully");
             Navigator.push(context, MaterialPageRoute(
-                builder: (context) => HomeScreen(user: user,)
+                builder: (context) => Registration(user: user,)
             ));
           }else{
             print("Error");
@@ -77,14 +83,14 @@ class LoginScreen extends StatelessWidget {
                         }
                       },
                     ),
-                    FlatButton(
-                      child: Text("Back"),
-                      textColor: Colors.white,
-                      color: Color(0xFFFF8111),
-                      onPressed: () async{
-
-                      },
-                    )
+//                    FlatButton(
+//                      child: Text("Back"),
+//                      textColor: Colors.white,
+//                      color: Color(0xFFFF8111),
+//                      onPressed: () async{
+//
+//                      },
+//                    )
                   ],
                 );
               }
@@ -94,6 +100,12 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
+  showSnackBar(BuildContext context, String msg){
+    final snackBar = SnackBar(content: Text(msg),backgroundColor: Palette.darkGrey,);
+    _scaffoldKey.currentState.showSnackBar(snackBar);
+  }
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -101,6 +113,7 @@ class LoginScreen extends StatelessWidget {
     Constant.screenWidth = queryData.size.width / 414;
     Constant.screenHeight = queryData.size.height/812;
     return Scaffold(
+        key: _scaffoldKey,
         body: SingleChildScrollView(
           child: Container(
             height: Constant.screenHeight * 812,

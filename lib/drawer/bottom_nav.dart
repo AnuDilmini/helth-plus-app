@@ -13,9 +13,9 @@ import 'nav_drawer.dart';
 
 class BottomNavigation extends StatefulWidget {
 
-  BottomNavigation(int selectedIndex) {
-    NavigatioLayout.selectedIndex = selectedIndex;
-  }
+  final int index;
+  BottomNavigation({this.index});
+
 
   @override
   State<StatefulWidget> createState() {
@@ -46,6 +46,12 @@ class NavigatioLayout extends State<BottomNavigation> {
     setState(() {
       selectedIndex = index;
     });
+  }
+
+
+  @override
+  void initState() {
+    selectedIndex = widget.index;
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:health_plus/ui/about.dart';
 import 'package:health_plus/ui/dashboard.dart';
 import 'package:health_plus/ui/profile_edit.dart';
 import 'package:health_plus/utils/Palette.dart';
@@ -80,7 +81,7 @@ class _NavDrawerState extends State<NavDrawer> {
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => BottomNavigation(index: 0,)));
 
                   },
                 )
@@ -131,7 +132,7 @@ class _NavDrawerState extends State<NavDrawer> {
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileEdit()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => About()));
 
                   },
                 )
