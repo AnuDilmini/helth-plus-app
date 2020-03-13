@@ -92,7 +92,7 @@ class AboutLayout extends State<About> {
                   top: Constant.screenHeight* 380,
                   width: Constant.screenWidth* 414,
                   child: Center(
-                    child: Text("Version ${getAppInfo()}",
+                    child: Text("Version $version",
                       style: TextStyle(color: Colors.white,
                           fontSize: 14.0,
                           fontFamily: 'HKGrotesk-Regular'),),
@@ -132,18 +132,14 @@ class AboutLayout extends State<About> {
 
   @override
   void initState() {
-//    version = getAppInfo() as String;
+    _getVersion();
   }
 
-   Future<String> getAppInfo() async{
+  Future<String> _getVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-    String version = packageInfo.version;
+    version = packageInfo.version;
     print("version $version");
-//    String appName = packageInfo.appName;
-//    String packageName = packageInfo.packageName;
-//    String buildNumber = packageInfo.buildNumber;
-    return version;
+    return "";
   }
 
 
