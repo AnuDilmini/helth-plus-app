@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
@@ -17,6 +18,18 @@ class ProfileEditLayout extends State<ProfileEdit> {
 
   MediaQueryData queryData;
 
+  TextEditingController editCountry =  TextEditingController();
+  TextEditingController editMobile =  TextEditingController();
+  TextEditingController editFirstName =  TextEditingController();
+  TextEditingController editLastName =  TextEditingController();
+  TextEditingController editCompany =  TextEditingController();
+  TextEditingController editDateOfBirth =  TextEditingController();
+  TextEditingController editNIC =  TextEditingController();
+  TextEditingController editGender =  TextEditingController();
+
+  bool isFirstName = false, isLastName = false, isCompany = false, isMobile = false, isDateOfBirth = false, isNIC= false, isGender = false;
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -32,11 +45,12 @@ class ProfileEditLayout extends State<ProfileEdit> {
     return MaterialApp(
       home: Scaffold(
         resizeToAvoidBottomPadding: false,
-        body: Stack(
+        body: SingleChildScrollView(
+          child:Stack(
           children: <Widget>[
             Container(
-              height: (Constant.screenHeight* 812) * 2  ,
-              width: (Constant.screenWidth * 414) * 2,
+              height: (Constant.screenHeight* 812) * 1.2 ,
+              width: (Constant.screenWidth * 414) ,
             ),
             Positioned(
                 top: Constant.screenHeight  *40,
@@ -48,7 +62,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
                       child: Icon(Icons.arrow_back,)
                   ),
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => BottomNavigation(index: 0)));
                   },
                 )
             ),
@@ -67,7 +81,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   width: (Constant.screenHeight ) * 90,
                   height: (Constant.screenHeight ) * 90,
                   decoration: new BoxDecoration(
-                      color: Palette.orangeColor,
+                      color: Palette.orangeLight,
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.fill,
@@ -87,23 +101,574 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   style: TextStyle(
                     fontSize: 20.0,
                     fontFamily: "HKGrotesk-Bold",
-                    color: Palette.orangeColor
+                    color: Palette.orangeLight
                   ),),
               ),
             ),
             Positioned(
-              top: (Constant.screenHeight ) * 240,
-              left: (Constant.screenWidth ) * 65,
+              top: (Constant.screenHeight ) * 210,
+              left: (Constant.screenWidth ) * 57,
               child: Container(
-                width: (Constant.screenHeight ) * 4,
-                height: (Constant.screenHeight ) * 70,
-                color: Palette.orangeColor,
+                width: (Constant.screenHeight ) * 3,
+                height: (Constant.screenHeight ) * 100,
+                color: Palette.orangeLight,
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 255,
+              left: (Constant.screenWidth ) * 57,
+              child: Container(
+                width: (Constant.screenWidth ) * 40,
+                height: (Constant.screenHeight ) * 2,
+                color: Palette.orangeLight,
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 252,
+              left: (Constant.screenWidth ) * 95,
+              child: Container(
+                  width: (Constant.screenHeight ) * 10,
+                  height: (Constant.screenHeight ) * 10,
+                  decoration: new BoxDecoration(
+                      color: Palette.orangeLight,
+                      shape: BoxShape.circle,
+                  )),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 245,
+              left: (Constant.screenWidth ) * 118,
+              child: Container(
+                width: (Constant.screenHeight ) * 200,
+                height: (Constant.screenHeight ) * 60,
+                child: Text("PROFILE",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: "HKGrotesk-Bold",
+                      color: Palette.greyishBrown
+                  ),),
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 310,
+              left: (Constant.screenWidth ) * 40,
+              child: Container(
+                  width: (Constant.screenHeight ) * 40,
+                  height: (Constant.screenHeight ) * 40,
+                  decoration: new BoxDecoration(
+                      color: Palette.grayColor,
+                      shape: BoxShape.circle,
+                  )),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 300,
+              left: (Constant.screenWidth ) * 118,
+              right: (Constant.screenWidth ) * 10,
+              height: (Constant.screenHeight ) * 70,
+              child:
+              isFirstName?
+              Container(
+                child:TextFormField(
+                autofocus:false,
+//                cursorColor: Colors.black,
+                decoration: InputDecoration(
+//                  suffixIcon: new IconButton(
+//                    icon: new Icon(Icons.check,
+//                      size: 18.0,
+//                      color: Colors.green),
+//                      onPressed: () {
+//                        setState(() {
+//                          isFirstName = false;
+//                        });
+//                      },
+//                  ),
+                  labelText: "First Name",
+                  labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide: BorderSide(color:  Color(0xFFFF8111),
+                          width: 1.0)
+                  ),
+//                  filled: true,
+//                  fillColor: Colors.white,
+                  hintText: "Name",
+                ),
+                controller: editFirstName,
+               )
+              ):
+              Container(
+               child:TextFormField(
+                 autofocus:false,
+                controller: editFirstName,
+                enabled: true,
+                decoration: new InputDecoration(
+                  suffixIcon: new IconButton(
+                    icon: new Icon(Icons.edit,
+                    size: 18.0,
+                    color: Palette.grayColor,),
+                    onPressed: () {
+                      setState(() {
+                        isFirstName = true;
+                      });
+                    },
+                  ),
+                  border: new UnderlineInputBorder(
+                      borderSide: new BorderSide(
+                          color: Palette.grayColor
+                      )
+                  ),
+                  labelText: "First Name",
+                  labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                  hintText: "First Name",
+                  hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
+                ),
+              )
+            ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 350,
+              left: (Constant.screenWidth ) * 57,
+              child: Container(
+                width: (Constant.screenHeight ) * 3,
+                height: (Constant.screenHeight ) * 50,
+                color: Palette.grayColor,
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 390,
+              left: (Constant.screenWidth ) * 40,
+              child: Container(
+                  width: (Constant.screenHeight ) * 40,
+                  height: (Constant.screenHeight ) * 40,
+                  decoration: new BoxDecoration(
+                    color: Palette.grayColor,
+                    shape: BoxShape.circle,
+                  )),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 380,
+              left: (Constant.screenWidth ) * 118,
+              right: (Constant.screenWidth ) * 10,
+              height: (Constant.screenHeight ) * 70,
+              child:
+              isLastName?
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+//                cursorColor: Colors.black,
+                    decoration: InputDecoration(
+//                      suffixIcon: new IconButton(
+//                        icon: new Icon(Icons.check,
+//                            size: 18.0,
+//                            color: Colors.green),
+//                        onPressed: () {
+//                          setState(() {
+//                            isLastName = false;
+//                          });
+//                        },
+//                      ),
+                      labelText: "Last Name",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide: BorderSide(color:  Color(0xFFFF8111),
+                              width: 1.0)
+                      ),
+//                      filled: true,
+//                      fillColor: Colors.white,
+                      hintText: "Last",
+                    ),
+                    controller: editLastName,
+                  )
+              ):
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+                    controller: editLastName,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      suffixIcon: new IconButton(
+                        icon: new Icon(Icons.edit,
+                          size: 18.0,
+                          color: Palette.grayColor,),
+                        onPressed: () {
+                          setState(() {
+                            isLastName = true;
+                          });
+                        },
+                      ),
+                      border: new UnderlineInputBorder(
+                          borderSide: new BorderSide(
+                              color: Palette.grayColor
+                          )
+                      ),
+                      hintText: "Last Name",
+                      hintStyle: TextStyle(fontSize: 14, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
+                    ),
+                  )
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 430,
+              left: (Constant.screenWidth ) * 57,
+              child: Container(
+                width: (Constant.screenHeight ) * 3,
+                height: (Constant.screenHeight ) * 50,
+                color: Palette.grayColor,
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 470,
+              left: (Constant.screenWidth ) * 40,
+              child: Container(
+                  width: (Constant.screenHeight ) * 40,
+                  height: (Constant.screenHeight ) * 40,
+                  decoration: new BoxDecoration(
+                    color: Palette.grayColor,
+                    shape: BoxShape.circle,
+                  )),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 460,
+              left: (Constant.screenWidth ) * 118,
+              right: (Constant.screenWidth ) * 10,
+              height: (Constant.screenHeight ) * 70,
+              child:
+              isMobile?
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+//                cursorColor: Colors.black,
+                    decoration: InputDecoration(
+//                      suffixIcon: new IconButton(
+//                        icon: new Icon(Icons.check,
+//                            size: 18.0,
+//                            color: Colors.green),
+//                        onPressed: () {
+//                          setState(() {
+//                            isMobile = false;
+//                          });
+//                        },
+//                      ),
+                      labelText: "Phone Number",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide: BorderSide(color:  Color(0xFFFF8111),
+                              width: 1.0)
+                      ),
+//                      filled: true,
+//                      fillColor: Colors.white,
+                      hintText: "Phone Number",
+                    ),
+                    controller: editMobile,
+                  )
+              ):
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+                    controller: editMobile,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      suffixIcon: new IconButton(
+                        icon: new Icon(Icons.edit,
+                          size: 18.0,
+                          color: Palette.grayColor,),
+                        onPressed: () {
+                          setState(() {
+                            isMobile = true;
+                          });
+                        },
+                      ),
+                      border: new UnderlineInputBorder(
+                          borderSide: new BorderSide(
+                              color: Palette.grayColor
+                          )
+                      ),
+                      hintText: "Phone Number",
+                      hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
+                    ),
+                  )
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 510,
+              left: (Constant.screenWidth ) * 57,
+              child: Container(
+                width: (Constant.screenHeight ) * 3,
+                height: (Constant.screenHeight ) * 50,
+                color: Palette.grayColor,
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 550,
+              left: (Constant.screenWidth ) * 40,
+              child: Container(
+                  width: (Constant.screenHeight ) * 40,
+                  height: (Constant.screenHeight ) * 40,
+                  decoration: new BoxDecoration(
+                    color: Palette.grayColor,
+                    shape: BoxShape.circle,
+                  )),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 540,
+              left: (Constant.screenWidth ) * 118,
+              right: (Constant.screenWidth ) * 10,
+              height: (Constant.screenHeight ) * 70,
+              child:
+              isDateOfBirth?
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+//                cursorColor: Colors.black,
+                    decoration: InputDecoration(
+//                      suffixIcon: new IconButton(
+//                        icon: new Icon(Icons.check,
+//                            size: 18.0,
+//                            color: Colors.green),
+//                        onPressed: () {
+//                          setState(() {
+//                            isDateOfBirth = false;
+//                          });
+//                        },
+//                      ),
+                      labelText: "Date of Birth",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide: BorderSide(color:  Color(0xFFFF8111),
+                              width: 1.0)
+                      ),
+//                      filled: true,
+//                      fillColor: Colors.white,
+                      hintText: "Date of Birth",
+                    ),
+                    controller: editDateOfBirth,
+                  )
+              ):
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+                    controller: editDateOfBirth,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      suffixIcon: new IconButton(
+                        icon: new Icon(Icons.edit,
+                          size: 18.0,
+                          color: Palette.grayColor,),
+                        onPressed: () {
+                          setState(() {
+                            isDateOfBirth = true;
+                          });
+                        },
+                      ),
+                      border: new UnderlineInputBorder(
+                          borderSide: new BorderSide(
+                              color: Palette.grayColor
+                          )
+                      ),
+                      labelText: "Date of Birth",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                      hintText: "Date of Birth",
+                      hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
+                    ),
+                  )
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 590,
+              left: (Constant.screenWidth ) * 57,
+              child: Container(
+                width: (Constant.screenHeight ) * 3,
+                height: (Constant.screenHeight ) * 50,
+                color: Palette.grayColor,
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 630,
+              left: (Constant.screenWidth ) * 40,
+              child: Container(
+                  width: (Constant.screenHeight ) * 40,
+                  height: (Constant.screenHeight ) * 40,
+                  decoration: new BoxDecoration(
+                    color: Palette.grayColor,
+                    shape: BoxShape.circle,
+                  )),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 620,
+              left: (Constant.screenWidth ) * 118,
+              right: (Constant.screenWidth ) * 10,
+              height: (Constant.screenHeight ) * 70,
+              child:
+              isGender?
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+//                cursorColor: Colors.black,
+                    decoration: InputDecoration(
+//                      suffixIcon: new IconButton(
+//                        icon: new Icon(Icons.check,
+//                            size: 18.0,
+//                            color: Colors.green),
+//                        onPressed: () {
+//                          setState(() {
+//                            isGender = false;
+//                          });
+//                        },
+//                      ),
+                      labelText: "Gender",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide: BorderSide(color:  Color(0xFFFF8111),
+                              width: 1.0)
+                      ),
+//                      filled: true,
+//                      fillColor: Colors.white,
+                      hintText: "Gender",
+                    ),
+                    controller: editGender,
+                  )
+              ):
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+                    controller: editGender,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      suffixIcon: new IconButton(
+                        icon: new Icon(Icons.edit,
+                          size: 18.0,
+                          color: Palette.grayColor,),
+                        onPressed: () {
+                          setState(() {
+                            isGender = true;
+                          });
+                        },
+                      ),
+                      border: new UnderlineInputBorder(
+                          borderSide: new BorderSide(
+                              color: Palette.grayColor
+                          )
+                      ),
+                      labelText: "Date of Birth",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+
+                      hintText: "Gender",
+                      hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
+                    ),
+                  )
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 670,
+              left: (Constant.screenWidth ) * 57,
+              child: Container(
+                width: (Constant.screenHeight ) * 3,
+                height: (Constant.screenHeight ) * 50,
+                color: Palette.grayColor,
+              ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 710,
+              left: (Constant.screenWidth ) * 40,
+              child: Container(
+                  width: (Constant.screenHeight ) * 40,
+                  height: (Constant.screenHeight ) * 40,
+                  decoration: new BoxDecoration(
+                    color: Palette.grayColor,
+                    shape: BoxShape.circle,
+                  )),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 700,
+              left: (Constant.screenWidth ) * 118,
+              right: (Constant.screenWidth ) * 10,
+              height: (Constant.screenHeight ) * 70,
+              child:
+              isNIC?
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+//                cursorColor: Colors.black,
+                    decoration: InputDecoration(
+//                      suffixIcon: new IconButton(
+//                        icon: new Icon(Icons.check,
+//                            size: 18.0,
+//                            color: Colors.green),
+//                        onPressed: () {
+////                          setState(() {
+////                            isNIC = false;
+////                          });
+//                        },
+//                      ),
+//                      labelText: "NIC",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide: BorderSide(color:  Color(0xFFFF8111),
+                              width: 1.0)
+                      ),
+//                      enabledBorder: OutlineInputBorder(
+//                          borderRadius: BorderRadius.all(Radius.circular(8)),
+//                          borderSide: BorderSide(color:  Colors.black,
+//                              width: 1.0)
+//                      ),
+//                      filled: true,
+//                      fillColor: Colors.white,
+                      hintText: "NIC",
+                    ),
+                    controller: editNIC,
+                  )
+              ):
+              Container(
+                  child:TextFormField(
+                    autofocus:false,
+                    controller: editNIC,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      suffixIcon: new IconButton(
+                        icon: new Icon(Icons.edit,
+                          size: 18.0,
+                          color: Palette.grayColor,),
+                        onPressed: () {
+                          setState(() {
+                            isNIC = true;
+                          });
+                        },
+                      ),
+                      border: new UnderlineInputBorder(
+                          borderSide: new BorderSide(
+                              color: Palette.grayColor
+                          )
+                      ),
+                      hintText: "NIC",
+                      hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
+                    ),
+                  )
               ),
             ),
           ],
         ),
       ),
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+
+    editFirstName.dispose();
+    editLastName.dispose();
+    editMobile.dispose();
+    editCountry.dispose();
+    editDateOfBirth.dispose();
+    editNIC.dispose();
+    editGender.dispose();
+
+    super.dispose();
+
   }
 
   static void showAlert(BuildContext context, String text) {

@@ -54,7 +54,6 @@ class HealthTipsLayout extends State<HealthTips> {
                       Container(
                         height: Constant.screenHeight *100,
                         width: Constant.screenWidth * 414,
-
                       ),
                       Container(
                         width: Constant.screenWidth * 414,
@@ -124,7 +123,6 @@ class HealthTipsLayout extends State<HealthTips> {
                       child: Image.asset("assets/images/health.jpg",
                         fit: BoxFit.fitWidth,
                         alignment:Alignment.center ,
-
                       ),
                     ),
                     Container(

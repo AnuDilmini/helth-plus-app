@@ -17,7 +17,7 @@ class About extends StatefulWidget {
 class AboutLayout extends State<About> {
 
   MediaQueryData queryData;
-  String version;
+  String version = "1.0.0";
   final List<String> goalsList = [
     "Avoid junk food",
     "Walk 10k steps",
@@ -52,9 +52,9 @@ class AboutLayout extends State<About> {
                   width: Constant.screenWidth * 414,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xFFFF8000),
-                          Color(0xFFFF8111),
-                          Color(0xFFFC663C),],
+                        colors: [Palette.orangeLight,
+                         Palette.orangeColor,
+                          Palette.orangeDark],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                       )),
@@ -137,7 +137,7 @@ class AboutLayout extends State<About> {
 
   Future<String> _getVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    version = packageInfo.version;
+    version = packageInfo.version.toString();
     print("version $version");
     return "";
   }

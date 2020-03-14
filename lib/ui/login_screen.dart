@@ -137,12 +137,9 @@ class LoginScreen extends StatelessWidget {
               autovalidate: true,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-
                   children: <Widget>[
                     Text("Enter\nMobile Number", style: TextStyle(color:  Color(0xFFFF8111), fontSize: 30, fontWeight: FontWeight.w500),),
-
                     SizedBox(height: Constant.screenHeight * 150),
-
                     TextFormField(
                       decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
@@ -163,7 +160,6 @@ class LoginScreen extends StatelessWidget {
                       ),
                       controller: _phoneController,
                     ),
-
                     SizedBox(height: Constant.screenHeight * 40,),
                     Container(
                       width: double.infinity,
