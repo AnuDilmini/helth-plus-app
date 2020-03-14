@@ -88,7 +88,7 @@ class CreatePostLayout extends State<CreatePost> {
                       child: Text("Anushika Dilmini",
                         style: TextStyle(
                             color: Palette.black,
-                            fontFamily: "Montserrat-Regular",
+                            fontFamily: "HKGrotesk-Regular",
                             fontSize: 17.0
                         ),)
                   )
@@ -113,7 +113,7 @@ class CreatePostLayout extends State<CreatePost> {
                           labelText: "Public",
                           labelStyle: TextStyle(color: Palette.darkGrey,
                               fontSize: 10.0,
-                              fontFamily: "Montserrat-Regular"),
+                              fontFamily: "HKGrotesk-Regular"),
                         ),)
                   )
               ),
@@ -124,7 +124,7 @@ class CreatePostLayout extends State<CreatePost> {
                       child: Text("Update Status",
                         style: TextStyle(
                             color: Colors.white,
-                            fontFamily: "Montserrat-Regular",
+                            fontFamily: "HKGrotesk-Regular",
                             fontSize: 20.0
                         ),)
                   )
@@ -168,7 +168,7 @@ class CreatePostLayout extends State<CreatePost> {
                     hintText: 'What’s on your mind ?',
                     hintStyle: TextStyle(
                       fontSize: 16,
-                      fontFamily: 'Montserrat-Regular',
+                      fontFamily: 'HKGrotesk-Regular',
                       color: Palette.grayColor,
                     ),
                   ),

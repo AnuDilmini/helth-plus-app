@@ -84,7 +84,7 @@ class ProfileLayout extends State<Profile> {
                       child: Text("Anushika Dilmini",
                       style: TextStyle(
                         color: Colors.white,
-                        fontFamily: "Montserrat-Regular",
+                        fontFamily: "HKGrotesk-Regular",
                         fontSize: 20.0
 
                       ),)
@@ -106,7 +106,7 @@ class ProfileLayout extends State<Profile> {
                           labelText: "Payments",
                           labelStyle: TextStyle(color: Palette.darkGrey,
                           fontSize: 16.0,
-                          fontFamily: "Montserrat-Light"),
+                          fontFamily: "HKGrotesk-Light"),
 
                           ),)
                     )
@@ -127,7 +127,7 @@ class ProfileLayout extends State<Profile> {
                             labelText: ".life points",
                             labelStyle: TextStyle(color: Palette.darkGrey,
                                 fontSize: 16.0,
-                                fontFamily: "Montserrat-Light"),
+                                fontFamily: "HKGrotesk-Light"),
 
                           ),)
                     )
@@ -148,7 +148,7 @@ class ProfileLayout extends State<Profile> {
                             labelText: "Records",
                             labelStyle: TextStyle(color: Palette.darkGrey,
                                 fontSize: 16.0,
-                                fontFamily: "Montserrat-Light"),
+                                fontFamily: "HKGrotesk-Light"),
 
                           ),)
                     )
@@ -169,7 +169,7 @@ class ProfileLayout extends State<Profile> {
                             labelText: "Purchases",
                             labelStyle: TextStyle(color: Palette.darkGrey,
                                 fontSize: 16.0,
-                                fontFamily: "Montserrat-Light"),
+                                fontFamily: "HKGrotesk-Light"),
 
                           ),)
                     )
@@ -207,7 +207,7 @@ class ProfileLayout extends State<Profile> {
 //                              height: 1.5,
 //                              fontSize: 16.0,
 //                              color: Colors.white,
-//                              fontFamily:"Montserrat-Regular",
+//                              fontFamily:"HKGrotesk-Regular",
 //                            )
 //                        )
 //                    )
@@ -247,7 +247,7 @@ class ProfileLayout extends State<Profile> {
 //                              style: TextStyle(
 //                                  fontSize: 20.0,
 //                                  color: Colors.white,
-//                                  fontFamily: "Montserrat-Regular"
+//                                  fontFamily: "HKGrotesk-Regular"
 //                              ),
 //                            ),
 //                          ),

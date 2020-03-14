@@ -78,7 +78,7 @@ class HealthTipsLayout extends State<HealthTips> {
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 17.0,
-                          fontFamily: "Montserrat-Bold"
+                          fontFamily: "HKGrotesk-Bold"
                       ),),
                   ),
                 ),
@@ -134,7 +134,7 @@ class HealthTipsLayout extends State<HealthTips> {
                         child: Text("Summer health tips",
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                              fontFamily: "Montserrat-Regular",
+                              fontFamily: "HKGrotesk-Regular",
                               color: Palette.darkGrey,
                               fontSize: 17
                           ),

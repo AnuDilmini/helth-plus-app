@@ -35,13 +35,14 @@ class ProfileEditLayout extends State<ProfileEdit> {
         body: Stack(
           children: <Widget>[
             Container(
-              height: Constant.screenHeight* 812,
-              width: Constant.screenWidth * 414,
+              height: (Constant.screenHeight* 812) * 2  ,
+              width: (Constant.screenWidth * 414) * 2,
             ),
             Positioned(
-                top: (Constant.screenHeight ) * 60,
+                top: Constant.screenHeight  *40,
                 left: Constant.screenWidth * 21,
                 width: Constant.screenWidth * 50,
+                height: Constant.screenHeight  * 50,
                 child:GestureDetector(
                   child: Center(
                       child: Icon(Icons.arrow_back,)
@@ -52,7 +53,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
                 )
             ),
             Positioned(
-                top: (Constant.screenHeight ) * 110,
+                top: (Constant.screenHeight ) * 100,
                 width: Constant.screenWidth *414,
                 child:Container(
                   height: (Constant.screenHeight ) * 1,
@@ -60,11 +61,11 @@ class ProfileEditLayout extends State<ProfileEdit> {
                 )
             ),
             Positioned(
-              top: (Constant.screenHeight ) * 140,
+              top: (Constant.screenHeight ) * 120,
               left: (Constant.screenWidth ) * 20,
               child: Container(
-                  width: (Constant.screenHeight ) * 100,
-                  height: (Constant.screenHeight ) * 100,
+                  width: (Constant.screenHeight ) * 90,
+                  height: (Constant.screenHeight ) * 90,
                   decoration: new BoxDecoration(
                       color: Palette.orangeColor,
                       shape: BoxShape.circle,
@@ -77,15 +78,15 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   )),
             ),
             Positioned(
-              top: (Constant.screenHeight ) * 170,
-              left: (Constant.screenWidth ) * 150,
+              top: (Constant.screenHeight ) * 150,
+              left: (Constant.screenWidth ) * 130,
               child: Container(
                   width: (Constant.screenHeight ) * 200,
                   height: (Constant.screenHeight ) * 60,
                   child: Text("Anushika Dilmini",
                   style: TextStyle(
                     fontSize: 20.0,
-                    fontFamily: "Montserrat-Bold",
+                    fontFamily: "HKGrotesk-Bold",
                     color: Palette.orangeColor
                   ),),
               ),
@@ -95,7 +96,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
               left: (Constant.screenWidth ) * 65,
               child: Container(
                 width: (Constant.screenHeight ) * 4,
-                height: (Constant.screenHeight ) * 100,
+                height: (Constant.screenHeight ) * 70,
                 color: Palette.orangeColor,
               ),
             ),

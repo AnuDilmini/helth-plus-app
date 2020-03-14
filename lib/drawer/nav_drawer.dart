@@ -65,7 +65,7 @@ class _NavDrawerState extends State<NavDrawer> {
                 child: Text("Hello, Anushika",
                   style: TextStyle(
                       color: Colors.white,
-                      fontFamily: "Montserrat-Regular",
+                      fontFamily: "HKGrotesk-Regular",
                       fontSize: 17.0
                   ),)
             ),
@@ -77,7 +77,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   child: Text("Home",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Bold",
+                        fontFamily: "HKGrotesk-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -94,7 +94,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   child: Text("Profile",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Bold",
+                        fontFamily: "HKGrotesk-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -111,7 +111,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   child: Text("Helps",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Bold",
+                        fontFamily: "HKGrotesk-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -128,7 +128,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   child: Text("About Us ",
                     style: TextStyle(
                         color: Palette.orangeLight,
-                        fontFamily: "Montserrat-Bold",
+                        fontFamily: "HKGrotesk-Bold",
                         fontSize: 17.0
                     ),),
                   onTap: (){
@@ -145,7 +145,7 @@ class _NavDrawerState extends State<NavDrawer> {
 //                  child: Text("Dining and Entertainment",
 //                    style: TextStyle(
 //                        color: Colors.white,
-//                        fontFamily: "Montserrat-Light",
+//                        fontFamily: "HKGrotesk-Light",
 //                        fontSize: 17.0
 //                    ),),
 //                  onTap: (){
@@ -161,7 +161,7 @@ class _NavDrawerState extends State<NavDrawer> {
 //                  child: Text("Restaurants",
 //                    style: TextStyle(
 //                        color: Colors.white,
-//                        fontFamily: "Montserrat-Light",
+//                        fontFamily: "HKGrotesk-Light",
 //                        fontSize: 17.0
 //                    ),),
 //                  onTap: (){
@@ -177,7 +177,7 @@ class _NavDrawerState extends State<NavDrawer> {
 //                  child:Text("Parking",
 //                    style: TextStyle(
 //                        color: Colors.white,
-//                        fontFamily: "Montserrat-Light",
+//                        fontFamily: "HKGrotesk-Light",
 //                        fontSize: 17.0
 //                    ),) ,
 //                  onTap: (){
@@ -193,7 +193,7 @@ class _NavDrawerState extends State<NavDrawer> {
 //                  child: Text("Settings",
 //                    style: TextStyle(
 //                        color: Colors.white,
-//                        fontFamily: "Montserrat-Light",
+//                        fontFamily: "HKGrotesk-Light",
 //                        fontSize: 17.0
 //                    ),),
 //                  onTap: (){
@@ -234,7 +234,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   child: Text("Log Out",
                     style: TextStyle(
                         fontSize: 17.0,
-                        fontFamily: "Montserrat-Bold",
+                        fontFamily: "HKGrotesk-Bold",
                         color: Colors.white
 
                     ),

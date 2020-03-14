@@ -146,7 +146,7 @@ class DashboardState extends State<Dashboard> {
                     height: (Constant.screenHeight/896) * 35,
                     child: Text("Today",
                       style: TextStyle(
-                          fontFamily: "Montserrat-Bold",
+                          fontFamily: "HKGrotesk-Bold",
                           fontSize: 16.0,
                           color: Palette.darkGrey
                       ),
@@ -199,7 +199,7 @@ class DashboardState extends State<Dashboard> {
                     height: (Constant.screenHeight/896) * 35,
                     child: Text("Quick Links",
                       style: TextStyle(
-                          fontFamily: "Montserrat-Bold",
+                          fontFamily: "HKGrotesk-Bold",
                           fontSize: 14.0,
                           color: Palette.darkGrey
                       ),
@@ -226,7 +226,7 @@ class DashboardState extends State<Dashboard> {
                         child: Text("LifePlus",
                           style: TextStyle(
                               fontSize: 20.0,
-                              fontFamily: "Montserrat-Regular",
+                              fontFamily: "HKGrotesk-Regular",
                               color: Colors.green
                           ),)
                       )

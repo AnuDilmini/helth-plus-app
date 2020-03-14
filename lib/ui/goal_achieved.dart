@@ -67,7 +67,7 @@ class GoalAchievedLayout extends State<GoalAchieved> {
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 16.0,
-                    fontFamily: "Montserrat-Regular"
+                    fontFamily: "HKGrotesk-Regular"
                 ),),
             ),
             Positioned(
@@ -78,7 +78,7 @@ class GoalAchievedLayout extends State<GoalAchieved> {
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 22.0,
-                    fontFamily: "Montserrat-Bold"
+                    fontFamily: "HKGrotesk-Bold"
                 ),),
             ),
             Positioned(
@@ -91,7 +91,7 @@ class GoalAchievedLayout extends State<GoalAchieved> {
                   style: TextStyle(
                       color: Colors.black,
                       fontSize:17.0,
-                      fontFamily: "Montserrat-Medium"
+                      fontFamily: "HKGrotesk-Medium"
                   ),),
               )
             ),

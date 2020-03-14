@@ -34,7 +34,7 @@ dependencies:
   cached_network_image: ^2.0.0
   ok_image: ^0.3.0
   package_info: ^0.4.0+3
-  fit_kit: ^1.1.1
+
 
 dev_dependencies:
   flutter_test:
@@ -69,18 +69,18 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Montserrat-Light
+    - family: HKGrotesk-Light
       fonts:
-        - asset: assets/fonts/Montserrat-Light.otf
-    - family: Montserrat-Medium
+        - asset: assets/fonts/HKGrotesk-Light.otf
+    - family: HKGrotesk-Medium
       fonts:
-        - asset: assets/fonts/Montserrat-Medium.otf
-    - family: Montserrat-Regular
+        - asset: assets/fonts/HKGrotesk-Medium.otf
+    - family: HKGrotesk-Regular
       fonts:
-        - asset: assets/fonts/Montserrat-Regular.otf
-    - family: Montserrat-Bold
+        - asset: assets/fonts/HKGrotesk-Regular.otf
+    - family: HKGrotesk-Bold
       fonts:
-        - asset: assets/fonts/Montserrat-Bold.otf
+        - asset: assets/fonts/HKGrotesk-Bold.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
