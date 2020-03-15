@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/ui/registration_test.dart';
+import 'package:health_plus/utils/network_helper.dart';
+import 'package:http/http.dart' as http;
 
 
 class Registration extends StatefulWidget{
@@ -153,7 +154,7 @@ class _RegistrationState extends State<Registration> {
                                   Icons.mobile_screen_share,
                                   color: Colors.grey,
                                 ),
-                                labelText: widget.user.phoneNumber,
+                                labelText: "0765956264",
                                 labelStyle: TextStyle(
                                     color: Color(0xFF9b9b9b),
                                     fontSize: 15,
@@ -194,9 +195,11 @@ class _RegistrationState extends State<Registration> {
                                       borderRadius:
                                       new BorderRadius.circular(20.0)),
                                   onPressed: (){
-                                    Navigator.push(context, MaterialPageRoute(
-                                        builder: (context) => BottomNavigation(index: 0)
-                                    ));
+
+                                    signUp(context);
+//                                    Navigator.push(context, MaterialPageRoute(
+//                                        builder: (context) => BottomNavigation(index: 0)
+//                                    ));
                                   }
 //                                  _isLoading ? null : _handleLogin
                               ),
@@ -214,6 +217,86 @@ class _RegistrationState extends State<Registration> {
       ),
     );
   }
+
+  Future<String> signUp(BuildContext context) async {
+    print("signup");
+    String url = 'http://10.0.2.2:8080/api/v1/users/add';
+    var response;
+
+    bool networkResults = await NetworkHelper.checkNetwork();
+
+    if (networkResults) {
+      try {
+         print("url $url");
+          response =
+              await http.post(
+                  url,
+              body: {
+                "first_name": "Anushika",
+                "name": "07198093930",
+                "last_name": "Dilmini123",
+                "email": "anushikadilmini@gmail.com",
+                "passowrd": "12345678"
+              }
+          );
+         print("url*** $url");
+//        int responseCode = response.statusCode;
+//        print(" --- response 1 ----- : "+responseCode.toString());
+//         var convertData = json.decode(response.body);
+//         print(" --- response ----- : "+response.body);
+
+//        if (responseCode == 200) {
+////          var convertData = json.decode(response.body);
+////             // print(" --- response ----- : "+convertData.toString());
+////          var userP = userMFromJson(response.body);
+////          String token = convertData['access_token'];
+////          saveUserProfile(userP);
+////          saveToken(token, userP.user.name, userP.user.userProfile.profileImage, userP.user.id);
+////          //   // print("name -->"+userP.user.userProfile.firstName);
+////          //   // print("token =- >"+token);
+//          setState(() {
+////            _success = true;
+////            _isLoading = false;
+////            _showAlertDialog(context,"English Tea Shop will now review your details and approve your account");
+//////            Constant.selectedMainIndexPage = 2;
+//////            Navigator.pushAndRemoveUntil( context, MaterialPageRoute( builder: (BuildContext context) => callMainWidget(token), ), ModalRoute.withName('/'));
+//            //   // print("Successs !!!");
+//          });
+//        } else if (responseCode == 425) {
+//          setState(() {
+////            _isLoading = false;
+////            //   // print("User Not Found !");
+////            showSnackbar(context,"Email alreay exist !");
+//          });
+//        } else {
+//          setState(() {
+////            _isLoading = false;
+////            //   // print("Error while fetching data" + response.body);
+////            showSnackbar(context,"Server error ! ");
+//          });
+//        }
+        return "Success";
+      } catch (Exception) {
+        setState(() {
+//          _isLoading = false;
+        print("Exception");
+              print("Exception ----> : " + Exception.toString());
+//          showSnackbar(context," Error !");
+        });
+
+      }
+    }else{
+      setState(() {
+//        _isLoading = false;
+//        //   // print("No Internet !! ");
+//        showSnackbar(context,"No Internet !! ");
+      });
+//      showAlert(context, "No Internet !!");
+
+    }
+  }
+
+
   void _handleLogin() async {
 //    setState(() {
 //      _isLoading = true;
