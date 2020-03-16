@@ -88,7 +88,7 @@ class DashboardState extends State<Dashboard> {
                         Container(
                           width: Constant.screenWidth,
                           height: (Constant.screenHeight - (Constant.screenHeight/896) * 350.0),
-                          color: Palette.grayColor,
+                          color: Colors.grey[100],
                         ),
                         Container(
                           width: Constant.screenWidth,

@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
+import 'package:health_plus/utils/network_helper.dart';
+import 'package:http/http.dart' as http;
 
 import 'dashboard.dart';
 
@@ -29,6 +31,11 @@ class ProfileEditLayout extends State<ProfileEdit> {
 
   bool isFirstName = false, isLastName = false, isCompany = false, isMobile = false, isDateOfBirth = false, isNIC= false, isGender = false;
 
+
+  @override
+  void initState() {
+    editCountry.text = "Sri Lanka";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +197,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   ),
 //                  filled: true,
 //                  fillColor: Colors.white,
-                  hintText: "Name",
+//                  hintText: "Name",
                 ),
                 controller: editFirstName,
                )
@@ -301,8 +308,10 @@ class ProfileEditLayout extends State<ProfileEdit> {
                               color: Palette.grayColor
                           )
                       ),
+                      labelText: "Last Name",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
                       hintText: "Last Name",
-                      hintStyle: TextStyle(fontSize: 14, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
+                      hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
                     ),
                   )
               ),
@@ -384,6 +393,8 @@ class ProfileEditLayout extends State<ProfileEdit> {
                               color: Palette.grayColor
                           )
                       ),
+                      labelText: "Phone Number",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
                       hintText: "Phone Number",
                       hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
                     ),
@@ -552,9 +563,8 @@ class ProfileEditLayout extends State<ProfileEdit> {
                               color: Palette.grayColor
                           )
                       ),
-                      labelText: "Date of Birth",
+                      labelText: "Gender",
                       labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
-
                       hintText: "Gender",
                       hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
                     ),
@@ -603,7 +613,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
 ////                          });
 //                        },
 //                      ),
-//                      labelText: "NIC",
+//                    labelText: "NIC",
                       labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -643,11 +653,43 @@ class ProfileEditLayout extends State<ProfileEdit> {
                               color: Palette.grayColor
                           )
                       ),
+                      labelText: "NIC",
+                      labelStyle: TextStyle(fontSize: 12, color: Palette.orangeLight,  fontFamily: 'HKGrotesk-Bold' ),
                       hintText: "NIC",
                       hintStyle: TextStyle(fontSize: 12, color: Palette.brownishGrey,  fontFamily: 'HKGrotesk-Medium' ),
                     ),
                   )
               ),
+            ),
+            Positioned(
+              top: (Constant.screenHeight ) * 820,
+              left: (Constant.screenWidth ) * 250,
+              right: (Constant.screenWidth ) * 10,
+              height: (Constant.screenHeight ) * 50,
+              child: GestureDetector(
+                child:Container(
+                    decoration: BoxDecoration(
+                        color: Palette.orangeLight,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        )
+                    ),
+
+                  child: Center(
+                    child: Text(
+                      "Update",
+                      style:  TextStyle(
+                          fontSize: 14.0,
+                          fontFamily:  'HKGrotesk-Regular',
+                          color: Colors.white
+                      ),
+                    ),
+                  )
+                ),
+                onTap: (){
+                  print("update");
+                },
+              )
             ),
           ],
         ),
@@ -670,6 +712,90 @@ class ProfileEditLayout extends State<ProfileEdit> {
     super.dispose();
 
   }
+
+//  Future<String> ProfileEdit() async{
+////    String url = Constant.updateProfile;
+//    print("profile Edit");
+//    bool networkResults = await NetworkHelper.checkNetwork();
+//
+////    ////   // print(" post_text  > "+postTextController.text+"image_url   "+_image.toString()+"     video_url --- is_publc --->"+seletedPostActiveID.postActiveId+"  ---?  is_active  1");
+//
+//    if(networkResults){
+//
+//      Map<String, String> headers = {"Accept": "application/json", "Authorization": "Bearer "+ Constant.token};
+//      Map<String, String> body = {
+//        "first_name": editFirstName.text,
+//        "last_name": editLastName.text,
+//        "mobile_number": editMobile.text,
+//        "gender": editGender.text,
+//        "nic": editNIC.text,
+//        "date_of_birth": editDateOfBirth.text,
+//      };
+//
+//      var uri = Uri.parse(url);
+//
+//      // create multipart request
+//      var request = new http.MultipartRequest("POST", uri);
+//      request.headers.addAll(headers);
+//      request.fields.addAll(body);
+//
+//
+////      // add file to multipart
+////      if(imageOfProfile != null){
+////
+////        // open a bytestream
+////        var stream = new http.ByteStream(
+////            DelegatingStream.typed(imageOfProfile.openRead()));
+////        // get file length
+////        var length = await imageOfProfile.length();
+////
+////        // string to uri
+////
+////        var multipartFile;
+////        // multipart that takes file
+////        multipartFile = new http.MultipartFile('profile_image', stream, length,
+////            filename: basename(imageOfProfile.path));
+////        request.files.add(multipartFile);
+////      }
+//
+//      // send
+//      var response = await request.send();
+//      ////print(response.statusCode);
+//
+//      // listen for response
+//      response.stream.transform(utf8.decoder).listen((value) {
+//        ////print(value);
+//      });
+//
+//      ////   // print(" profile ${response.statusCode}");
+//      if (response.statusCode == 200) {
+//
+//        ////   // print("profile edit sucessfully !!!!");
+//        setState(() {
+//          Constant.profileListConstant.clear();
+//          _isLoading = true;
+//
+//          getUserProfileData(context);
+//        });
+//
+//      }else if(response.statusCode == 404){
+//        //          _isLoading = false;
+//        ////   // print("Data Not Found !");
+//      }else if (response.statusCode == 500){
+//
+//        ////   // print("server Error");
+//
+//      }else{
+//        ////print(response.toString());
+//        ////   // print("Error while fetching data");
+//      }
+//      return null;
+//    }else{
+//      showAlert(context, "No Internet !");
+//    }
+//
+//  }
+
 
   static void showAlert(BuildContext context, String text) {
     var alert = new AlertDialog(

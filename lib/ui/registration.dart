@@ -196,10 +196,10 @@ class _RegistrationState extends State<Registration> {
                                       new BorderRadius.circular(20.0)),
                                   onPressed: (){
 
-                                    signUp(context);
-//                                    Navigator.push(context, MaterialPageRoute(
-//                                        builder: (context) => BottomNavigation(index: 0)
-//                                    ));
+//                                    signUp(context);
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => BottomNavigation(index: 0)
+                                    ));
                                   }
 //                                  _isLoading ? null : _handleLogin
                               ),

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/ui/registration.dart';
 
+import 'drawer/bottom_nav.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Registration(),
+      home: BottomNavigation(index: 0),
 //    MyAppPage(title: 'Phone Authentication'),
     );
   }
