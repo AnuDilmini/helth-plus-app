@@ -55,7 +55,7 @@ class DiscoverLayout extends State<Discover> {
           child:Stack(
            children: <Widget>[
                Container(
-                 height: (Constant.screenHeight * 812) * 1.3,
+                 height: (Constant.screenHeight * 812) * 1.35,
                  width: Constant.screenWidth * 414,
                ),
              Positioned(
@@ -91,64 +91,71 @@ class DiscoverLayout extends State<Discover> {
                      scrollDirection: Axis.horizontal,
                      itemCount: 1,
                      itemBuilder: (context, position) {
-                       return Card(
-                         margin: EdgeInsets.only(left: 15.0),
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius
-                               .circular(8.0),
-                         ),
-                         child: ClipRRect(
-                           borderRadius: BorderRadius
-                               .circular(6.0),
-                           child: Container(
-                               color: listColor[position],
-                               width: Constant.screenWidth * 160,
-                               child: Column(
-                                 mainAxisAlignment: MainAxisAlignment.start,
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: <Widget>[
-                                   Container(
-                                     decoration: BoxDecoration(
-                                     borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
-                                     border:  Border.all(color: Colors.black,
-                                     width: 1.0)
+                       return GestureDetector(
+                         child:Card(
+                           margin: EdgeInsets.only(left: 15.0),
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius
+                                 .circular(8.0),
+                           ),
+                           child: ClipRRect(
+                               borderRadius: BorderRadius
+                                   .circular(6.0),
+                               child: Container(
+                                 color: listColor[position],
+                                 width: Constant.screenWidth * 160,
+                                 child: Column(
+                                   mainAxisAlignment: MainAxisAlignment.start,
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: <Widget>[
+                                     Container(
+                                         decoration: BoxDecoration(
+                                             borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
+                                             border:  Border.all(color: Colors.black,
+                                                 width: 1.0)
+                                         ),
+                                         margin: EdgeInsets.only(top: 10.0,left: 10.0),
+                                         height: Constant.screenHeight * 20,
+                                         width: Constant.screenWidth * 75,
+                                         child: Center(
+                                           child: Text("Challenge",
+                                             style: TextStyle(
+                                                 fontSize: 10.0,
+                                                 color: Colors.black,
+                                                 fontFamily: "HKGrotesk-Bold"
+                                             ),
+                                           ),
+                                         )
                                      ),
-                                     margin: EdgeInsets.only(top: 10.0,left: 10.0),
-                                     height: Constant.screenHeight * 20,
-                                     width: Constant.screenWidth * 75,
-                                     child: Center(
-                                       child: Text("Challenge",
-                                         style: TextStyle(
-                                             fontSize: 10.0,
+                                     Container(
+                                       margin: EdgeInsets.only(top: 3.0,left: 10.0),
+                                       child: Text("Dhaka to Jaflong",
+                                         style: TextStyle(fontSize: 14.0,
                                              color: Colors.black,
                                              fontFamily: "HKGrotesk-Bold"
                                          ),
                                        ),
+                                     ),
+                                     Container(
+                                       margin: EdgeInsets.only(top: 3.0,left: 10.0),
+                                       child: Text("Step Challenge",
+                                         style: TextStyle(fontSize: 12.0,
+                                             color: Colors.grey,
+                                             fontFamily: "HKGrotesk-Bold"
+                                         ),
+                                       ),
                                      )
-                                   ),
-                                   Container(
-                                     margin: EdgeInsets.only(top: 3.0,left: 10.0),
-                                     child: Text("Dhaka to Jaflong",
-                                       style: TextStyle(fontSize: 14.0,
-                                           color: Colors.black,
-                                           fontFamily: "HKGrotesk-Bold"
-                                       ),
-                                     ),
-                                   ),
-                                   Container(
-                                     margin: EdgeInsets.only(top: 3.0,left: 10.0),
-                                     child: Text("Step Challenge",
-                                       style: TextStyle(fontSize: 12.0,
-                                           color: Colors.grey,
-                                           fontFamily: "HKGrotesk-Bold"
-                                       ),
-                                     ),
-                                   )
-                                 ],
-                               ),
-                             )
+                                   ],
+                                 ),
+                               )
+                           ),
+                           elevation: 3,
                          ),
-                         elevation: 3,
+                         onTap: (){
+                           Navigator.push(context, MaterialPageRoute(
+                               builder: (context) => HealthInnerPage()
+                           ));
+                         },
                        );
                      }
                  ),
@@ -171,10 +178,12 @@ class DiscoverLayout extends State<Discover> {
 //             left: Constant.screenWidth *15,
                width: Constant.screenWidth * 414,
                child: ListView.builder(
+                   reverse: false,
                    scrollDirection: Axis.horizontal,
                    itemCount: 2,
                    itemBuilder: (context, position) {
-                     return Card(
+                     return GestureDetector(
+                         child:Card(
                        margin: EdgeInsets.only(left: 15.0),
                        shape: RoundedRectangleBorder(
                          borderRadius: BorderRadius
@@ -232,10 +241,15 @@ class DiscoverLayout extends State<Discover> {
                            )
                        ),
                        elevation: 3,
+                     ),
+                       onTap: (){
+                         Navigator.push(context, MaterialPageRoute(
+                             builder: (context) => HealthInnerPage()
+                         ));
+                       },
                      );
                    }
                ),
-
              ),
              Positioned(
                  top: Constant.screenHeight  * 590,
@@ -258,7 +272,8 @@ class DiscoverLayout extends State<Discover> {
                    scrollDirection: Axis.horizontal,
                    itemCount: 5,
                    itemBuilder: (context, position) {
-                     return Card(
+                     return GestureDetector(
+                         child: Card(
                        margin: EdgeInsets.only(left: 15.0),
                        shape: RoundedRectangleBorder(
                          borderRadius: BorderRadius
@@ -316,6 +331,12 @@ class DiscoverLayout extends State<Discover> {
                            )
                        ),
                        elevation: 3,
+                     ),
+                         onTap: (){
+                       Navigator.push(context, MaterialPageRoute(
+                           builder: (context) => HealthInnerPage()
+                       ));
+                     },
                      );
                    }
                ),
@@ -342,7 +363,8 @@ class DiscoverLayout extends State<Discover> {
                    scrollDirection: Axis.horizontal,
                    itemCount: 5,
                    itemBuilder: (context, position) {
-                     return Card(
+                     return GestureDetector(
+                         child: Card(
                        margin: EdgeInsets.only(left: 15.0),
                        shape: RoundedRectangleBorder(
                          borderRadius: BorderRadius
@@ -400,6 +422,12 @@ class DiscoverLayout extends State<Discover> {
                            )
                        ),
                        elevation: 3,
+                     ),
+                       onTap: (){
+                         Navigator.push(context, MaterialPageRoute(
+                             builder: (context) => HealthInnerPage()
+                         ));
+                       },
                      );
                    }
                ),
@@ -412,92 +440,6 @@ class DiscoverLayout extends State<Discover> {
     );
   }
 
-  Card getStructuredGridCell(int position) {
-    // print("cell position $position");
-    // print("----Image----${Constant.ImageBaseURL+blendDataList[position].dryLeafImgUrl}" );
-    return new Card(
-      elevation: 0.0,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0)),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(6.0),
-//        child: CachedNetworkImage(
-//          imageUrl: Constant.ImageBaseURL+blendDataList[position].infusionDesImgUrl ?? "http://192.168.100.71/amazon_tea_etf/public/onedrive_contents/blends/blend_photos/01 - QUADRANT - Style No - BR290901 - SFETSIH0000001 - English Breakfast.JPG",
-//          placeholder: (context, url) => new CircularProgressIndicator(),
-//          errorWidget: (context, url, error) => new Icon(Icons.error),
-//          width: (queryData.size.width/2)-30,
-//          fit: BoxFit.fill,
-//        ),
-//        child: OKImage(
-//          url: Constant.ImageBaseURL+blendDataList[position].dryLeafImgUrl ,
-//          loadingWidget: Center(
-//            child: Container(
-//              width: ((queryData.size.width/2)*
-//                  0.06),
-//              height: ((queryData.size.width/2)*
-//                  0.06),
-//              child:
-//              CircularProgressIndicator(),
-//            ),
-//          ),
-//          errorWidget: Center(
-//            child: Container(
-//              width: ((queryData.size.width/2)*
-//                  0.03),
-//              height: ((queryData.size.width/2)*
-//                  0.03),
-//              child: Icon(Icons.error),
-//            ),
-//          ),
-//          width: (queryData.size.width/300)*200,
-//          height: (queryData.size.width/300)*200,
-//          fit: BoxFit.fill,
-//        ),
-      ),
-    );
-  }
-  _horizontalButtonView(){
-    return ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.black,
-        ),
-        padding: EdgeInsets.all(10.0),
-        shrinkWrap: true,
-        primary: true,
-        scrollDirection: Axis.horizontal,
-        itemCount:20,
-        itemBuilder: (BuildContext context, int index) {
-          return  GestureDetector(
-            child:getStructuredGridCell(index),
-//            new Container(
-//                height: (Constant.screenHeight/896) *80,
-//                child: Row(
-//                  children: <Widget>[
-//                    new Container(
-//                        width: (Constant.screenHeight /896) * 60,
-//                        height: (Constant.screenHeight/ 896 ) * 60,
-//                        decoration: new BoxDecoration(
-//                            shape: BoxShape.circle,
-//                            image: new DecorationImage(
-//                                fit: BoxFit.fill,
-//                                image: new NetworkImage(
-//                                  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-//                                )
-//                            )
-//                        )),
-//                    new Container(
-//                      margin: EdgeInsetsDirectional.only(start: (Constant.screenWidth /414)*30),
-//                      child: Center(
-//                        child: Text(""),
-//
-//                      ),
-//                    ),
-//                  ],
-//                )
-//            ),
-          );
-        });
-  }
 }
 
 

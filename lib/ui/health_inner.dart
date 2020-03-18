@@ -7,6 +7,8 @@ import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 import 'package:ok_image/ok_image.dart';
 
+import 'discover.dart';
+
 class HealthInnerPage extends StatefulWidget {
 
 //  NewsInnerPageWidget(bool isSearch , String isSearchText){
@@ -162,7 +164,7 @@ class HealthInnerWidget extends State<HealthInnerPage> {
                 color: Colors.white,
               ),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => HealthTips()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Discover()));
 
               },
             ),
