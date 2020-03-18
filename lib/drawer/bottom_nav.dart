@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_plus/ui/create_post.dart';
 import 'package:health_plus/ui/dashboard.dart';
+import 'package:health_plus/ui/discover.dart';
 import 'package:health_plus/ui/goal_achieved.dart';
 import 'package:health_plus/ui/health_tips.dart';
 import 'package:health_plus/ui/profile.dart';
@@ -34,7 +35,7 @@ class NavigatioLayout extends State<BottomNavigation> {
       fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
-    HealthTips(),
+    Discover(),
     Profile(),
 //    PromotionInnerClass(),
 //    PromotionClass(),
@@ -93,7 +94,7 @@ class NavigatioLayout extends State<BottomNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            title: Text('Health Tips'),
+            title: Text('Discover'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
