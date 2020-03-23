@@ -115,9 +115,19 @@ class DashboardState extends State<Dashboard> {
                               children: <Widget>[
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(
-                                        builder: (context) => Goals()
-                                    ));
+                                    if(position == 0){
+
+                                      Navigator.push(context, MaterialPageRoute(
+                                          builder: (context) => Goals()
+                                      ));
+
+                                    }else{
+
+                                      Navigator.push(context, MaterialPageRoute(
+                                          builder: (context) => Goals()
+                                      ));
+
+                                    }
                                   },
                                   child: Card(
                                     shape: RoundedRectangleBorder(
@@ -131,7 +141,7 @@ class DashboardState extends State<Dashboard> {
                                         width: Constant.screenWidth,
                                       ),
                                     ),
-                                    elevation: 0,
+                                    elevation: 3,
                                   ),
                                 ),
                               ],
