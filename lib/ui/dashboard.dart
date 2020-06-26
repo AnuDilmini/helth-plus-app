@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/drawer/nav_drawer.dart';
 import 'package:health_plus/utils/Palette.dart';
+import 'package:health/health.dart';
 
 import '../utils/constant.dart';
 import 'create_post.dart';
 import 'goals.dart';
+import 'google_fit.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -22,11 +24,11 @@ class DashboardState extends State<Dashboard> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final List<String> imgList = [
-    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-    'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+    'https://images.pexels.com/photos/40751/running-runner-long-distance-fitness-40751.jpeg?cs=srgb&dl=woman-girl-silhouette-jogger-40751.jpg&fm=jpg',
+    'https://images.pexels.com/photos/48604/pexels-photo-48604.jpeg?cs=srgb&dl=computer-desk-laptop-stethoscope-48604.jpg&fm=jpg',
+    'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?cs=srgb&dl=bowl-of-vegetable-salad-and-fruits-936611.jpg&fm=jpg',
+    'https://images.pexels.com/photos/235922/pexels-photo-235922.jpeg?cs=srgb&dl=adventure-athlete-athletic-daylight-235922.jpg&fm=jpg',
+    'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?cs=srgb&dl=bamboo-bamboo-whisk-board-bowls-461428.jpg&fm=jpg',
   ];
 
 
@@ -93,7 +95,7 @@ class DashboardState extends State<Dashboard> {
                         Container(
                           width: Constant.screenWidth,
                           height: (Constant.screenHeight )*0.7 ,
-                          color: Palette.lightBlue,
+                          color: Colors.white,
                           child: _horizontalButtonView()
                         )
                       ],
@@ -117,11 +119,15 @@ class DashboardState extends State<Dashboard> {
                                   onTap: () {
                                     if(position == 0){
 
-                                      Navigator.push(context, MaterialPageRoute(
-                                          builder: (context) => Goals()
-                                      ));
+                                    Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => Goals()
+                                    ));
+                                    }else if(position == 1){
+                                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                                       builder: (context) => GoogleFit()
+                                   ), (route) => false);
 
-                                    }else{
+                                    } else{
 
                                       Navigator.push(context, MaterialPageRoute(
                                           builder: (context) => Goals()
@@ -377,28 +383,56 @@ class DashboardState extends State<Dashboard> {
         itemBuilder: (BuildContext context, int index) {
           return  GestureDetector(
             child:new Container(
-                height: (Constant.screenHeight/896) *80,
-                child: Row(
+                height: (Constant.screenHeight/896) *180,
+                child: Column(
                   children: <Widget>[
-                    new Container(
-                        width: (Constant.screenHeight /896) * 60,
-                        height: (Constant.screenHeight/ 896 ) * 60,
-                        decoration: new BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: new DecorationImage(
-                                fit: BoxFit.fill,
-                                image: new NetworkImage(
-                                  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                    Container(
+                       height: (Constant.screenHeight/ 896 ) * 80,
+                       child: Row(
+                      children: <Widget>[
+                        new Container(
+                            width: (Constant.screenHeight /896) * 60,
+                            height: (Constant.screenHeight/ 896 ) * 60,
+                            decoration: new BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: new DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: new NetworkImage(
+                                      'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                                    )
                                 )
+                            )),
+                        new Container(
+                          margin: EdgeInsetsDirectional.only(start: (Constant.screenWidth /414)*30),
+                          child: Center(
+                            child: Column(
+                              children: <Widget>[
+                                Text("Rosiru Tharumal",
+                                  style: TextStyle(fontSize: 14.0,
+                                  color: Colors.black),),
+                                Text("04/04/2020 9.00AM",
+                                  style: TextStyle(fontSize: 14.0,
+                                      color: Colors.blueGrey),),
+                              ],
                             )
-                        )),
-                    new Container(
-                      margin: EdgeInsetsDirectional.only(start: (Constant.screenWidth /414)*30),
-                      child: Center(
-                        child: Text(""),
-
-                      ),
+                          ),
+                        ),
+                      ],
                     ),
+                    ),
+                    Container(
+                      height: (Constant.screenHeight/896) *80 ,
+                      child:Column(
+                        children: <Widget>[
+                          Text("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: Colors.grey
+                          ),)
+                        ],
+                      )
+                    )
                   ],
                 )
             ),

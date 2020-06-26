@@ -30,14 +30,15 @@ class GoalsLayout extends State<Goals> {
     ];
 
 
+
   final List<String> imgList = [
-    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-    'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+    'https://images.pexels.com/photos/40751/running-runner-long-distance-fitness-40751.jpeg?cs=srgb&dl=woman-girl-silhouette-jogger-40751.jpg&fm=jpg',
+    'https://images.pexels.com/photos/48604/pexels-photo-48604.jpeg?cs=srgb&dl=computer-desk-laptop-stethoscope-48604.jpg&fm=jpg',
+    'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?cs=srgb&dl=bowl-of-vegetable-salad-and-fruits-936611.jpg&fm=jpg',
+    'https://images.pexels.com/photos/235922/pexels-photo-235922.jpeg?cs=srgb&dl=adventure-athlete-athletic-daylight-235922.jpg&fm=jpg',
+    'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?cs=srgb&dl=bamboo-bamboo-whisk-board-bowls-461428.jpg&fm=jpg',
+    'https://images.pexels.com/photos/1671217/pexels-photo-1671217.jpeg?cs=srgb&dl=two-woman-doing-exercise-1671217.jpg&fm=jpg',
+    'https://images.pexels.com/photos/863977/pexels-photo-863977.jpeg?cs=srgb&dl=three-women-s-doing-exercises-863977.jpg&fm=jpg',
   ];
   @override
   Widget build(BuildContext context) {
@@ -76,8 +77,9 @@ class GoalsLayout extends State<Goals> {
                       ),
                       Container(
                         width: Constant.screenWidth * 414,
-                        height: Constant.screenHeight * 812 - (Constant.screenHeight * 100),
+                        height: Constant.screenHeight * 812 - (Constant.screenHeight * 160),
                         padding: EdgeInsets.only(top: Constant.screenWidth* 80, left:  Constant.screenWidth * 15 ),
+
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: new BorderRadius.only(

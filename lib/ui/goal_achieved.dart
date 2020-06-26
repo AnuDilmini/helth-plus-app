@@ -115,7 +115,7 @@ class GoalAchievedLayout extends State<GoalAchieved> {
                       )),
                   onTap: (){
                     showAlert(context,
-                        "Your session has expired! Please log-in again.");
+                        "Your session has expired! \nPlease log-in again.");
                   },
                 )
             ),
@@ -138,7 +138,8 @@ class GoalAchievedLayout extends State<GoalAchieved> {
                             color: Colors.white),),
                     )),
                 onTap: (){
-
+                  showAlert(context,
+                      "Congratulation!\nStay healthy.");
                 },
               )
             ),
@@ -149,16 +150,40 @@ class GoalAchievedLayout extends State<GoalAchieved> {
     );
   }
 
-  static void showAlert(BuildContext context, String text) {
+  void _close(BuildContext context) {
+
+//    print(" ------------------- close ------------------------------------");
+
+    Navigator.of(context,
+        rootNavigator: true)
+        .pop('dialog');
+
+  }
+
+  void showAlert(BuildContext context, String text) {
     var alert = new AlertDialog(
-      content: Container(
-        child: Row(
-          children: <Widget>[Text(text)],
-        ),
+      title: Text("Message"),
+      content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              text,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontFamily: 'HK Grotesk',
+                fontWeight: FontWeight.w500,
+                color: Colors.deepOrangeAccent,
+              ),
+            ),
+          ],
       ),
       actions: <Widget>[
         new FlatButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              Navigator.pop(context);
+              _close(context);
+            },
             child: Text(
               "OK",
               style: TextStyle(color: Colors.blue),
@@ -172,5 +197,7 @@ class GoalAchievedLayout extends State<GoalAchieved> {
           return alert;
         });
   }
+
+
 
 }

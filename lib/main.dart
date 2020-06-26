@@ -2,6 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:health_plus/ui/charts.dart';
+import 'package:health_plus/ui/dashboard.dart';
+import 'package:health_plus/ui/google_fit.dart';
+import 'package:health_plus/ui/health_inner.dart';
+import 'package:health_plus/ui/login_page.dart';
+import 'package:health_plus/ui/login_screen.dart';
 import 'package:health_plus/ui/registration.dart';
 
 import 'drawer/bottom_nav.dart';
@@ -20,8 +26,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BottomNavigation(index: 0),
-//    MyAppPage(title: 'Phone Authentication'),
+      home:
+//      GoogleFit(),
+//      LoginScreen(),
+//      BottomNavigation(index: 0),
+      LoginScreen(),
     );
   }
 }

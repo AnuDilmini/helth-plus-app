@@ -104,7 +104,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
               child: Container(
                   width: (Constant.screenHeight ) * 200,
                   height: (Constant.screenHeight ) * 60,
-                  child: Text("Anushika Dilmini",
+                  child: Text("Rosiru Tharumal",
                   style: TextStyle(
                     fontSize: 20.0,
                     fontFamily: "HKGrotesk-Bold",

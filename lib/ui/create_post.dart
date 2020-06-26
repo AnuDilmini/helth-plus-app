@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/drawer/bottom_nav.dart';
-import 'package:health_plus/ui/dashboard.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -17,6 +19,8 @@ class CreatePostLayout extends State<CreatePost> {
 
   MediaQueryData queryData;
   TextEditingController postTextController = TextEditingController();
+  var imageSource;
+  File _image;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +89,7 @@ class CreatePostLayout extends State<CreatePost> {
                   top: (Constant.screenHeight ) * 140,
                   left: (Constant.screenWidth ) * 100,
                   child:Center(
-                      child: Text("Anushika Dilmini",
+                      child: Text("Rosiru Tharumal",
                         style: TextStyle(
                             color: Palette.black,
                             fontFamily: "HKGrotesk-Regular",
@@ -157,7 +161,7 @@ class CreatePostLayout extends State<CreatePost> {
                 top: (Constant.screenHeight ) * 240,
                 left: Constant.screenWidth * 20,
                 right: Constant.screenWidth * 20,
-                height: (Constant.screenHeight ) * 600,
+                height: (Constant.screenHeight ) * 700,
                 child: TextField(
                   controller: postTextController,
                   autocorrect: true,
@@ -174,6 +178,41 @@ class CreatePostLayout extends State<CreatePost> {
                   ),
                 ),
               ),
+            Positioned(
+              top: (Constant.screenHeight ) * 480,
+              left:(Constant.screenHeight ) * 0 ,
+              width:  Constant.screenWidth * 414,
+              height: (Constant.screenHeight ) * 200,
+              child: Container(
+                color: Colors.white,
+              )
+            ),
+              Positioned(
+                top: (Constant.screenHeight ) * 380,
+                left: Constant.screenWidth * 20,
+                width:  Constant.screenWidth * 200,
+                height: (Constant.screenHeight ) * 200,
+                child: Container(
+                    color: Colors.white,
+                    child: _image == null
+                        ? Container(
+                      width: 0, height: 0,)
+                        : Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            child: Image.file(_image,
+                              width: (Constant.screenHeight ) * 200,
+                              height: (Constant.screenHeight ) * 200,),
+
+                            onTap: () {
+                              removeImageOrVideo(
+                                  context);
+                            },
+                          )
+                        ]
+                    )
+                ),
+              ),
               Positioned(
                   top: (Constant.screenHeight ) * 750,
                   width: Constant.screenWidth * 414,
@@ -185,15 +224,19 @@ class CreatePostLayout extends State<CreatePost> {
               Positioned(
                   top: (Constant.screenHeight ) * 130,
                   left: (Constant.screenWidth ) * 310,
-                  child: Image.asset("assets/images/photo_icon.png",
+                  child: GestureDetector(
+                      child: Image.asset("assets/images/photo_icon.png",
                     height: (Constant.screenHeight ) * 60,
                     width: (Constant.screenHeight ) * 60,
-                  )
+                  ),
+                    onTap: (){
+                      selectImage(context);
+                    }),
               ),
               Positioned(
                   top: (Constant.screenHeight ) * 190,
-                  left: (Constant.screenWidth ) * 310,
-                  child: Text("Photo/Video",
+                  left: (Constant.screenWidth ) * 325,
+                  child: Text("Photo",
                     style: TextStyle(
                         fontSize: 10.0,
                         color: Colors.blueGrey
@@ -205,6 +248,126 @@ class CreatePostLayout extends State<CreatePost> {
 
       ),
     );
+  }
+
+  void removeImageOrVideo(BuildContext contex){
+
+    var alert = new AlertDialog(
+      title: Text("Image"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            "Wanna remove the image ?",
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 14.0,
+              fontFamily: 'HK Grotesk',
+              fontWeight: FontWeight.w500,
+              color: Colors.brown,
+            ),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+
+        new FlatButton(
+            onPressed: (){
+              setState(() {
+                _image = null;
+//                isImage = false;
+//                editPostImageURL = null;
+//                isRemovedImageFromEditPost = true;
+              });
+              Navigator.pop(contex);
+            },
+            child: Text('Remove')
+        ),
+        new FlatButton(
+            onPressed: (){
+              Navigator.pop(contex);
+            },
+            child: Text('Cancel')
+        )
+
+      ],
+    );
+    showDialog(context: contex,
+        barrierDismissible: false,
+        builder: (BuildContext contex) {
+          return WillPopScope(
+            onWillPop: (){},
+            child: alert,
+          );
+        });
+
+  }
+
+  void selectImage(BuildContext context){
+
+    var alert = new AlertDialog(
+      title: Text("Please select a method"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          new FlatButton(
+              onPressed: (){
+                imageSource = ImageSource.camera;
+                getImage();
+                _close(context);
+//                Navigator.pop(context);
+              },
+              child: Text('Camera')
+          ),
+          new FlatButton(
+              onPressed: (){
+                ////   // print("Image Gallery ");
+                imageSource = ImageSource.gallery;
+                getImage();
+//                Navigator.pop(context);
+                _close(context);
+              },
+              child: Text('Image Gallery')
+          ),
+        ],
+      ),
+      actions: <Widget>[
+      ],
+    );
+    showDialog(context: context,
+        builder: (_) {
+          return alert;
+        });
+  }
+
+  Future getImage() async {
+    // print("camera");
+    var image;
+
+      image = await ImagePicker.pickImage(source: imageSource,
+          maxWidth: 2300,
+          maxHeight: 1500);
+
+    // print("image======= $image");
+
+
+    if(image != null){
+      setState(() {
+        _image = image;
+      });
+    }
+
+
+  }
+
+  void _close(BuildContext context) {
+
+//    print(" ------------------- close ------------------------------------");
+
+    Navigator.of(context,
+        rootNavigator: true)
+        .pop('dialog');
+
   }
 
 }

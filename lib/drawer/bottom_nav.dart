@@ -9,7 +9,6 @@ import 'package:health_plus/ui/profile.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 import 'package:sphere_bottom_navigation_bar/sphere_bottom_navigation_bar.dart';
-
 import 'nav_drawer.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -17,17 +16,14 @@ class BottomNavigation extends StatefulWidget {
   final int index;
   BottomNavigation({this.index});
 
-
   @override
   State<StatefulWidget> createState() {
     return NavigatioLayout();
   }
 }
 
-
 class NavigatioLayout extends State<BottomNavigation> {
   MediaQueryData queryData;
-
 
   static const IconThemeData selectedIconTheme = IconThemeData(size: 24, color: Colors.purple, );
   static int selectedIndex = 0;
@@ -61,14 +57,13 @@ class NavigatioLayout extends State<BottomNavigation> {
     queryData = MediaQuery.of(context);
     Constant.screenWidth = queryData.size.width;
     Constant.screenHeight = queryData.size.height;
-
     Constant.scaffoldKey = new GlobalKey<ScaffoldState>();
 
     return Scaffold(
       drawer: SizedBox(
           width: (Constant.screenWidth/5) * 4,
-
           height: Constant.screenHeight,
+
           child: Theme(
             data: Theme.of(context).copyWith(
               // Set the transparency here

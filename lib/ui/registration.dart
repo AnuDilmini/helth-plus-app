@@ -1,18 +1,22 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/ui/registration_test.dart';
+import 'package:health_plus/utils/constant.dart';
 import 'package:health_plus/utils/network_helper.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:http/http.dart';
 
 class Registration extends StatefulWidget{
 
   _RegistrationState createState() => _RegistrationState();
   final FirebaseUser user;
   Registration({this.user});
+
 }
 
 class _RegistrationState extends State<Registration> {
@@ -22,7 +26,6 @@ class _RegistrationState extends State<Registration> {
   TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-
 
 
   bool _isLoading = false;
@@ -122,9 +125,7 @@ class _RegistrationState extends State<Registration> {
                                     fontWeight: FontWeight.normal),
                               ),
                             ),
-
                             /////////////// password ////////////
-
                             TextField(
                               style: TextStyle(color: Color(0xFF000000)),
                               cursorColor: Color(0xFF9b9b9b),
@@ -154,7 +155,7 @@ class _RegistrationState extends State<Registration> {
                                   Icons.mobile_screen_share,
                                   color: Colors.grey,
                                 ),
-                                labelText: "0765956264",
+                                labelText: "Phone Number",
                                 labelStyle: TextStyle(
                                     color: Color(0xFF9b9b9b),
                                     fontSize: 15,
@@ -167,7 +168,6 @@ class _RegistrationState extends State<Registration> {
                               ),
                             ),
 
-
                             /////////////// SignUp Button ////////////
 
                             Padding(
@@ -179,7 +179,7 @@ class _RegistrationState extends State<Registration> {
                                     child: Text(
                                       _isLoading
                                           ? 'Creating...'
-                                          : 'Create account',
+                                          : 'Create Account',
                                       textDirection: TextDirection.ltr,
                                       style: TextStyle(
                                         color: Colors.white,
@@ -195,11 +195,18 @@ class _RegistrationState extends State<Registration> {
                                       borderRadius:
                                       new BorderRadius.circular(20.0)),
                                   onPressed: (){
-
-//                                    signUp(context);
                                     Navigator.push(context, MaterialPageRoute(
-                                        builder: (context) => BottomNavigation(index: 0)
+                                        builder: (context) =>  BottomNavigation(index: 0),
                                     ));
+//                                    SignUp(context);
+//                                    loginPost();
+//                                    loginPost();
+//                                    getUnits();
+
+
+//                                    Navigator.push(context, MaterialPageRoute(
+//                                        builder: (context) => BottomNavigation(index: 0)
+//                                    ));
                                   }
 //                                  _isLoading ? null : _handleLogin
                               ),
@@ -218,32 +225,65 @@ class _RegistrationState extends State<Registration> {
     );
   }
 
-  Future<String> signUp(BuildContext context) async {
+
+  Future<void> loginPost() async {
+    //var resp = await http.post( url, body: json, headers: headers);
+    print("Hi Hello How Are You ");
+    String url = 'http://192.168.8.100/api/v1/posts/getnotification';
+
+    var resp = await http.get(url);
+    print("Hi Hello How Are You ${resp.statusCode}");
+    print("Body: ${resp.body}");
+  }
+
+
+  Future<String> SignUp(BuildContext context) async {
     print("signup");
-    String url = 'http://10.0.2.2:8080/api/v1/users/add';
+    String url = 'http://localhost:8000/api/v1/users/add';
     var response;
 
     bool networkResults = await NetworkHelper.checkNetwork();
 
     if (networkResults) {
       try {
+        print("url ====");
+        Map<String, String> headers = {"Accept": "application/json"};
+        Map<String, String> body;
          print("url $url");
-          response =
-              await http.post(
-                  url,
-              body: {
-                "first_name": "Anushika",
-                "name": "07198093930",
-                "last_name": "Dilmini123",
-                "email": "anushikadilmini@gmail.com",
-                "passowrd": "12345678"
-              }
-          );
-         print("url*** $url");
+
+        body =  {
+          "name": "0765956264",
+          "first_name": "Anushika",
+          "last_name": "Dilmini123",
+          "email": "anushikadilmini@gmail.com",
+          "passowrd": "12345678"
+        };
+
+        print("url*** 1$url");
+
+        var response = await http.post(url, headers:headers, body: body);
+        print("response.body");
+        print(response.body);
+        print("url***2 $url");
+        print("NEW YEAR");
+        if (response.statusCode == 200) {
+          print(response.body);
+        } else {
+          print('A network error occurred');
+        }
+        // string to uri
+//        var uri = Uri.parse(url);
+//
+//        // create multipart request
+//        var request = new http.MultipartRequest("POST", uri);
+//        request.headers.addAll(headers);
+//        request.fields.addAll(body);
+//         print("url*** $url");
+//         http.Response response = await http.Response.fromStream(await request.send());
 //        int responseCode = response.statusCode;
 //        print(" --- response 1 ----- : "+responseCode.toString());
 //         var convertData = json.decode(response.body);
-//         print(" --- response ----- : "+response.body);
+
 
 //        if (responseCode == 200) {
 ////          var convertData = json.decode(response.body);
@@ -297,6 +337,14 @@ class _RegistrationState extends State<Registration> {
   }
 
 
+  Future connect() async {
+    var httpClient = new HttpClient();
+    var request = await httpClient.get('localhost',8000, "/api/v1/posts/getnotification");
+    var response = await request.close();
+    print("response $response");
+  }
+
+
   void _handleLogin() async {
 //    setState(() {
 //      _isLoading = true;
@@ -320,16 +368,5 @@ class _RegistrationState extends State<Registration> {
   }
 
 
-//  Future<Post> createPost(String url, {Map body}) async {
-//    return http.post(url, body: body).then((http.Response response) {
-//      final int statusCode = response.statusCode;
-//
-//      if (statusCode < 200 || statusCode > 400 || json == null) {
-//        throw new Exception("Error while fetching data");
-//      }
-//      return Post.fromJson(json.decode(response.body));
-//    });
-//
-//
-//}
+
 }

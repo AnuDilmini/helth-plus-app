@@ -81,7 +81,7 @@ class ProfileLayout extends State<Profile> {
                     top: (Constant.screenHeight ) * 200,
                     width: Constant.screenWidth * 414,
                     child:Center(
-                      child: Text("Anushika Dilmini",
+                      child: Text("Rosiru Tharumal",
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: "HKGrotesk-Regular",

@@ -46,13 +46,15 @@ class HealthInnerWidget extends State<HealthInnerPage> {
     queryData = MediaQuery.of(context);
     Constant.screenWidth = queryData.size.width / 414;
     Constant.screenHeight = queryData.size.height/812;
+
+
 //    SystemChrome.setEnabledSystemUIOverlays([]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark));
 
     contentWidget = Container(
-      child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+      child: Text("It's recommended that you eat at least 5 portions of a variety of fruit and veg every day. They can be fresh, frozen, canned, dried or juiced.\nGetting your 5 A Day is easier than it sounds. Why not chop a banana over your breakfast cereal, or swap your usual mid-morning snack for a piece of fresh fruit?\nA portion of fresh, canned or frozen fruit and vegetables is 80g. A portion of dried fruit (which should be kept to mealtimes) is 30g.\nA 150ml glass of fruit juice, vegetable juice or smoothie also counts as 1 portion, but limit the amount you have to no more than 1 glass a day as these drinks are sugary and can damage your teeth.",
         textAlign: TextAlign.justify,
         style: TextStyle(
           fontFamily: 'HKGrotesk-Regular',
@@ -90,58 +92,54 @@ class HealthInnerWidget extends State<HealthInnerPage> {
                 ),
                 child:Column(
                   children: <Widget>[
-                    ClipPath(
-                      child: Card(
-                        elevation: 0.0,
-                        borderOnForeground: false,
-                        margin: EdgeInsets.all(0.0),
-                        clipBehavior: Clip.none,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                          child: OKImage(
-                            url:
-                            'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-                            loadingWidget: Center(
-                              child: Container(
-                                width: (MediaQuery.of(context)
-                                    .size
-                                    .width *
-                                    0.03),
-                                height:
-                                (MediaQuery.of(context)
-                                    .size
-                                    .width *
-                                    0.03),
-                                child:
-                                CircularProgressIndicator(),
-                              ),
+                    Container(
+                      width: Constant.screenWidth * 414,
+                      height: Constant.screenHeight*300,
+                      child:  ClipPath(
+                        child: Card(
+                          elevation: 0.0,
+                          borderOnForeground: false,
+                          margin: EdgeInsets.all(0.0),
+                          clipBehavior: Clip.none,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
                             ),
-                            errorWidget: Center(
-                              child: Container(
-                                width: (MediaQuery.of(context)
-                                    .size
-                                    .width *
-                                    0.03),
-                                height:
-                                (MediaQuery.of(context)
-                                    .size
-                                    .width *
-                                    0.03),
-                                child: Icon(Icons.error),
+                            child: OKImage(
+                              url:
+                              'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?cs=srgb&dl=bowl-of-vegetable-salad-and-fruits-936611.jpg&fm=jpg',
+                              loadingWidget: Center(
+                                child: Container(
+                                  child:
+                                  CircularProgressIndicator(),
+                                ),
                               ),
-                            ),
+                              errorWidget: Center(
+                                child: Container(
+                                  width: (MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      0.03),
+                                  height:
+                                  (MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      0.03),
+                                  child: Icon(Icons.error),
+                                ),
+                              ),
 //                                              width: screenWidth.toDouble(),
 //                                              height: (screenWidth.toDouble()/300) * 220,
-                            fit: BoxFit.fill,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
+                        clipper: ProductClipper(),
+                        clipBehavior: Clip.antiAlias,
                       ),
-                      clipper: ProductClipper(),
-                      clipBehavior: Clip.antiAlias,
                     ),
+
                     Container(
                       padding: EdgeInsets.only(top: 20.0),
                       width: Constant.screenWidth * 414,
@@ -187,10 +185,8 @@ class HealthInnerWidget extends State<HealthInnerPage> {
           ),
         ],
       )
-
     );
   }
-
   _horizontalButtonView(){
     return ListView.builder(
         padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 10.0),
@@ -204,14 +200,12 @@ class HealthInnerWidget extends State<HealthInnerPage> {
                 right: Constant.screenWidth * 22),
             height: (Constant.screenHeight) * 500,
             width: Constant.screenWidth * 414,
-            child: Center(
-              child:Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use itIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Where does it come from?Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et MalorumThe Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorumby Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation textAlign: TextAlign.left",
+            child: Text("It's recommended that you eat at least 5 portions of a variety of fruit and veg every day. They can be fresh, frozen, canned, dried or juiced.\nGetting your 5 A Day is easier than it sounds. Why not chop a banana over your breakfast cereal, or swap your usual mid-morning snack for a piece of fresh fruit?\nA portion of fresh, canned or frozen fruit and vegetables is 80g. A portion of dried fruit (which should be kept to mealtimes) is 30g.\nA 150ml glass of fruit juice, vegetable juice or smoothie also counts as 1 portion, but limit the amount you have to no more than 1 glass a day as these drinks are sugary and can damage your teeth.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: "HKGrotesk-Regular",
                     color: Palette.darkGrey,
                     fontSize: 14
-                ),
               ),
             )
           );

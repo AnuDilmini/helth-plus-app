@@ -20,6 +20,7 @@ class _NavDrawerState extends State<NavDrawer> {
 
   @override
   Widget build(BuildContext context) {
+
     queryData = MediaQuery.of(context);
     Constant.screenWidth = queryData.size.width;
     Constant.screenHeight = queryData.size.height;
@@ -62,7 +63,7 @@ class _NavDrawerState extends State<NavDrawer> {
                 top: (Constant.screenHeight /896) * 145,
                 left: (Constant.screenWidth/414) * 40,
                 width: Constant.screenWidth,
-                child: Text("Hello, Anushika",
+                child: Text("Hello, Rosiru",
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "HKGrotesk-Regular",
