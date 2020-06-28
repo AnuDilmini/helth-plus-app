@@ -2,37 +2,38 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:health_plus/ui/all_plans.dart';
 import 'package:health_plus/ui/charts.dart';
+import 'package:health_plus/ui/check_ui.dart';
 import 'package:health_plus/ui/dashboard.dart';
 import 'package:health_plus/ui/google_fit.dart';
 import 'package:health_plus/ui/health_inner.dart';
 import 'package:health_plus/ui/login_page.dart';
 import 'package:health_plus/ui/login_screen.dart';
 import 'package:health_plus/ui/registration.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'drawer/bottom_nav.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+  BuildContext _context;
+  SharedPreferences prefs;
+  MediaQueryData queryData;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Phone Authentication',
-//      routes: <String, WidgetBuilder>{
-//        '/homepage': (BuildContext context) => MyHome(),
-//        '/loginpage': (BuildContext context) => MyApp(),
-//      },
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
       ),
-      home:
-//      GoogleFit(),
-//      LoginScreen(),
-//      BottomNavigation(index: 0),
-      LoginScreen(),
+//      home: AllPlans(),
+    home: BottomNavigation(index : 0),
     );
   }
+
 }
 
 class MyAppPage extends StatefulWidget {

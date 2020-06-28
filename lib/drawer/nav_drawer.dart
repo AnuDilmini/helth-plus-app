@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:health_plus/ui/about.dart';
-import 'package:health_plus/ui/dashboard.dart';
 import 'package:health_plus/ui/profile_edit.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'bottom_nav.dart';
+import 'bottom_navigation.dart';
 
 class NavDrawer extends StatefulWidget {
   @override
@@ -52,6 +54,9 @@ class _NavDrawerState extends State<NavDrawer> {
                     decoration: new BoxDecoration(
                       color: Colors.white,
                         shape: BoxShape.circle,
+                      image:  DecorationImage(
+                        image: AssetImage("assets/images/celebrity.png"),
+                      ),
 //                        image: new DecorationImage(
 //                            fit: BoxFit.fill,
 //                            image: new NetworkImage(
@@ -116,7 +121,7 @@ class _NavDrawerState extends State<NavDrawer> {
                         fontSize: 17.0
                     ),),
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileEdit()));
+//                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileEdit()));
 
                   },
                 )
@@ -237,11 +242,12 @@ class _NavDrawerState extends State<NavDrawer> {
                         fontSize: 17.0,
                         fontFamily: "HKGrotesk-Bold",
                         color: Colors.white
-
                     ),
                   ),
                   onTap: (){
                     print("Log Out message");
+
+                    showExitAlertDialog();
                   },
                 )
             ),
@@ -249,6 +255,35 @@ class _NavDrawerState extends State<NavDrawer> {
         )
     );
   }
+
+  void showExitAlertDialog() async{
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Logout"),
+          content: Text("Are you sure ?"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("No"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text("Yes"),
+              onPressed: () {
+
+                SystemNavigator.pop();
+
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health_plus/drawer/nav_drawer.dart';
+import 'package:health_plus/ui/profile_edit.dart';
 import 'package:health_plus/utils/Palette.dart';
 import 'package:health/health.dart';
 
@@ -25,7 +26,7 @@ class DashboardState extends State<Dashboard> {
 
   final List<String> imgList = [
     'https://images.pexels.com/photos/40751/running-runner-long-distance-fitness-40751.jpeg?cs=srgb&dl=woman-girl-silhouette-jogger-40751.jpg&fm=jpg',
-    'https://images.pexels.com/photos/48604/pexels-photo-48604.jpeg?cs=srgb&dl=computer-desk-laptop-stethoscope-48604.jpg&fm=jpg',
+    'https://cdn.dribbble.com/users/2429720/screenshots/6998651/googlefitexpositionprojects_2x.png',
     'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?cs=srgb&dl=bowl-of-vegetable-salad-and-fruits-936611.jpg&fm=jpg',
     'https://images.pexels.com/photos/235922/pexels-photo-235922.jpeg?cs=srgb&dl=adventure-athlete-athletic-daylight-235922.jpg&fm=jpg',
     'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?cs=srgb&dl=bamboo-bamboo-whisk-board-bowls-461428.jpg&fm=jpg',
@@ -111,6 +112,7 @@ class DashboardState extends State<Dashboard> {
                         itemCount: 5,
                         itemBuilder: (context, position) {
                           return Container(
+
                             width: (Constant.screenWidth /414) * 200,
                             height: (Constant.screenHeight * 812) / 200,
                             child: Column(
@@ -119,14 +121,20 @@ class DashboardState extends State<Dashboard> {
                                   onTap: () {
                                     if(position == 0){
 
-                                    Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) => Goals()
-                                    ));
-                                    }else if(position == 1){
-                                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                                       builder: (context) => GoogleFit()
-                                   ), (route) => false);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => Goals()));
 
+//                                      Navigator.of(context).push(MaterialPageRoute(
+//                                          builder: (_) => Goals()));
+//                                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Goals()), (route) => false);
+
+                                    }else if(position == 1){
+
+                                   Navigator.push(context, MaterialPageRoute(
+                                       builder: (context) => GoogleFit()
+                                   ));
                                     } else{
 
                                       Navigator.push(context, MaterialPageRoute(
@@ -184,6 +192,8 @@ class DashboardState extends State<Dashboard> {
                               children: <Widget>[
                                 GestureDetector(
                                   onTap: () {
+
+
 //                                    Navigator.push(context, MaterialPageRoute(
 //                                        builder: (context) => Goals()
 //                                    ));
@@ -222,26 +232,13 @@ class DashboardState extends State<Dashboard> {
                     ),
                   ),
                   Positioned(
-                    left: (Constant.screenWidth/ 414) * 08,
-                    top: (Constant.screenHeight/896) * 55,
-                    height: (Constant.screenHeight/896) * 35,
-                    child: GestureDetector(
-                      child: Icon(Icons.menu,
-                      color: Palette.orangeColor,
-                    ),
-                    onTap: (){
-//                      _scaffoldKey.currentState.openDrawer();
-                    },
-                    )
-                  ),
-                  Positioned(
-                      left: (Constant.screenWidth/ 414) * 60,
-                      top: (Constant.screenHeight/896) * 55,
+                      left: (Constant.screenWidth/ 414) * 80,
+                      top: (Constant.screenHeight/896) * 52,
                       height: (Constant.screenHeight/896) * 35,
                       child: Center(
                         child: Text("LifePlus",
                           style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 28.0,
                               fontFamily: "HKGrotesk-Regular",
                               color: Colors.green
                           ),)
@@ -250,7 +247,7 @@ class DashboardState extends State<Dashboard> {
                   Positioned(
                       right: (Constant.screenWidth/ 414) * 19,
                       left: (Constant.screenWidth/ 414) * 350,
-                      top: (Constant.screenHeight/896) * 50,
+                      top: (Constant.screenHeight/896) * 52,
                       height: (Constant.screenHeight/896) * 35,
                       child: GestureDetector(
                         child: Icon(Icons.email,
@@ -297,13 +294,7 @@ class DashboardState extends State<Dashboard> {
                                             .width /
                                             375) * 6)),
                                     child: ClipOval(
-                                      child: CachedNetworkImage(
-                                        imageUrl: 'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-                                        placeholder: (context,
-                                            url) => new CircularProgressIndicator(),
-                                        errorWidget: (context, url,
-                                            error) =>
-                                        new Icon(Icons.error),
+                                      child: Image.asset("assets/images/celebrity.jpg",
                                         fit: BoxFit.fill,
                                         width: ((queryData.size
                                             .width /
@@ -314,7 +305,7 @@ class DashboardState extends State<Dashboard> {
                                       ),
                                     ),
                                   ),
-                                  Text( ' What’s on your mind ?                   ',
+                                  Text( ' What’s on your mind ?          ',
                                       style:(TextStyle(
                                         fontSize: 14,
                                         fontFamily: 'HK Grotesk',
@@ -361,6 +352,7 @@ class DashboardState extends State<Dashboard> {
                     ),
                   ),
                   ),
+
                 ],
               ),
             ],

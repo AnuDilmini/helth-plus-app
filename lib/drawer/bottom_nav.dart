@@ -24,26 +24,19 @@ class BottomNavigation extends StatefulWidget {
 
 class NavigatioLayout extends State<BottomNavigation> {
   MediaQueryData queryData;
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
   static const IconThemeData selectedIconTheme = IconThemeData(size: 24, color: Colors.purple, );
   static int selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
       fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> _widgetOptions = <Widget>[
+
+
+  List<Widget> pages() => [
     Dashboard(),
     Discover(),
     Profile(),
-//    PromotionInnerClass(),
-//    PromotionClass(),
-//    FeedbackClass(),
-
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
 
 
   @override
@@ -57,10 +50,10 @@ class NavigatioLayout extends State<BottomNavigation> {
     queryData = MediaQuery.of(context);
     Constant.screenWidth = queryData.size.width;
     Constant.screenHeight = queryData.size.height;
-    Constant.scaffoldKey = new GlobalKey<ScaffoldState>();
-
+    final List<Widget> children = pages();
     return Scaffold(
-      drawer: SizedBox(
+      key: _scaffoldKey,
+      drawer: selectedIndex == 0 ? SizedBox(
           width: (Constant.screenWidth/5) * 4,
           height: Constant.screenHeight,
 
@@ -75,10 +68,42 @@ class NavigatioLayout extends State<BottomNavigation> {
               ),
             ),
           )
+      ):
+      null,
+      body: Stack(
+        children: <Widget>[
+      Container(
+        child: children[selectedIndex],
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(selectedIndex),
-      ),
+          selectedIndex == 0?
+      Positioned(
+          top: (Constant.screenHeight/8) * 0.5,
+          left: 15,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: GestureDetector(
+                  child: Icon(Icons.menu,
+                  color: Palette.orangeColor,
+                  ),
+                  onTap: () {
+                    print("drawer");
+
+                    _scaffoldKey.currentState.openDrawer();
+//                              Scaffold.of(context).openDrawer();
+                  },
+                ),
+              ),
+            ),
+          )
+      ): Align(
+        alignment: Alignment.bottomCenter,),
+      ]
+    ),
+
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
           unselectedItemColor: Colors.grey,
@@ -100,9 +125,13 @@ class NavigatioLayout extends State<BottomNavigation> {
 //            title: Text('School'),
 //          ),
         ],
-        currentIndex: selectedIndex,
         selectedItemColor: Colors.green,
-        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 import 'package:health_plus/utils/network_helper.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dashboard.dart';
 
@@ -19,7 +20,7 @@ class ProfileEdit extends StatefulWidget {
 class ProfileEditLayout extends State<ProfileEdit> {
 
   MediaQueryData queryData;
-
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController editCountry =  TextEditingController();
   TextEditingController editMobile =  TextEditingController();
   TextEditingController editFirstName =  TextEditingController();
@@ -30,11 +31,14 @@ class ProfileEditLayout extends State<ProfileEdit> {
   TextEditingController editGender =  TextEditingController();
 
   bool isFirstName = false, isLastName = false, isCompany = false, isMobile = false, isDateOfBirth = false, isNIC= false, isGender = false;
-
+  String first_name, last_name;
 
   @override
   void initState() {
+
+    getProfileValues();
     editCountry.text = "Sri Lanka";
+
   }
 
   @override
@@ -51,6 +55,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
 
     return MaterialApp(
       home: Scaffold(
+        key: _scaffoldKey,
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           child:Stack(
@@ -66,7 +71,8 @@ class ProfileEditLayout extends State<ProfileEdit> {
                 height: Constant.screenHeight  * 50,
                 child:GestureDetector(
                   child: Center(
-                      child: Icon(Icons.arrow_back,)
+                      child: Icon(Icons.arrow_back,
+                      size: 25,)
                   ),
                   onTap: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => BottomNavigation(index: 0)));
@@ -90,12 +96,9 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   decoration: new BoxDecoration(
                       color: Palette.orangeLight,
                       shape: BoxShape.circle,
-                      image: new DecorationImage(
-                          fit: BoxFit.fill,
-                          image: new NetworkImage(
-                            "https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80",
-                          )
-                      )
+                      image:  DecorationImage(
+                      image: AssetImage("assets/images/celebrity.png"),
+                    ),
                   )),
             ),
             Positioned(
@@ -104,7 +107,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
               child: Container(
                   width: (Constant.screenHeight ) * 200,
                   height: (Constant.screenHeight ) * 60,
-                  child: Text("Rosiru Tharumal",
+                  child: Text("$first_name $last_name",
                   style: TextStyle(
                     fontSize: 20.0,
                     fontFamily: "HKGrotesk-Bold",
@@ -687,6 +690,7 @@ class ProfileEditLayout extends State<ProfileEdit> {
                   )
                 ),
                 onTap: (){
+                  updateValues();
                   print("update");
                 },
               )
@@ -698,6 +702,43 @@ class ProfileEditLayout extends State<ProfileEdit> {
     );
   }
 
+  getProfileValues () async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //Return String
+
+    editCountry.text = prefs.getString('country') ?? "";
+    editMobile.text  = prefs.getString('phone') ?? "";
+    first_name = editFirstName.text  = prefs.getString('first_name') ?? "";
+    last_name = editLastName.text  = prefs.getString('last_name') ?? "";
+    editCompany.text  = prefs.getString('company') ?? "";
+    editDateOfBirth.text  = prefs.getString('birth') ?? "";
+    editNIC.text  = prefs.getString('nic') ?? "";
+    editGender.text  = prefs.getString('gender') ?? "";
+
+    setState(() {
+
+    });
+
+  }
+
+  updateValues() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('first_name', editFirstName.text);
+    prefs.setString('last_name', editLastName.text);
+    prefs.setString('company', editCompany.text);
+    prefs.setString('birth', editDateOfBirth.text);
+    prefs.setString('nic', editNIC.text);
+    prefs.setString('gender', editGender.text);
+
+    showSnackBar(context, "Values are successfully been updated");
+
+  }
+
+  showSnackBar(BuildContext context, String msg){
+    final snackBar = SnackBar(content: Text(msg),backgroundColor: Palette.darkGrey,);
+    _scaffoldKey.currentState.showSnackBar(snackBar);
+  }
   @override
   void dispose() {
 

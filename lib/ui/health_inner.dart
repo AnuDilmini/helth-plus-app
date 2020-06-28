@@ -11,10 +11,9 @@ import 'discover.dart';
 
 class HealthInnerPage extends StatefulWidget {
 
-//  NewsInnerPageWidget(bool isSearch , String isSearchText){
-//    NewsInnerPageBodyWidgetState._isSearch = isSearch;
-//    NewsInnerPageBodyWidgetState._isSearchText = isSearchText;
-//  }
+  HealthInnerPage({Key key, this.title, this.data}) : super(key: key);
+  final String title;
+  var data;
 
   @override
   State<StatefulWidget> createState() {
@@ -34,11 +33,13 @@ class HealthInnerWidget extends State<HealthInnerPage> {
   Widget contentWidget;
   static bool _isSearch;
   static String _isSearchText;
+  var arrayData ;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    arrayData = widget.data;
   }
 
   @override
@@ -66,11 +67,12 @@ class HealthInnerWidget extends State<HealthInnerPage> {
     );
 
     return Scaffold(
-      body: Stack(
+      body: SingleChildScrollView(
+      child: Stack(
         children: <Widget>[
         Container(
           width: Constant.screenWidth * 414,
-          height: Constant.screenHeight * 812,
+          height: Constant.screenHeight * 1100,
           color: Palette.orangeLight,
           child: Column(
             children: <Widget>[
@@ -82,7 +84,7 @@ class HealthInnerWidget extends State<HealthInnerPage> {
             ),
             Container(
               width: Constant.screenWidth * 414,
-              height: Constant.screenHeight*620,
+              height: Constant.screenHeight*1000,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: new BorderRadius.only(
@@ -108,7 +110,7 @@ class HealthInnerWidget extends State<HealthInnerPage> {
                             ),
                             child: OKImage(
                               url:
-                              'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?cs=srgb&dl=bowl-of-vegetable-salad-and-fruits-936611.jpg&fm=jpg',
+                              '${arrayData['template'][0]['link']}',
                               loadingWidget: Center(
                                 child: Container(
                                   child:
@@ -139,11 +141,43 @@ class HealthInnerWidget extends State<HealthInnerPage> {
                         clipBehavior: Clip.antiAlias,
                       ),
                     ),
-
                     Container(
                       padding: EdgeInsets.only(top: 20.0),
                       width: Constant.screenWidth * 414,
-                      height: Constant.screenHeight *300,
+                      height: Constant.screenHeight *100,
+                      child: Center(
+                        child: Text(
+                        "${arrayData['name']}",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: "HKGrotesk-Regular",
+                          color: Colors.black87,
+                          fontSize: 18,
+
+                      ),
+                      ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 20.0),
+                      width: Constant.screenWidth * 414,
+                      height: Constant.screenHeight *100,
+                      child: Center(
+                        child: Text(
+                          "${arrayData['template'][2]['text']}",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: "HKGrotesk-Regular",
+                            color: Palette.grayColor,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 20.0),
+                      width: Constant.screenWidth * 414,
+                      height: Constant.screenHeight *200,
                       child: _horizontalButtonView(),
                     ),
 
@@ -185,8 +219,12 @@ class HealthInnerWidget extends State<HealthInnerPage> {
           ),
         ],
       )
+      ),
     );
   }
+
+  //  ['template'][0]['link']
+
   _horizontalButtonView(){
     return ListView.builder(
         padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 10.0),
@@ -200,8 +238,8 @@ class HealthInnerWidget extends State<HealthInnerPage> {
                 right: Constant.screenWidth * 22),
             height: (Constant.screenHeight) * 500,
             width: Constant.screenWidth * 414,
-            child: Text("It's recommended that you eat at least 5 portions of a variety of fruit and veg every day. They can be fresh, frozen, canned, dried or juiced.\nGetting your 5 A Day is easier than it sounds. Why not chop a banana over your breakfast cereal, or swap your usual mid-morning snack for a piece of fresh fruit?\nA portion of fresh, canned or frozen fruit and vegetables is 80g. A portion of dried fruit (which should be kept to mealtimes) is 30g.\nA 150ml glass of fruit juice, vegetable juice or smoothie also counts as 1 portion, but limit the amount you have to no more than 1 glass a day as these drinks are sugary and can damage your teeth.",
-                textAlign: TextAlign.center,
+            child: Text("${arrayData['template'][3]['text']}",
+              textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: "HKGrotesk-Regular",
                     color: Palette.darkGrey,

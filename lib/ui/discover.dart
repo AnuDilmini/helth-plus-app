@@ -55,7 +55,7 @@ class DiscoverLayout extends State<Discover> {
           child:Stack(
            children: <Widget>[
                Container(
-                 height: (Constant.screenHeight * 812) * 1.35,
+                 height: (Constant.screenHeight * 812) * 1.5,
                  width: Constant.screenWidth * 414,
                ),
              Positioned(
@@ -361,7 +361,7 @@ class DiscoverLayout extends State<Discover> {
                width: Constant.screenWidth * 414,
                child: ListView.builder(
                    scrollDirection: Axis.horizontal,
-                   itemCount: 5,
+                   itemCount: 1,
                    itemBuilder: (context, position) {
                      return GestureDetector(
                          child: Card(
@@ -387,12 +387,12 @@ class DiscoverLayout extends State<Discover> {
                                              width: 1.0)
                                      ),
                                      margin: EdgeInsets.only(top: 10.0,left: 10.0),
-                                     height: Constant.screenHeight * 20,
+                                     height: Constant.screenHeight * 30,
                                      width: Constant.screenWidth * 75,
                                      child: Center(
-                                       child: Text("Diet",
+                                       child: Text("Diabetics",
                                          style: TextStyle(
-                                             fontSize: 10.0,
+                                             fontSize: 18.0,
                                              color: Colors.black,
                                              fontFamily: "HKGrotesk-Bold"
                                          ),
@@ -401,7 +401,7 @@ class DiscoverLayout extends State<Discover> {
                                  ),
                                  Container(
                                    margin: EdgeInsets.only(top: 3.0,left: 10.0),
-                                   child: Text("8 Weeks",
+                                   child: Text("",
                                      style: TextStyle(fontSize: 14.0,
                                          color: Colors.black,
                                          fontFamily: "HKGrotesk-Bold"
@@ -410,7 +410,7 @@ class DiscoverLayout extends State<Discover> {
                                  ),
                                  Container(
                                    margin: EdgeInsets.only(top: 3.0,left: 10.0),
-                                   child: Text("Daily 26",
+                                   child: Text("",
                                      style: TextStyle(fontSize: 12.0,
                                          color: Colors.grey,
                                          fontFamily: "HKGrotesk-Bold"

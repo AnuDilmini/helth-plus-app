@@ -29,15 +29,7 @@ class LoginScreen extends StatelessWidget {
           FirebaseUser user = result.user;
 
           print("asdfsgds********************");
-          if(user != null){
 
-            showSnackBar(context, "You are Logged in succesfully");
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => Registration(user: user,)
-            ));
-          }else{
-            print("Error");
-          }
 
           //This callback would gets called when verification is done auto maticlly
         },
@@ -74,13 +66,24 @@ class LoginScreen extends StatelessWidget {
 
                         FirebaseUser user = result.user;
 
+
                         if(user != null){
+
+                          showSnackBar(context, "You are Logged in succesfully");
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => HomeScreen(user: user,)
+                              builder: (context) => Registration(user: user,)
                           ));
                         }else{
                           print("Error");
                         }
+
+//                        if(user != null ){
+//                          Navigator.push(context, MaterialPageRoute(
+//                              builder: (context) => HomeScreen(user: user,)
+//                          ));
+//                        }else{
+//                          print("Error");
+//                        }
                       },
                     ),
 //                    FlatButton(

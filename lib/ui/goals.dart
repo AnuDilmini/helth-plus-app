@@ -1,10 +1,7 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_plus/drawer/bottom_nav.dart';
 import 'package:health_plus/ui/dashboard.dart';
-import 'package:health_plus/utils/Palette.dart';
 import 'package:health_plus/utils/constant.dart';
 
 import 'goal_achieved.dart';
@@ -19,8 +16,9 @@ class Goals extends StatefulWidget {
 class GoalsLayout extends State<Goals> {
 
   MediaQueryData queryData;
+
   final List<String> goalsList = [
-   "Avoid junk food",
+    "Avoid junk food",
     "Walk 10k steps",
     "No sugar day",
     "30mins of yoga",
@@ -28,8 +26,6 @@ class GoalsLayout extends State<Goals> {
     "30mins of yoga",
     "Avoid fizzy drinks",
     ];
-
-
 
   final List<String> imgList = [
     'https://images.pexels.com/photos/40751/running-runner-long-distance-fitness-40751.jpeg?cs=srgb&dl=woman-girl-silhouette-jogger-40751.jpg&fm=jpg',
@@ -40,6 +36,7 @@ class GoalsLayout extends State<Goals> {
     'https://images.pexels.com/photos/1671217/pexels-photo-1671217.jpeg?cs=srgb&dl=two-woman-doing-exercise-1671217.jpg&fm=jpg',
     'https://images.pexels.com/photos/863977/pexels-photo-863977.jpeg?cs=srgb&dl=three-women-s-doing-exercises-863977.jpg&fm=jpg',
   ];
+
   @override
   Widget build(BuildContext context) {
 
